@@ -1,4 +1,4 @@
-function compFirm(input) {
+function computerFirm(input) {
   let index = 0;
 
   let n = Number(input[index]);
@@ -37,4 +37,4 @@ function compFirm(input) {
   console.log(averageRating);
 }
 
-compFirm(['5', '122', '156', '202', '214', '185']);
+computerFirm(['5', '122', '156', '202', '214', '185']);
