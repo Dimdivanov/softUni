@@ -8,7 +8,7 @@ function uniquePinCodes(input) {
       for (let k = 2; k <= num3; k++) {
         for (let divider = 2; divider < 7; divider++) {
           if (i % 2 === 0) {
-            if (j % divider === 0) {
+            if (j % divider === 2 || j % divider === 3 || j % divider === 5) {
               if (k % 2 === 0) {
                 console.log(`${i} ${j} ${k}`);
               }
