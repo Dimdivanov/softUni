@@ -9,4 +9,4 @@ function fromNumToShape(input) {
     console.log(row);
   }
 }
-fromNumToShape(['6']);
+fromNumToShape(['2']);
