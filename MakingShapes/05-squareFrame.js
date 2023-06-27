@@ -5,7 +5,7 @@ function squareFrame(input) {
     let lineBuild = '';
 
     for (let j = 1; j <= n; j++) {
-      lineBuild = '+ ';
+      lineBuild += '+ ';
     }
     console.log(lineBuild);
   }
