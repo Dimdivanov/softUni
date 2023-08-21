@@ -12,4 +12,4 @@ function squareFrame(input) {
     console.log(lineBuild);
   }
 }
-squareFrame(['4']);
+squareFrame(['6']);
