@@ -14,6 +14,7 @@ function building(input) {
         buff += `A${a}${b} `;
       }
     }
+
     console.log(buff);
   }
 }
