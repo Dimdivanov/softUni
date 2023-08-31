@@ -5,6 +5,7 @@ function numTree(n) {
       break;
     }
     let output = '';
+
     for (let col = 1; col <= row; col++) {
       if (num > n) {
         break;
