@@ -1,6 +1,6 @@
 function login(input) {
   let index = 0;
-  let userName = input[index];
+  const userName = input[index];
   index++;
 
   let passWord = input[index];
@@ -9,15 +9,15 @@ function login(input) {
   let reversedName = userName.split('').reverse().join('');
   let banCount = 0;
 
-  /*for (let i = userName.length - 1; i >= 0; i--) {
-    reversedName += userName[i];
-  }*/
-
-  while (userName !== reversedName && banCount <= 3) {
+  while (userName !== reversedName) {
     if (passWord === reversedName) {
       console.log(`User ${userName} logged in.`);
       break;
     } else {
+      if (banCount === 3) {
+        console.log(`User ${userName} blocked!`);
+        break;
+      }
       console.log(`Incorrect password. Try again.`);
       banCount++;
     }
@@ -25,4 +25,4 @@ function login(input) {
     index++;
   }
 }
-login(['Acer', 'login', 'go', 'let me in', 'recA']);
+login(['sunny', 'ynnus', 'cloudy', 'sunny', 'not sunny']);
