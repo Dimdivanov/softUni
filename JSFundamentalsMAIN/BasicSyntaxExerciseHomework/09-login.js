@@ -10,14 +10,14 @@ function login(input) {
   let banCount = 0;
 
   while (userName !== reversedName) {
+    if (banCount === 3) {
+      console.log(`User ${userName} blocked!`);
+      break;
+    }
     if (passWord === reversedName) {
       console.log(`User ${userName} logged in.`);
       break;
     } else {
-      if (banCount === 3) {
-        console.log(`User ${userName} blocked!`);
-        break;
-      }
       console.log(`Incorrect password. Try again.`);
       banCount++;
     }
@@ -25,4 +25,4 @@ function login(input) {
     index++;
   }
 }
-login(['sunny', 'ynnus', 'cloudy', 'sunny', 'not sunny']);
+login(['sunny', 'rainy', 'cloudy', 'sunny', 'not sunny']);
