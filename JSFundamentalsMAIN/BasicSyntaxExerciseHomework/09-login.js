@@ -1,28 +1,32 @@
 function login(input) {
   let index = 0;
-  const userName = input[index];
+
+  let username = input[index];
   index++;
 
   let passWord = input[index];
   index++;
 
-  let reversedName = userName.split('').reverse().join('');
+  let reversedPass = username.split('').reverse().join('');
   let banCount = 0;
 
-  while (userName !== reversedName) {
-    if (banCount === 3) {
-      console.log(`User ${userName} blocked!`);
-      break;
-    }
-    if (passWord === reversedName) {
-      console.log(`User ${userName} logged in.`);
+  while (passWord !== reversedPass || passWord === reversedPass) {
+    if (passWord === reversedPass) {
+      console.log(`User ${username} logged in.`);
       break;
     } else {
-      console.log(`Incorrect password. Try again.`);
       banCount++;
+      if (banCount > 3) {
+        console.log(`User ${username} blocked!`);
+        break;
+      }
+      console.log('Incorrect password. Try again.');
     }
+
     passWord = input[index];
     index++;
   }
 }
 login(['sunny', 'rainy', 'cloudy', 'sunny', 'not sunny']);
+login(['Acer', 'login', 'go', 'let me in', 'recA']);
+login(['momo', 'omom']);
