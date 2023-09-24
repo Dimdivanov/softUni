@@ -5,6 +5,7 @@ function sortNum(num1, num2, num3) {
 
   for (let i = 0; i < num.length; i++) {
     console.log(num[i]);
+    console.log(num[1]);
   }
 }
 
