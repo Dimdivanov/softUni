@@ -9,4 +9,4 @@ function nextDay(year, month, day) {
 
   console.log(`${nextYear}-${nextMonth}-${nextDay}`);
 }
-nextDay(2016, 9, 29);
+nextDay(2016, 9, 30);
