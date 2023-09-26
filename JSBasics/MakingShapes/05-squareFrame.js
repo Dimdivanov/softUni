@@ -6,9 +6,7 @@ function squareFrame(input) {
     for (let k = 1; k <= n - 2; k++) {
       lineBuild += '\n' + '| ' + '- '.repeat(n - 2) + '|';
     }
-    for (let j = 1; j <= 1; j++) {
-      lineBuild += '\n' + '+ ' + '- '.repeat(n - 2) + '+';
-    }
+    lineBuild += '\n' + '+ ' + '- '.repeat(n - 2) + '+';
     console.log(lineBuild);
   }
 }
