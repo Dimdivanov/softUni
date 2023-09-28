@@ -8,11 +8,11 @@ function dayOfWeek(num) {
     'Saturday',
     'Sunday',
   ];
-
-  if (num >= 1 && num <= 7) {
-    console.log(arry[num - 1]);
+  let result = arry[num - 1];
+  if (result != undefined) {
+    console.log(result);
   } else {
     console.log('Invalid day!');
   }
 }
-dayOfWeek(7);
+dayOfWeek(-3);
