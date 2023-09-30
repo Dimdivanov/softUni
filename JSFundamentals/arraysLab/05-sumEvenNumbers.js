@@ -3,7 +3,7 @@ function sumEvenNumbers(array) {
   for (let i = 0; i < array.length; i++) {
     let curNum = Number(array[i]);
 
-    if (curNum % 2 === 0) {
+    if (curNum % 2 == 0) {
       sum += curNum;
     }
   }
