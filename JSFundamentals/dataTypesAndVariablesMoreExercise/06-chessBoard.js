@@ -1,6 +1,7 @@
 function chessBoard(n) {
-  console.log('<div class="chessboard">');
   let currentColor = '    <span class="black"></span>';
+  console.log('<div class="chessboard">');
+
   for (let i = 0; i < n; i++) {
     console.log('  <div>');
     for (let j = 0; j < n; j++) {
@@ -12,8 +13,8 @@ function chessBoard(n) {
         currentColor = '    <span class="black"></span>';
       }
     }
-
     console.log('  </div>');
   }
+  console.log('</div>');
 }
-chessBoard(6);
+chessBoard(3);
