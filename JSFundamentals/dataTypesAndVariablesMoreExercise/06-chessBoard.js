@@ -14,7 +14,9 @@ function chessBoard(n) {
       }
     }
     console.log('  </div>');
+    currentColor = '    <span class="white"></span>';
   }
+
   console.log('</div>');
 }
 chessBoard(3);
