@@ -1,11 +1,12 @@
 function oddAndEvenSum(params) {
   let numAsString = params.toString();
-  let odd = 0;
-  let even = 0;
 
-  takeNumbers(params);
+  takeNumbers(numAsString);
 
-  function takeNumbers(num) {
+  function takeNumbers(numAsString) {
+    let odd = 0;
+    let even = 0;
+
     for (let el of numAsString) {
       let curElement = Number(el);
 
