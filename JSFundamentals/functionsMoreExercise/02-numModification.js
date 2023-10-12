@@ -1,10 +1,21 @@
-function numModification(number) {
-  let stringNum = String(number);
-  let changedNumber = 0; //сбора на числата 1+0+1
-  for (let i = 0; i < stringNum.length; i++) {
-    let curNum = Number(stringNum[i]);
-    changedNumber += curNum;
+function numModification(num) {
+  let average = 0;
+  let appendedNum = String(num);
+
+  while (average <= 5) {
+    let sum = 0;
+
+    for (let i = 0; i < appendedNum.length; i++) {
+      let curNum = Number(appendedNum[i]);
+      sum += curNum;
+    }
+
+    average = sum / appendedNum.length;
+
+    if (average <= 5) {
+      appendedNum += 9;
+    }
   }
-  let averageNum = changedNumber / stringNum.length; //средно число изчислено 0.66666
+  console.log(appendedNum);
 }
-numModification(101);
+numModification(5835);
