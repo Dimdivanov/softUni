@@ -1,6 +1,6 @@
 function numModification(num) {
-  let average = 0;
   let appendedNum = String(num);
+  let average = 0;
 
   while (average <= 5) {
     let sum = 0;
