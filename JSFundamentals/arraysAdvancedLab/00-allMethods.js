@@ -76,19 +76,51 @@ console.log('sliceMethod ============================================');
 // можем да го запазим в променлива
 function sliceMethod(arr) {
   console.log(arr);
-  console.log(arr.slice(0, 2));
-  let sliced = arr.slice(0, 2);
+  let sliced = arr.slice(1, 3); //1-включително, 3-преди трети индекс
   console.log(sliced);
 }
 sliceMethod([10, 20, 30, 40, 50]);
 
 console.log('spliceMethod ============================================');
-// Splice вкарва/премахва елементи от/към масива и връща премахнатите елементи
+// Splice добавяне или изтриване на елементи в масив, като push/pop & unshift/shift.
 // приема 3 параметъра ('старт' включително, 'delete count' и 'element to add')
 // променя масива , но ни връща изрязаното и можем да го запазим в променлива
 // Splice може да добавя елементи .splice(от 1 индекс вкл, изтрий 2 индекса нататък и после добави , 66, 69)
 function spliceMethod(arr) {
-  let spliceAdd = arr.splice(3, 0, 45, 46); // на самия елемент почни от там вкарай и избутва останалите стойности
+  let spliceAdd = arr.splice(3, 1, 45, 46); // на самия елемент почни от там вкарай и избутва останалите стойности
   console.log(arr);
+  console.log(spliceAdd);
 }
 spliceMethod([10, 20, 30, 40, 50]);
+
+console.log('mapMethod ============================================');
+// взима елементите на даден масив и apply-ва функция на всеки елемент
+// трансформирано копие на масива
+function mapMethod(arr) {
+  console.log(arr);
+  console.log(arr.map((x) => x + 1));
+}
+mapMethod([10, 20, 30, 40, 50]);
+
+console.log('filterMethod ============================================');
+// прави нов array от еднакви елементи в масив
+// ако е true / false вземи дадения елемент и го сложи в новия масив
+// predicate - булева функция
+function filterMethod(arr) {
+  console.log(arr);
+  console.log(arr.filter((x) => x.length > 3));
+}
+filterMethod([10, 20, 30, 40, 50]);
+
+console.log('sortMethod ============================================');
+// сортира по ASCII номер, затова трябва да ги
+function sortMethod(arr) {
+  arr.sort(compare);
+  arr.sort((a, b) => a - b);
+
+  console.log(arr);
+  function compare(a, b) {
+    return a - b;
+  }
+}
+sortMethod([3, 5, 1, 7, 0, 11]);
