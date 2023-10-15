@@ -124,3 +124,5 @@ function sortMethod(arr) {
   }
 }
 sortMethod([3, 5, 1, 7, 0, 11]);
+
+// LOCAL COMPARE CHECK

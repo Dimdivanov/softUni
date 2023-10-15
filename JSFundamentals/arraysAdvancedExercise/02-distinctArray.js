@@ -9,3 +9,5 @@ function distinctArr(arr) {
   console.log(newArr.join(' '));
 }
 distinctArr([7, 8, 9, 7, 2, 3, 4, 1, 2]);
+
+// проверява за еднакви числа в масива
