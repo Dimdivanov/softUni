@@ -1,5 +1,6 @@
 function maxNumber(arr) {
   let topNums = [];
+
   for (let i = 0; i < arr.length; i++) {
     let curNum = arr[i];
     let isTop = true;
