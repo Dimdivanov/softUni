@@ -11,9 +11,9 @@ function train(arr) {
       waggons.push(passengers);
     } else {
       let passengers = Number(tickets[0]); // елементите след 2те Add команди
-      for (let index = 0; index < waggons.length; index++) {
-        if (waggons[index] + passengers <= capacity) {
-          waggons[index] += passengers;
+      for (let j = 0; j < waggons.length; j++) {
+        if (waggons[j] + passengers <= capacity) {
+          waggons[j] += passengers;
           break;
         }
       }

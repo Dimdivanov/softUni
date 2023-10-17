@@ -67,6 +67,7 @@ indexOfMethod([10, 20, 30, 40, 50]);
 console.log('Манипулиращи масива');
 //============================
 // Манипулиране на масив:
+
 console.log('sliceMethod ============================================');
 // Slice няма да изтрие елементите от масива, той ги копира .slice() - ще копира целия масив
 // подаваме 2 параметъра в slice(start, end) last index (excluded - без него)
@@ -93,8 +94,8 @@ function spliceMethod(arr) {
 spliceMethod([10, 20, 30, 40, 50]);
 
 console.log('mapMethod ============================================');
-// взима елементите на даден масив и apply-ва функция на всеки елемент
-// трансформирано копие на масива
+// взима елементите на даден масив, прави нов масив и apply-ва функция на всеки елемент
+// оригиналния масив не се губи (трансформирано копие на масива)
 function mapMethod(arr) {
   console.log(arr);
   console.log(arr.map((x) => x + 1));
@@ -102,7 +103,7 @@ function mapMethod(arr) {
 mapMethod([10, 20, 30, 40, 50]);
 
 console.log('filterMethod ============================================');
-// прави нов array от еднакви елементи в масив
+// прави нов масив от еднакви елементи филтрира
 // ако е true / false вземи дадения елемент и го сложи в новия масив
 // predicate - булева функция
 function filterMethod(arr) {
@@ -112,7 +113,8 @@ function filterMethod(arr) {
 filterMethod([10, 20, 30, 40, 50]);
 
 console.log('sortMethod ============================================');
-// сортира по ASCII номер, затова трябва да ги
+// сортира масива по даден критерий
+// сравнява 2 елемента (положително, отрицателно или нула по стойности)
 function sortMethod(arr) {
   arr.sort(compare);
   arr.sort((a, b) => a - b);
@@ -124,4 +126,12 @@ function sortMethod(arr) {
 }
 sortMethod([3, 5, 1, 7, 0, 11]);
 
-// LOCAL COMPARE CHECK
+console.log('localeCompare ============================================');
+// сортиране по азбучен ред по ascii код
+// ползва се върху стринговите функции
+function localeCompare(arr) {
+  let words = ['nest', 'Eggs', 'bite', 'Grip', 'jAw'];
+  words.sort((a, b) => a.localeCompare(b));
+  console.log(words);
+}
+localeCompare(['nest', 'Eggs', 'bite', 'Grip', 'jAw']);
