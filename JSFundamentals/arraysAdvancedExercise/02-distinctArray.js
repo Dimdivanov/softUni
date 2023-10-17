@@ -3,6 +3,7 @@ function distinctArr(arr) {
 
   for (let number of arr) {
     if (!newArr.includes(number)) {
+      //АКО НЕ ВКЛЮЧВА текущото число тогава го PUSH
       newArr.push(number);
     }
   }

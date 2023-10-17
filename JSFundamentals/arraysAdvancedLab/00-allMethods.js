@@ -108,9 +108,9 @@ console.log('filterMethod ============================================');
 // predicate - булева функция
 function filterMethod(arr) {
   console.log(arr);
-  console.log(arr.filter((x) => x.length > 3));
+  console.log(arr.filter((x) => x.length > 1));
 }
-filterMethod([10, 20, 30, 40, 50]);
+filterMethod(['10', 20, 30, '40', 50]);
 
 console.log('sortMethod ============================================');
 // сортира масива по даден критерий
