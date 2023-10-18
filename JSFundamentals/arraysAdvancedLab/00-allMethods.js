@@ -21,6 +21,7 @@ function popMethod(arr) {
   console.log(popHolder);
 }
 popMethod([10, 20, 30, 40, 50]);
+
 console.log('unshiftMethod =============================================');
 // Добавя елемент в началото на масива
 // Удължава масива
@@ -87,8 +88,7 @@ console.log('spliceMethod ============================================');
 // променя масива , но ни връща изрязаното и можем да го запазим в променлива
 
 function spliceMethod(arr) {
-  let spliceAdd = arr.splice(3, 1, 45, 46); // на самия елемент почни от там вкарай и избутва останалите стойности
-  console.log(arr);
+  let spliceAdd = arr.splice(3, 1, 45); // на самия елемент почни от там вкарай и избутва останалите стойности
   console.log(spliceAdd);
 }
 spliceMethod([10, 20, 30, 40, 50]);
