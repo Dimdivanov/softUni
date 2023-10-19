@@ -1,38 +1,46 @@
 function treasureHunt(arr) {
-  //parse input
-  // split 1st array '|'
   let loot = arr.shift().split('|');
+  let command = arr.shift();
 
-  for (let element of arr) {
-    let curArray = element.split(' ');
+  while (command != 'Yohoho!') {
+    let tokens = command.split(' ');
+    let action = tokens.shift();
 
-    let tokens = curArray[0];
-    console.log(curArray);
+    if (action == 'Loot') {
+      tokens
+        .filter((item) => !loot.includes(item))
+        .forEach((item) => loot.unshift(item));
 
-    if (tokens == 'Yohoho!') {
-      break;
-    } else if (tokens == 'Loot') {
-      //pick up loot , insert the items at the start of the chest
-      //if item is already contained do not insert
-      let itemsToAdd = curArray.slice(1);
-      for (let item of itemsToAdd) {
-        if (!loot.includes(item)) {
-          loot.unshift(item);
-        }
+      // for (let item of items){
+      //     loot.unshift(item);
+      // }
+    } else if (action == 'Drop') {
+      let idx = Number(tokens.shift()); // индекса е 3
+      if (idx >= 0 && idx < loot.length) {
+        // провери дали е валиден индекса от 0 до дължината на масива
+        let removedItem = loot.splice(idx, 1).shift(); // махаме и добаваме масив и за да му махнем масива ползваме shift
+        loot.push(removedItem);
       }
-    } else if (tokens == 'Drop') {
-      let indexToDrop = Number(curArray[1]); //3 index
-
-      //drop the loot at the given position and add it at the end of the treasure chest
-      // if the index is invalid , skip the command (continue)
-    } else if (tokens == 'Steal') {
-      //someone steals the last count looted items, if there are fewer than given count, remove as much as there are
-      //print stolen items separated by ' , ';
+    } else if (action == 'Steal') {
+      let count = Number(tokens.shift()); //3
+      let stolenItems = loot.splice(-count);
+      console.log(stolenItems.join(', '));
     }
+
+    command = arr.shift();
   }
-  console.log(loot);
-  // output the average treasure gain , which is the sum of all treasure items length / count of all items inside the chest formatted to the 2nd decimal
+  if (loot.length == 0) {
+    console.log('Failed treasure hunt.');
+  } else {
+    let totalGain = 0;
+    for (let item of loot) {
+      totalGain += item.length;
+    }
+    let avgGain = totalGain / loot.length;
+    console.log(`Average treasure gain: ${avgGain.toFixed(2)} pirate credits.`);
+  }
 }
+
 treasureHunt([
   'Gold|Silver|Bronze|Medallion|Cup',
   'Loot Wood Gold Coins',

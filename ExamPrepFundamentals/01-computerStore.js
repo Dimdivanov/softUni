@@ -1,5 +1,5 @@
 function computerStore(input) {
-  index = 0;
+  let index = 0;
   let priceSum = 0;
   let taxes = 0;
 
