@@ -1,7 +1,7 @@
 function train(arr) {
   let waggons = arr[0].split(' ').map(Number);
   let capacity = Number(arr[1]);
-
+  console.log(arr);
   for (let i = 2; i < arr.length; i++) {
     let command = arr[i]; // взимаме текущия елемент
     let tickets = command.split(' '); // за да махнем празното място ползваме сплит което прави ['add', '10']

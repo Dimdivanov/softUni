@@ -7,7 +7,11 @@ function pushMethod(arr) {
   console.log(arr, arr.length);
 }
 pushMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
 console.log('popMethod =============================================');
 // Маха последния елемент от масива
 // Намалява масива
@@ -21,7 +25,11 @@ function popMethod(arr) {
   console.log(popHolder);
 }
 popMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
 console.log('unshiftMethod =============================================');
 // Добавя елемент в началото на масива
 // Удължава масива
@@ -31,6 +39,11 @@ function unshiftMethod(arr) {
   console.log(arr, arr.length);
 }
 unshiftMethod([10, 20, 30, 40, 50]);
+//
+//
+//
+//
+//
 console.log('shiftMethod =============================================');
 // Маха елемент от началото
 // Намаля масива
@@ -41,7 +54,18 @@ function shiftMethod(arr) {
   console.log(arr, arr.length, shifted);
 }
 shiftMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 console.log('Операции за търсене');
 //============================
 // Операции за търсене:
@@ -53,7 +77,11 @@ function includesMethod(arr) {
   console.log(num);
 }
 includesMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
 console.log('indexOfMethod =============================================');
 
 // ще ни каже къде в масива и на кой index се намира търсения елемент
@@ -64,15 +92,26 @@ function indexOfMethod(arr) {
   console.log(num);
 }
 indexOfMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 console.log('Манипулиращи масива');
 //============================
 // Манипулиране на масив:
-
 console.log('sliceMethod ============================================');
-// Slice няма да изтрие елементите от масива, той ги копира .slice() - ще копира целия масив
+// Slice няма да изтрие елементите от масива, той ги копира
+// .slice() - ще копира целия масив
 // подаваме 2 параметъра в slice(start, end) last index (excluded - без него)
-// ако подадем само 1 параметър arr.slice(1) ще вземе всички останали елементи
+// ако подадем само 1 параметър arr.slice(1) ще копира всички останали елементи
 // ако подадем отрицетелен параметър ще почне да взима от дясно наляво
 // можем да го запазим в променлива
 function sliceMethod(arr) {
@@ -81,18 +120,34 @@ function sliceMethod(arr) {
   console.log(sliced);
 }
 sliceMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
 console.log('spliceMethod ============================================');
-// Splice добавяне или изтриване на елементи в масив
+// Splice добавяне или изтриване на елементи в масив И ВРЪЩА ЕЛЕМЕНТИТЕ В МАСИВ
 // приема 3 параметъра ('старт' включително, 'delete count - колко да трие' и 'element to add')
 // променя масива , но ни връща изрязаното и можем да го запазим в променлива
 
 function spliceMethod(arr) {
-  let spliceAdd = arr.splice(3, 1, 45); // на самия елемент почни от там вкарай и избутва останалите стойности
+  let spliceAdd = arr.splice(0, 1); // на самия елемент почни от там вкарай и избутва останалите стойности
   console.log(spliceAdd);
 }
 spliceMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
+console.log(
+  'PROCESSING ARRAYS ========Transforming, filtering and sorting elements======================='
+);
+//
+//
+//
+//
+//
 console.log('mapMethod ============================================');
 // взима елементите на даден масив, прави нов масив и apply-ва функция на всеки елемент
 // оригиналния масив не се губи (трансформирано копие на масива)
@@ -101,9 +156,13 @@ function mapMethod(arr) {
   console.log(arr.map((x) => x + 1));
 }
 mapMethod([10, 20, 30, 40, 50]);
-
+//
+//
+//
+//
+//
 console.log('filterMethod ============================================');
-// прави нов масив от еднакви елементи филтрира
+// прави нов масив от еднакви елементи филтрирани
 // ако е true / false вземи дадения елемент и го сложи в новия масив
 // predicate - булева функция
 function filterMethod(arr) {
@@ -111,23 +170,27 @@ function filterMethod(arr) {
   console.log(arr.filter((x) => x.length > 1));
 }
 filterMethod(['10', 20, 30, '40', 50]);
-
+//
+//
+//
+//
+//
 console.log('sortMethod ============================================');
-// сортира масива по даден критерий
+// сортира масива по даден критерий иначе по ASCII код
 // сравнява 2 елемента (положително, отрицателно или нула по стойности)
-function sortMethod(arr) {
-  arr.sort(compare);
-  arr.sort((a, b) => a - b);
 
+function sortMethod(arr) {
+  arr.sort((a, b) => a - b);
   console.log(arr);
-  function compare(a, b) {
-    return a - b;
-  }
 }
 sortMethod([3, 5, 1, 7, 0, 11]);
-
+//
+//
+//
+//
+//
 console.log('localeCompare ============================================');
-// сортиране по азбучен ред по ascii код
+// сортиране по азбучен ред
 // ползва се върху стринговите функции
 function localeCompare(arr) {
   let words = ['nest', 'Eggs', 'bite', 'Grip', 'jAw'];
