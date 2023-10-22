@@ -5,7 +5,7 @@ function counterStrike(arr) {
 
   let battlesWon = 0;
 
-  while (command !== 'End of battle') {
+  while (command !== 'End of battle' || energy - command > 0) {
     if (energy <= 0) {
       console.log(
         `Not enough energy! Game ends with ${battlesWon} won battles and ${energy} energy`
