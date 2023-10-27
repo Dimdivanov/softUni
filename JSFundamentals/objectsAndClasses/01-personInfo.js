@@ -4,6 +4,7 @@ function solve(firstName, lastName, age) {
     lastName: lastName,
     age: age,
   };
+
   console.log(person.age);
   console.log(person['age']);
 
