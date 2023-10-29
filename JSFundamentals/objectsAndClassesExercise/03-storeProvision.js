@@ -1,23 +1,26 @@
 function storeProvision(stock, orderedProducts) {
-  let products = {};
+  let products = {}; //създаваме обект
 
   for (let i = 0; i < stock.length; i += 2) {
+    //итерираме през първия масив
     let productName = stock[i];
     let qty = Number(stock[i + 1]);
 
     products[productName] = qty;
   }
   for (let j = 0; j < orderedProducts.length; j += 2) {
+    //итерираме през втория масив
     let productName = orderedProducts[j];
     let qty = Number(orderedProducts[j + 1]);
 
     if (productName in products) {
+      // if - in за търсене в обект
       products[productName] += qty;
     } else {
       products[productName] = qty;
     }
   }
-  let entries = Object.entries(products);
+  let entries = Object.entries(products); // превръщаме двойките в масиви за да ги обходим и логнем
   for (let entry of entries) {
     console.log(`${entry[0]} -> ${entry[1]}`);
   }
