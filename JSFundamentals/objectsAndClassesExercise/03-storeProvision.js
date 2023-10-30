@@ -21,8 +21,9 @@ function storeProvision(stock, orderedProducts) {
     }
   }
   let entries = Object.entries(products); // превръщаме двойките в масиви за да ги обходим и логнем
-  for (let entry of entries) {
-    console.log(`${entry[0]} -> ${entry[1]}`);
+  for (let [key, value] of entries) {
+    // можем да ползваме дестуктуриране и тук а може и entrie[0] & entrie[1];
+    console.log(`${key} -> ${value}`);
   }
 }
 storeProvision(
