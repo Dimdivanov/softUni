@@ -1,10 +1,7 @@
 function employees(arr) {
-  for (let employeeName of arr) {
-    let employee = { name: employeeName, personalNumber: employeeName.length };
-    console.log(
-      `Name: ${employee.name} -- Personal Number: ${employee.personalNumber}`
-    );
-  }
+  let people = {
+    annemarie: 555,
+  };
 }
 employees([
   'Silas Butler',
