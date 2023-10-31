@@ -8,7 +8,7 @@ function movies(arr) {
       movies.push(movieObj);
     } else if (command.includes('directedBy')) {
       let [movieName, directorName] = command.split(' directedBy ');
-      let movie = movies.find((movie) => movie.name == movieName);
+      let movie = movies.find((movie) => movie.name == movieName); //за търсене в масив при първа прилика дава true, ако го няма undefined
 
       if (movie) {
         movie.director = directorName;
