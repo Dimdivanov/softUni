@@ -15,7 +15,7 @@ function movies(arr) {
       }
     } else if (command.includes('onDate')) {
       let [movieName, date] = command.split(' onDate ');
-      let movie = movies.find((movie) => movie.name == movieName);
+      let movie = movies.find((movie) => movie.name == movieName); // филма който отговаря на условието име = име , го намери
 
       if (movie) {
         movie.date = date;

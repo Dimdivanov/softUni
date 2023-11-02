@@ -6,7 +6,7 @@ function storeProvision(stock, orderedProducts) {
     let productName = stock[i];
     let qty = Number(stock[i + 1]);
 
-    products[productName] = qty;
+    products[productName] = qty; //like push in array
   }
   for (let j = 0; j < orderedProducts.length; j += 2) {
     //итерираме през втория масив
