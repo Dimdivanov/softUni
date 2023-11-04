@@ -11,7 +11,8 @@ function movies(arr) {
       let movie = movies.find((movie) => movie.name == movieName); //за търсене в масив при първа прилика дава true, ако го няма undefined
 
       if (movie) {
-        movie.director = directorName;
+        //or movie !== undefined
+        movie.director = directorName; //create
       }
     } else if (command.includes('onDate')) {
       let [movieName, date] = command.split(' onDate ');
