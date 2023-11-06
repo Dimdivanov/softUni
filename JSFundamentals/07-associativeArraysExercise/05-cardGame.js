@@ -1,0 +1,2 @@
+function cardGame(arr) {}
+cardGame();
