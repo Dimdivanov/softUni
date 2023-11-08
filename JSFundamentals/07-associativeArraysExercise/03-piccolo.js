@@ -1,17 +1,24 @@
 function piccolo(arr) {
-  let carData = [];
+  let carData = {};
 
   for (let car of arr) {
-    let [status, carId] = car.split(', ');
-    if (status === 'IN') {
-      carData.push(carId);
-    } else {
-      let index = carData.indexOf(carId);
-      carData.splice(index, 1);
+    let [directions, carNumber] = car.split(', ');
+    let numbers = Number(carNumber.slice(2, -2));
+
+    if (directions === 'IN') {
+      carData[carNumber] = numbers;
+    } else if (directions === 'OUT') {
+      delete carData[carNumber];
     }
-    if (carData.length == 0) {
+    if (Object.keys(carData) == 0) {
       console.log('Parking Lot is Empty');
+      return;
     }
+  }
+
+  let entries = Object.entries(carData).sort((a, b) => a[1] - b[1]);
+  for (let carId of entries) {
+    console.log(carId[0]);
   }
 }
 piccolo([
@@ -26,4 +33,4 @@ piccolo([
   'IN, CA9876HH',
   'IN, CA2822UU',
 ]);
-// piccolo(['IN, CA2844AA', 'IN, CA1234TA', 'OUT, CA2844AA', 'OUT, CA1234TA']);
+piccolo(['IN, CA2844AA', 'IN, CA1234TA', 'OUT, CA2844AA', 'OUT, CA1234TA']);
