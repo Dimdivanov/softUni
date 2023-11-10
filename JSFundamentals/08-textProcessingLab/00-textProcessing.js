@@ -8,7 +8,7 @@ console.log(text.indexOf('Java', 4)); // 4 is the index it will start looking fo
 // EXTRACTING SUBSTRINGS
 // .substring(starting index, ending index)
 let str = 'Hello world';
-let sub = str.substring(1, 5);
+let sub = str.substring(2, 5);
 console.log(sub);
 // =========================================
 // STRING OPERATIONS
@@ -16,7 +16,6 @@ console.log(sub);
 let webText = 'SoftUni.bg';
 let replaced = webText.replace('.bg', '.com');
 console.log(replaced);
-// =========================================
 // SPLITTING AND FINDING
 // .split(operator)
 let text1 = 'I love fruits';
@@ -31,3 +30,11 @@ let names = 'Dimitar ';
 console.log(names.repeat(2));
 // =========================================
 // TRIMMING STRINGS
+// trim() , trimStar() , trimEnd() - removes whitespaces only
+// =========================================
+// STARTS WITH ENDS WITH
+// startsWith('hello') , endsWith('world') - true / false
+// =========================================
+// PADDING at the start / end - to add to the current string another substring at the start UNTIL LENGTH IS REACHED
+let text3 = '010';
+console.log(text3.padStart(8, '0')); //increases the length with the item we give
