@@ -1,8 +1,6 @@
 function censoredWords(text, word) {
-  let censor = '*'.repeat(word.length);
-  let result = text;
-  while (result.includes(word)) {
-    text = text.replace(word, censor);
+  while (text.includes(word)) {
+    text = text.replace(word, '*'.repeat(word.length));
   }
   console.log(text);
 }
