@@ -31,9 +31,15 @@ console.log(names.repeat(2));
 // =========================================
 // TRIMMING STRINGS
 // trim() , trimStar() , trimEnd() - removes whitespaces only
+let word1 = '  -Hey-  ';
+let trimWord = word1.trim();
+console.log(trimWord);
 // =========================================
 // STARTS WITH ENDS WITH
 // startsWith('hello') , endsWith('world') - true / false
+let word4 = 'hello World';
+let startsWith = word4.startsWith('hello');
+console.log(startsWith);
 // =========================================
 // PADDING at the start / end - to add to the current string another substring at the start UNTIL LENGTH IS REACHED
 let text3 = '010';
