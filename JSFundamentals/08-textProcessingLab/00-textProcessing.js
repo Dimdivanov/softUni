@@ -4,6 +4,7 @@ let text = 'I am JavaScript developer';
 console.log(text.indexOf('Java')); // output: 5
 console.log(text.indexOf('java')); // output: -1
 console.log(text.indexOf('Java', 4)); // 4 is the index it will start looking for similar substring
+console.log(text.lastIndexOf('e')); // stars searching from the last index
 // =========================================
 // EXTRACTING SUBSTRINGS
 // .substring(starting index, ending index)
