@@ -23,7 +23,7 @@ let wordSplits = text1.split(' love '); // we can split by a word
 console.log(wordSplits);
 // .includes(substring)
 let text2 = 'I love fruits';
-console.log(text2.includes('fruits')); //output: true (only true/false)
+console.log(text2.includes('fru')); //output: true (only true/false)
 // =========================================
 // .repeat(count) - creates a new string repeated count times
 let names = 'Dimitar ';
@@ -38,7 +38,7 @@ console.log(trimWord);
 // STARTS WITH ENDS WITH
 // startsWith('hello') , endsWith('world') - true / false
 let word4 = 'hello World';
-let startsWith = word4.startsWith('hello');
+let startsWith = word4.startsWith('hell');
 console.log(startsWith);
 // =========================================
 // PADDING at the start / end - to add to the current string another substring at the start UNTIL LENGTH IS REACHED
