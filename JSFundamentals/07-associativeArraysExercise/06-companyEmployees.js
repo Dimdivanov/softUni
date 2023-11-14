@@ -3,7 +3,7 @@ function companyUsers(arr) {
 
   for (let companyEmployee of arr) {
     let [company, employeeId] = companyEmployee.split(' -> ');
-
+    console.log(company, employeeId);
     if (company in companyObject) {
       if (!companyObject[company].includes(employeeId)) {
         //ако все още не е вътре в масива на компанията
