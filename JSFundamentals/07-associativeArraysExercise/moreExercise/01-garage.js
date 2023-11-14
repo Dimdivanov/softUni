@@ -21,8 +21,11 @@ function garage(arr) {
     storedCars[num].push(car);
   }
   let entries = Object.entries(storedCars);
+
   for (let [nums, cars] of entries) {
+    console.log(nums, cars);
     console.log(`Garage № ${nums}`);
+
     for (let car of cars) {
       let carDetails = Object.entries(car);
       let detailString = carDetails
