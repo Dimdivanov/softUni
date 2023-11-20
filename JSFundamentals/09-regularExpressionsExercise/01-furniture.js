@@ -8,7 +8,6 @@ function furniture(input) {
 
   while (command !== 'Purchase') {
     let match = command.match(pattern);
-
     if (match) {
       let { name, price, qty } = match.groups;
       let furniturePrice = Number(qty) * Number(price);
