@@ -26,7 +26,7 @@ function heroesOfCode(arr) {
           `${name} has successfully cast ${tokens[1]} and now has ${hero.mp} MP!`
         );
       } else {
-        console.log(`${name} does not have enough MP to cast ${tokens[1]}`);
+        console.log(`${name} does not have enough MP to cast ${tokens[1]}!`);
       }
     } else if (action == 'TakeDamage') {
       hero.hp -= pts;
