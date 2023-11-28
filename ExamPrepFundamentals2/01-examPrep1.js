@@ -23,6 +23,7 @@ function secretChat(input) {
     } else if (action == 'ChangeAll') {
       let [str1, str2] = curCommand;
       while (msg.includes(str1)) {
+        //with while we check for all and change all , with if we'll change only the first
         msg = msg.replace(str1, str2);
       }
       console.log(msg);
