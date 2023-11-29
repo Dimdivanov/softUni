@@ -1,10 +1,10 @@
 function adAstra(text) {
   let str = text.shift();
-  let calories = 0;
-  let products = [];
-
   let pattern =
     /([#|])(?<item>[A-Za-z\s]+)\1(?<expdate>\d{2}\/\d{2}\/\d{2})\1(?<cals>\d+)\1/g;
+
+  let calories = 0;
+  let products = [];
 
   let matches = str.matchAll(pattern);
 
