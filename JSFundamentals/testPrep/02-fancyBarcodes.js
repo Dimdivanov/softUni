@@ -8,7 +8,7 @@ function fancyBarcode(input) {
 
     if (pattern.test(curProduct)) {
       let digits = curProduct.match(/\d/g);
-      if (digits != null) {
+      if (digits) {
         let productGroup = digits.join('');
         console.log(`Product group: ${productGroup}`);
       } else {

@@ -3,7 +3,7 @@ function companyUsers(arr) {
 
   for (let companyEmployee of arr) {
     let [company, employeeId] = companyEmployee.split(' -> ');
-    console.log(company, employeeId);
+
     if (company in companyObject) {
       if (!companyObject[company].includes(employeeId)) {
         //ако все още не е вътре в масива на компанията
@@ -16,7 +16,7 @@ function companyUsers(arr) {
   let entries = Object.entries(companyObject).sort((a, b) =>
     a[0].localeCompare(b[0])
   );
-
+  console.log(companyObject);
   for (let [company, ids] of entries) {
     console.log(`${company}`);
     ids.forEach((ids) => console.log(`-- ${ids}`));
