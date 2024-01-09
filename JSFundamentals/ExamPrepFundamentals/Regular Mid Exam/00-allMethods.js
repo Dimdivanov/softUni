@@ -117,6 +117,7 @@ console.log('sliceMethod ============================================');
 function sliceMethod(arr) {
   console.log(arr);
   let sliced = arr.slice(1, 3); //1-включително, 3-преди трети индекс
+  let sliced1 = arr.slice(1, -1); //пропуска първия и последния елемент
   console.log(sliced);
 }
 sliceMethod([10, 20, 30, 40, 50]);
@@ -131,8 +132,9 @@ console.log('spliceMethod ============================================');
 // променя масива , но ни връща изрязаното и можем да го запазим в променлива
 
 function spliceMethod(arr) {
-  let spliceAdd = arr.splice(0, 1); // на самия елемент почни от там вкарай и избутва останалите стойности
-  console.log(spliceAdd);
+  let spliceAdd = arr.splice(0, 1, 25); // на самия елемент почни от там вкарай и избутва останалите стойности
+  console.log(spliceAdd); // самия изрязан елемент върнат в масив
+  console.log(arr); //25 е добавен на изрязания елемент
 }
 spliceMethod([10, 20, 30, 40, 50]);
 //
