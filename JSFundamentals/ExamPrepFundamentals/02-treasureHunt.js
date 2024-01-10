@@ -9,7 +9,7 @@ function treasureHunt(arr) {
     if (action == 'Loot') {
       tokens
         .filter((item) => !loot.includes(item))
-        .forEach((item) => loot.unshift(item));
+        .forEach((item) => loot.unshift(item)); // или for of под този ред
 
       // for (let item of items){
       //     loot.unshift(item);
