@@ -20,7 +20,6 @@ function cardGame(arr) {
   for (let playerDeck of arr) {
     let [playerName, cardsStr] = playerDeck.split(': ');
     let cards = cardsStr.split(', ');
-
     if (playerName in playerCards) {
       playerCards[playerName].push(...cards); //spread operator бута всеки елемент от масива на кардс 1 по 1
     } else {
