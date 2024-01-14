@@ -8,6 +8,7 @@ function roadRadar(speed, area) {
   let difference = 0;
   let speedLimit = 0;
   let status = '';
+
   switch (area) {
     case 'city':
       speedLimit = cityLimit;

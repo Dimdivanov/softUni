@@ -1,0 +1,2 @@
+function cookingByNumbers() {}
+cookingByNumbers();
