@@ -193,17 +193,25 @@ let evenNumbers = numbers7.filter(function (element, index, array) {
 
 // reduce() Method ============================
 
-//-- executes a reducer function on each element of the array, resulting in a single output value
+//-- executes a reducer function on each element of the array, resulting in a SINGLE OUTPUT VALUE
 //-- accumulating a single value from array
 //-- it takes 4 arguments : previousElement, currentElement, index, array
 let numbers = [1, 2, 3, 4];
 
-let sum = numbers.reduce(function (accumulator, element, index, array) {
+let sum = numbers.reduce(function (
+  accumulator /*kofichkata*/,
+  curElement,
+  index,
+  array
+) {
   // accumulator: accumulated result
   // element: current element being processed
   // index: index of the current element
   // array: the array reduce was called upon
   return accumulator + element;
-}, 0);
+},
+0); // kofichkata
+// 0 is the starting point THE ACCUMULATOR, can be empty 'string', [array], {object}.
+
 // console.log(sum);
 // Output: 10
