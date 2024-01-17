@@ -221,8 +221,41 @@ let sum = numbers.reduce(function (
 let arr = [1, 2, 3, 4];
 
 function reducer(acc, num) {
-  console.log(acc, num);
+  // console.log(acc, num);
   return acc + num;
 }
 let result = arr.reduce(reducer, 0);
-console.log(result);
+// console.log(result);
+// output: 0 1
+//1 2
+//3 3
+//6 4
+//10
+
+// example of what reduced is used - превръщане на масив от прочетена база данни, в асоц. масив където ключа е id на всеки елемент
+
+let data = [
+  {
+    id: 'person',
+    name: 'Peter',
+    age: 21,
+  },
+  {
+    id: 'notPerson',
+    name: 'Ivan',
+    age: 22,
+  },
+  {
+    id: 'definitelyNotPerson',
+    name: 'Dragan',
+    age: 23,
+  },
+];
+
+let index = data.reduce(reducer, {}); // искаме в този празен обект да съберем ключовете на id-тата
+
+function reducer(acc, currentElement) {
+  acc[currentElement.id] = currentElement;
+  return acc;
+}
+console.log(index);
