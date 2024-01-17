@@ -258,4 +258,31 @@ function reducer(acc, currentElement) {
   acc[currentElement.id] = currentElement;
   return acc;
 }
-console.log(index);
+// console.log(index);
+
+// втори пример
+
+let index2 = Object.fromEntries(
+  data.map((currentElement) => [currentElement.id, currentElement])
+);
+console.log(index2);
+/*
+ [
+  [ 'person', { id: 'person', name: 'Peter', age: 21 } ],
+  [ 'notPerson', { id: 'notPerson', name: 'Ivan', age: 22 } ],
+  [
+    'definitelyNotPerson',
+    { id: 'definitelyNotPerson', name: 'Dragan', age: 23 }
+  ]
+] 
+*/
+
+// след като подадем object.fromEntries върху map-натата data
+// output:
+/* 
+{
+  person: { id: 'person', name: 'Peter', age: 21 },
+  notPerson: { id: 'notPerson', name: 'Ivan', age: 22 },
+  definitelyNotPerson: { id: 'definitelyNotPerson', name: 'Dragan', age: 23 }
+} 
+*/
