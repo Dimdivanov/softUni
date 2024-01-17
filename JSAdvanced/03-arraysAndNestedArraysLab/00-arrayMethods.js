@@ -95,7 +95,7 @@ function compare(a, b) {
   return a > b;
 }
 
-// forEach() method
+// forEach() Method ============================
 
 //-- executes a provided function once on each element in the array
 //-- can't be stored in a variable - output will be : undefined
@@ -112,3 +112,80 @@ fruits.forEach(function (element, index, array) {
 // apple
 // banana
 // orange
+
+// map() Method ============================
+
+//-- creates a new array by applying a provided function to each element of the array
+//-- you can store it in a variable - which will give the new array
+//-- useful for transforming each element of an array
+
+let numbers1 = [1, 2, 3, 4];
+
+let squared = numbers1.map(function (element, index, array) {
+  // element: current element being processed
+  // index: index of the current element
+  // array: the array map was called upon
+  return element * element;
+});
+// console.log(squared);
+// Output: [1, 4, 9, 16]
+
+// some() Method ============================
+
+//-- checks if at least one element in the array satisfies a provided condition
+//-- it returns Boolean
+let numbers2 = [1, 2, 3, 4];
+
+let hasEven = numbers2.some(function (element, index, array) {
+  // element: current element being processed
+  // index: index of the current element
+  // array: the array some was called upon
+  return element % 2 === 0;
+});
+// console.log(hasEven);
+// Output: true
+
+// every()  Method ============================
+
+//-- checks if all elements in the array satisfy a provided condition
+//-- it returns Boolean
+let numbers3 = [1, 2, 3, 4];
+
+let allEven = numbers3.every(function (element, index, array) {
+  // element: current element being processed
+  // index: index of the current element
+  // array: the array every was called upon
+  return element % 2 === 0;
+});
+// console.log(allEven);
+// Output: false
+
+// find() Method ============================
+
+//-- returns the first found value that satisfy the test function in the array otherwise = 'undefined'
+
+let numbers6 = [1, 2, 3, 4];
+
+let firstEven = numbers6.find(function (element, index, array) {
+  // element: current element being processed
+  // index: index of the current element
+  // array: the array find was called upon
+  return element % 2 === 0;
+});
+// console.log(firstEven);
+// Output: 2
+
+// filter() Method ============================
+
+//-- creates a new array with filtered elements only that pass the test function
+//-- if the element returns 'true' the element is included in the new array
+let numbers7 = [1, 2, 3, 4, 5];
+
+let evenNumbers = numbers7.filter(function (element, index, array) {
+  // element: current element being processed
+  // index: index of the current element
+  // array: the array filter was called upon
+  return element % 2 === 0;
+});
+// console.log(evenNumbers);
+// Output: [2, 4]
