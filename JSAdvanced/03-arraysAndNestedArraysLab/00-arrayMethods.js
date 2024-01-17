@@ -73,6 +73,14 @@ function filter(inputArr, predicate) {
   return result;
 }
 
+function reverse(arr, fn) {
+  let result = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    result.push(arr[i]);
+  }
+  return result;
+}
+
 // BUBBLE SORT
 
 function bubbleSort(arr) {
