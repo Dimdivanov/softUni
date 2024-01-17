@@ -1,15 +1,11 @@
 function addRemoveElements(command) {
   let result = [];
-  let sum = 1;
-  for (let com of command) {
-    if (com == 'add') {
-      result.push(sum);
-      sum += 1;
-    } else if (com == 'remove') {
-      result.pop();
-      sum -= 1;
-    }
-  }
+  let n = 1;
+
+  command.forEach((x) => {
+    x === 'add' ? result.push(n) : result.pop();
+    return n++;
+  });
   let answer = result.length ? result.join('\n') : 'Empty';
   console.log(answer);
 }
