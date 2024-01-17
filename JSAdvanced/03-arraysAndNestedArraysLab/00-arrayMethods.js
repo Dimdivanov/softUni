@@ -94,3 +94,21 @@ function swap(arr, i, j) {
 function compare(a, b) {
   return a > b;
 }
+
+// forEach() method
+
+//-- executes a provided function once on each element in the array
+//-- can't be stored in a variable - output will be : undefined
+//-- can't stop the code with 'break' it will run until end of elements
+//-- it doesn't create a new array but is useful for side effects, such as logging or updating external variables
+let fruits = ['apple', 'banana', 'orange'];
+fruits.forEach(function (element, index, array) {
+  // element: current element being processed
+  // index: index of the current element
+  // array: the array forEach was called upon
+  // console.log(element);
+});
+// Output:
+// apple
+// banana
+// orange
