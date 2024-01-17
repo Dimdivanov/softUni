@@ -1,7 +1,8 @@
 function addRemoveElements(commands) {
   let arr = commands.reduce(
-    (result, curr, index) => (
-      curr === 'add' ? result.push(index + 1) : result.pop(), result
+    (accumulator, curr, index) => (
+      curr === 'add' ? accumulator.push(index + 1) : accumulator.pop(),
+      accumulator
     ),
     []
   );
