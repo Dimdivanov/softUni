@@ -208,10 +208,21 @@ let sum = numbers.reduce(function (
   // element: current element being processed
   // index: index of the current element
   // array: the array reduce was called upon
-  return accumulator + element;
+  return accumulator + curElement;
 },
 0); // kofichkata
-// 0 is the starting point THE ACCUMULATOR, can be empty 'string', [array], {object}.
+// 0 is the starting point THE ACCUMULATOR, can be empty Number, 'string', [array], {object}.
 
 // console.log(sum);
 // Output: 10
+
+//code behind reduce()
+
+let arr = [1, 2, 3, 4];
+
+function reducer(acc, num) {
+  console.log(acc, num);
+  return acc + num;
+}
+let result = arr.reduce(reducer, 0);
+console.log(result);
