@@ -179,6 +179,7 @@ let firstEven = numbers6.find(function (element, index, array) {
 
 //-- creates a new array with filtered elements only that pass the test function
 //-- if the element returns 'true' the element is included in the new array
+//-- does Not mutate the array
 let numbers7 = [1, 2, 3, 4, 5];
 
 let evenNumbers = numbers7.filter(function (element, index, array) {
@@ -189,3 +190,20 @@ let evenNumbers = numbers7.filter(function (element, index, array) {
 });
 // console.log(evenNumbers);
 // Output: [2, 4]
+
+// reduce() Method ============================
+
+//-- executes a reducer function on each element of the array, resulting in a single output value
+//-- accumulating a single value from array
+//-- it takes 4 arguments : previousElement, currentElement, index, array
+let numbers = [1, 2, 3, 4];
+
+let sum = numbers.reduce(function (accumulator, element, index, array) {
+  // accumulator: accumulated result
+  // element: current element being processed
+  // index: index of the current element
+  // array: the array reduce was called upon
+  return accumulator + element;
+}, 0);
+// console.log(sum);
+// Output: 10
