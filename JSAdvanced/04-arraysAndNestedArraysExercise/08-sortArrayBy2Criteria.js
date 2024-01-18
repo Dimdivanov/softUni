@@ -1,8 +1,6 @@
 function sortByTwoCriteria(arr) {
-  // length criteria
-  // alphabetical value
-  // case sensitive
-  arr.sort;
+  arr.sort((a, b) => a.length - b.length || a.localeCompare(b));
+  console.log(arr.join('\n'));
 }
-sortByTwoCriteria(['Isacc', 'Theodor', 'Jack', 'Harrison', 'George']);
-sortByTwoCriteria(['alpha', 'beta', 'gamma']);
+// sortByTwoCriteria(['Isacc', 'Theodor', 'Jack', 'Harrison', 'George']);
+sortByTwoCriteria(['Deny', 'omen', 'test', 'Default']);
