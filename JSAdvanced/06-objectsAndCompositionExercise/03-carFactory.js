@@ -20,14 +20,16 @@ function carFactory(order) {
   }
   if (order.wheelsize % 2 === 0) {
     order.wheelsize = order.wheelsize - 1;
-    result.wheelsize = Array(4).fill(order.wheelsize);
+    result.wheelsize = new Array(4).fill(order.wheelsize);
   }
   return result;
 }
-carFactory({
-  model: 'VW Golf II',
-  power: 90,
-  color: 'blue',
-  carriage: 'hatchback',
-  wheelsize: 14,
-});
+console.log(
+  carFactory({
+    model: 'VW Golf II',
+    power: 90,
+    color: 'blue',
+    carriage: 'hatchback',
+    wheelsize: 14,
+  })
+);
