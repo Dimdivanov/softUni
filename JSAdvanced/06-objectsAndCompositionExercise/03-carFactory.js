@@ -20,10 +20,9 @@ function carFactory(order) {
   }
   if (order.wheelsize % 2 === 0) {
     order.wheelsize = order.wheelsize - 1;
-    result.wheels = Array(4).fill(order.wheelsize);
-  } else {
-    result.wheels = Array(4).fill(order.wheelsize);
   }
+  result.wheels = Array(4).fill(order.wheelsize);
+
   return result;
 }
 console.log(
