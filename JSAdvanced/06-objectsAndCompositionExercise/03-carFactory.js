@@ -1,9 +1,9 @@
 function carFactory(order) {
   let result = {
     model: order.model,
-    engine: undefined,
-    carriage: undefined,
-    wheels: undefined,
+    engine: null,
+    carriage: null,
+    wheels: null,
   };
 
   if (order.power <= 90) {
@@ -20,9 +20,9 @@ function carFactory(order) {
   }
   if (order.wheelsize % 2 === 0) {
     order.wheelsize = order.wheelsize - 1;
-    result.wheels = new Array(4).fill(order.wheelsize);
+    result.wheels = Array(4).fill(order.wheelsize);
   } else {
-    result.wheels = new Array(4).fill(order.wheelsize);
+    result.wheels = Array(4).fill(order.wheelsize);
   }
   return result;
 }
@@ -32,6 +32,6 @@ console.log(
     power: 90,
     color: 'blue',
     carriage: 'hatchback',
-    wheelsize: 17,
+    wheelsize: 14,
   })
 );
