@@ -1,3 +1,4 @@
 function generateReport() {
-    //TODO
+  //factory function that give us an object
+  //stringify to JSON
 }

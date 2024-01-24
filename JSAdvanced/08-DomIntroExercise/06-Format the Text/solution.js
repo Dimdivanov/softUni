@@ -22,12 +22,12 @@ function solve() {
   }
 }
 
-//100 / 100
 // function solve() {
 //   let text = document
 //     .getElementById('input')
 //     .value.split('.')
 //     .filter((e) => e.length > 0);
+//   div.innerHTML = '';
 //   let div = document.getElementById('output');
 //   for (i = 0; i < text.length; i += 3) {
 //     let output = [];
@@ -37,6 +37,7 @@ function solve() {
 //       }
 //     }
 //     let res = output.join('. ') + '.';
+
 //     div.innerHTML += `<p>${res}</p>`;
 //   }
 // }
