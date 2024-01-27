@@ -1,3 +1,1 @@
-function validate() {
-    console.log('TODO:...');
-}
+function validate() {}
