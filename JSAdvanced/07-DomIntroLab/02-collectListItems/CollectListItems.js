@@ -1,13 +1,12 @@
 function extractText() {
-  let result = []; // масив да държи резултата
-  let list = document.getElementById('items'); // намираме елемента И СЕЛЕКТИРАМЕ
+  let result = [];
+  let list = document.getElementById('items');
 
-  let items = Array.from(list.children); // взимаме неговите деца
+  let items = Array.from(list.children);
   for (let item of items) {
-    // минаваме през всеки от елементите ЧЕТЕМ
-    result.push(item.textContent); // текст контента на всеки елемент го запазваме
+    result.push(item.textContent);
   }
 
-  let textArea = document.getElementById('result'); // намираме на страницата къде ще е резултата СЕЛЕКТИРАМЕ
-  textArea.value = result.join('\n'); // сетваме като value на конкретния резултат ПРОМЕНЯМЕ стойността
+  let textArea = document.getElementById('result');
+  textArea.value = result.join('\n');
 }

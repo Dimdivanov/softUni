@@ -10,11 +10,11 @@ function solve() {
   }
 
   function addProductBtn(event) {
-    let productName = event.target.parentNode.parentNode.querySelector(
+    let productName = event.target.parentElement.parentElement.querySelector(
       '.product-details>.product-title'
     ).textContent;
 
-    let price = event.target.parentNode.parentNode.querySelector(
+    let price = event.target.parentElement.parentElement.querySelector(
       '.product-line-price'
     ).textContent;
 
