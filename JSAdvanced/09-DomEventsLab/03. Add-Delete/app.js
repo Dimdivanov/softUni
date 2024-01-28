@@ -1,20 +1,20 @@
 function addItem() {
-  let input = document.getElementById('newItemText'); //взимаме от тук input
+  let input = document.getElementById('newItemText');
   if (input.value.length == 0) {
     return;
   }
-  let liElement = document.createElement('li'); //правим празен елемент 'li'
-  liElement.textContent = input.value; // даваме на елемента стойност
+  let liElement = document.createElement('li');
+  liElement.textContent = input.value;
 
   let deleteBtn = document.createElement('a');
   deleteBtn.textContent = '[Delete]';
   deleteBtn.href = '#';
   deleteBtn.addEventListener('click', myFunc);
-  liElement.appendChild(deleteBtn); //ще влезе в liElement-а и ще създаде 'a'
+  liElement.appendChild(deleteBtn);
 
-  let list = document.getElementById('items'); // избираме къде ще слагаме
-  list.appendChild(liElement); // апендване на елемента
-  input.value = ''; //зануляваме инпута
+  let list = document.getElementById('items');
+  list.appendChild(liElement);
+  input.value = '';
   function myFunc(event) {
     let deleteBtn = event.target;
     let liElement = deleteBtn.parentElement;
