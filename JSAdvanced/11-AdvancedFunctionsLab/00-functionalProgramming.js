@@ -1,7 +1,7 @@
 //First-class Functions
 //they can be treated like any other variable
 
-//can be passed as an argument from another function:
+//can be passed as an ARGUMENT from another function:
 function sayHello() {
   return 'Hello, ';
 }
@@ -9,7 +9,7 @@ function greetings(helloMessage, name) {
   return helloMessage() + name;
 }
 console.log(greetings(sayHello, 'JavaScript!'));
-//can be returned by another function:
+//can be RETURNED by another function:
 function sayHello1() {
   return function () {
     console.log('Hello!');
@@ -17,7 +17,7 @@ function sayHello1() {
 }
 const sayIt = sayHello1();
 sayIt();
-//assigned as a value to variable:
+//assigned as a VALUE to variable:
 const calculate = function (a, b) {
   return a + b;
 };
