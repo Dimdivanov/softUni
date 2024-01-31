@@ -36,6 +36,7 @@ myFunc();
 //= Predicates - any function that returns bool based evaluation of truth of an assertion
 //== often found in the form of callbacks
 //=== функция която ще върне true или false - filter или find
+
 //=Built-in higher order functions - map, filter, reduce;
 
 //=Pure Functions
