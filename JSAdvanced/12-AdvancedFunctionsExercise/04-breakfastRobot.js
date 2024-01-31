@@ -13,9 +13,6 @@ function breakfastRobot() {
     eggs: { protein: 5, fat: 1, flavour: 1 },
     turkey: { protein: 10, carbohydrate: 10, fat: 10, flavour: 10 },
   };
-  function report() {
-    return `protein=${store.protein} carbohydrate=${store.carbohydrate} fat=${store.fat} flavour=${store.flavour}`;
-  }
   return function (data) {
     let [action, type, qty] = data.split(' ');
     switch (action) {
@@ -25,6 +22,11 @@ function breakfastRobot() {
         return prepare(type, qty);
       case 'report':
         return report();
+    }
+
+    function restock(type, qty) {
+      store[type] += Number(qty);
+      return 'Success';
     }
 
     function prepare(type, qty) {
@@ -42,10 +44,8 @@ function breakfastRobot() {
       return 'Success';
     }
 
-    function restock(type, qty) {
-      store[type] += Number(qty);
-
-      return 'Success';
+    function report() {
+      return `protein=${store.protein} carbohydrate=${store.carbohydrate} fat=${store.fat} flavour=${store.flavour}`;
     }
   };
 }
