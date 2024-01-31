@@ -4,6 +4,7 @@ function sayHello(subject, grade) {
   console.log(this.name + ' received a ' + grade + ' at ' + subject);
 }
 sayHello('math', 5); //undefined
+console.log('==== call()');
 console.log('==== Приема обекта(this), и другите параметри изброени ====');
 
 const myObj = {
@@ -13,11 +14,14 @@ const mySecondObj = {
   name: 'Ivan',
 };
 sayHello.call(myObj, 'biology', 6);
+console.log('==== apply()');
 console.log('==== Приема обекта(this), и масив от параметрите ====');
 //apply()
 sayHello.apply(mySecondObj, ['geography', 5]);
 //често срещано приложение на apply е:
 console.log(Math.max.apply(null, [1, 2, 3, 4, 5, 6])); //6
+
+console.log('==== bind()');
 console.log(
   '==== запазваме в променлива и приема обекта(this), и прави прозрачна опаковка ===='
 );
