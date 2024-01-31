@@ -50,5 +50,5 @@ function breakfastRobot() {
   };
 }
 let manager = breakfastRobot();
-console.log(manager('restock flavour 50')); // Success
+console.log(manager('restock flavour 50'));
 console.log(manager('prepare lemonade 4'));
