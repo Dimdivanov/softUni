@@ -1,8 +1,8 @@
 function subSum(array, starIdx, endIdx) {
   if (!Array.isArray(array)) {
-    let error = new TypeError('Must give an array');
-    throw error;
+    return NaN;
   }
+
   if (starIdx < 0) {
     starIdx = 0;
   }
@@ -15,4 +15,4 @@ function subSum(array, starIdx, endIdx) {
   }
   return sum;
 }
-console.log(subSum([10, 20, 30, 40, 50, 60], 3, 300));
+console.log(subSum('text', 3, 300));
