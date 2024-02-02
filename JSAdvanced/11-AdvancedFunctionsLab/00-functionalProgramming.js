@@ -38,6 +38,13 @@ myFunc();
 //=== функция която ще върне true или false - filter или find
 
 //=Built-in higher order functions - map, filter, reduce;
+const hiherOrder = function () {
+  return function () {
+    console.log('This is higher Order func!');
+  };
+};
+const order = hiherOrder();
+order(); // Hello!
 
 //=Pure Functions
 //== pure functions are functions that always will return the same result with same parameters
@@ -49,6 +56,7 @@ function add(a, b) {
 }
 console.log(add(2, 3)); //5
 console.log('======');
+
 //IMPURE
 let a = 2;
 function add1(b) {
