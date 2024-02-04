@@ -1,6 +1,7 @@
 class Person {
   //static property - свойства
   static counter = 0;
+  static botCount = 'This is bot counter string';
 
   constructor(name, age, email) {
     Person.counter++;
@@ -25,12 +26,25 @@ class Person {
   }
   static bot() {
     console.log('Bot');
+    console.log(Person.botCount);
+    console.log(this.counter);
+  }
+  //we can clone a person but they wont be equal
+  static clone(person) {
+    let result = new Person(person.name, person.age, person.email);
+    return result;
   }
 }
+
 Person.printCount();
 let newPerson = new Person('John Smith', 32, 'john@gmail.com');
+console.log(newPerson);
+
 let newPerson1 = new Person('Anne Kar', 32, 'anne@gmail.com');
 let newPerson2 = new Person('Peter Jacobson', 32, 'peter@gmail.com');
 
 Person.greet();
 Person.printCount();
+//clone created
+let clonedPerson = Person.clone(newPerson);
+console.log(clonedPerson);
