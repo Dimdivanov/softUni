@@ -16,10 +16,9 @@ class Person {
 
   //create a STATIC METHOD that applies only on the class
   static printCount() {
-    //we access the static counter with this.counter
     console.log(`${this.counter} instances have been created`);
   }
-  //we can call another method with this.method()
+  //we can call another static method with this.method()
   static greet() {
     console.log('Say hello!');
     this.bot();
@@ -39,8 +38,6 @@ class Person {
 Person.printCount();
 let newPerson = new Person('John Smith', 32, 'john@gmail.com');
 console.log(newPerson);
-
-let newPerson1 = new Person('Anne Kar', 32, 'anne@gmail.com');
 let newPerson2 = new Person('Peter Jacobson', 32, 'peter@gmail.com');
 
 Person.greet();
