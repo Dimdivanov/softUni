@@ -3,7 +3,7 @@ function ticketsStatistic(arrOfTickets, sortCriteria) {
   class Ticket {
     constructor(destination, price, status) {
       this.destination = destination;
-      this.price = price;
+      this.price = Number(price);
       this.status = status;
     }
   }
@@ -16,7 +16,11 @@ function ticketsStatistic(arrOfTickets, sortCriteria) {
   return sortTickets(result, sortCriteria);
 
   function sortTickets(ticketArr, criteria) {
-    return ticketArr.sort((a, b) => a[criteria].localeCompare(b[criteria]));
+    return ticketArr.sort((a, b) => {
+      return criteria === 'price'
+        ? a[criteria] - b[criteria]
+        : a[criteria].localeCompare(b[criteria]);
+    });
   }
 }
 
