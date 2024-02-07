@@ -1,18 +1,26 @@
-function tickets(arr, str) {
-  for (let info of arr) {
-    let curInfo = info.split('|');
-    console.log(curInfo);
-  }
-
+function ticketsStatistic(arrOfTickets, sortCriteria) {
+  let result = [];
   class Ticket {
-    constructor(destinationName, price, status) {
-      this.destinationName = destinationName;
+    constructor(destination, price, status) {
+      this.destination = destination;
       this.price = price;
       this.status = status;
     }
   }
+  for (let el of arrOfTickets) {
+    let [destination, price, status] = el.split('|');
+    let myTicket = new Ticket(destination, price, status);
+    result.push(myTicket);
+  }
+
+  return sortTickets(result, sortCriteria);
+
+  function sortTickets(ticketArr, criteria) {
+    return ticketArr.sort((a, b) => a[criteria].localeCompare(b[criteria]));
+  }
 }
-tickets(
+
+let res = ticketsStatistic(
   [
     'Philadelphia|94.20|available',
     'New York City|95.99|available',
@@ -21,3 +29,5 @@ tickets(
   ],
   'destination'
 );
+
+console.log(res);
