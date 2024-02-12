@@ -3,6 +3,7 @@ function Person(first, last, age) {
   this.lastName = last;
   this.age = age;
 }
+//adding property "nationality" to the object
 Person.prototype.nationality = 'Bulgarian';
 let myPerson = new Person('Dimitar', 'Ivanov', 32);
 console.log(myPerson.nationality);
