@@ -15,21 +15,21 @@ class Person {
   }
 
   //create a STATIC METHOD that applies only on the class
-  static _printCount() {
-    console.log(`${this.counter} instances have been created`);
+  static printCount() {
+    console.log(`${Person._counter} instances have been created`);
   }
   //we can call another static method with this.method()
-  static _greet() {
+  static greet() {
     console.log('Say hello!');
     this.bot();
   }
-  static _bot() {
+  static bot() {
     console.log('Bot');
     console.log(Person._botCount);
     console.log(this._counter);
   }
   //we can clone a person but they wont be equal
-  static _clone(person) {
+  static clone(person) {
     let result = new Person(person.name, person.age, person.email);
     return result;
   }

@@ -6,7 +6,7 @@ const person = {
 // output = {value: 'Peter', writable: true, enumerable: true, configurable: true};
 console.log(Object.getOwnPropertyDescriptor(person, 'name'));
 
-//define the property
+//define the properties
 Object.defineProperty(person, 'name', {
   value: 'Peter',
   writable: false, // makes the value immutable
@@ -15,7 +15,7 @@ Object.defineProperty(person, 'name', {
 });
 person.name = 'John'; //output doesnt change cuz writable is 'false'
 
-//can create a property
+//can create a  new property
 Object.defineProperty(person, 'country', {
   value: 'Bulgaria',
   writable: true, //set these to true otherwise wont be visible or adjustable
@@ -24,8 +24,8 @@ Object.defineProperty(person, 'country', {
 });
 
 console.log(person);
-// creating get and set - no value or writable
 
+// creating get and set - no value or writable
 let country; // define in closure 2/4
 Object.defineProperty(person, 'country', {
   enumerable: true,
@@ -38,7 +38,7 @@ Object.defineProperty(person, 'country', {
   },
 });
 
-console.log(person.country);
+console.log(person.country); //undefined yet
 
 person.country = 'Italy'; // set country to Italy 3/4
 console.log(person);
