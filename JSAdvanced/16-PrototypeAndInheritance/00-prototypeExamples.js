@@ -1,6 +1,8 @@
-function Person(name, age) {
-  this.name = name;
-  this.age = age;
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 }
 
 // Adding a method to the Person prototype
