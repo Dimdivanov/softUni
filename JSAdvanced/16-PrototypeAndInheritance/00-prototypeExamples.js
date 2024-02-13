@@ -12,13 +12,14 @@ Person.prototype.sayHello = function () {
 
 // Creating an instance of Person
 var person1 = new Person('John', 25);
-
 // Calling the method from the prototype
 person1.sayHello(); // Output: Hello, my name is John
 
 //example 2
-function Animal(name) {
-  this.name = name;
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
 }
 
 // Adding a property to the Animal prototype
