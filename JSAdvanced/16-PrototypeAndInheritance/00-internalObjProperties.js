@@ -43,3 +43,7 @@ console.log(person.country); //undefined yet
 person.country = 'Italy'; // set country to Italy 3/4
 console.log(person);
 console.log(person.country); // result 4/4
+
+//Object Freeze and Seal
+//Freeze = non-writable non-configurable
+//seal = can only change value
