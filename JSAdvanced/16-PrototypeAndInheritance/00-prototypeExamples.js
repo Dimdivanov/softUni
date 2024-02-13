@@ -27,7 +27,6 @@ Animal.prototype.sound = 'Some generic sound';
 
 // Creating an instance of Animal
 var cat = new Animal('Whiskers');
-
 // Logging the object
 console.log(cat);
 console.log(Object.getPrototypeOf(cat)); // Outputs: { sound: 'Some generic sound' }
