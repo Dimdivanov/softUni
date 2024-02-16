@@ -20,7 +20,7 @@ class FashionRetailInventory {
   }
   sendProduct(productName, size) {
     const curProduct = this.productStock.find(
-      (el) => el.productName == productName && el.size == size
+      (el) => el.productName === productName && el.size === size
     );
     if (!curProduct) {
       throw new Error(
@@ -28,7 +28,7 @@ class FashionRetailInventory {
       );
     } else {
       const newProductStock = this.productStock.filter(
-        (el) => el.productName !== curProduct
+        (el) => el.productName !== productName
       );
       this.productStock = newProductStock;
       return `The product ${productName}, size ${size} was successfully removed from the inventory`;
@@ -53,8 +53,8 @@ class FashionRetailInventory {
       a.productName.localeCompare(b.productName)
     );
     const productInfo = this.productStock.map(
-      (product) =>
-        `${product.productName}/Size:${product.size}/Quantity:${product.quantity}/Price:${product.price}$`
+      (el) =>
+        `${el.productName}/Size:${el.size}/Quantity:${el.quantity}/Price:${el.price}$`
     );
 
     return `${this.storehouse} storehouse in ${
