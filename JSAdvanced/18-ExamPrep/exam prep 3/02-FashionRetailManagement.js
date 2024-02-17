@@ -69,3 +69,18 @@ console.log(storeHouse.addProduct('Shirt', 'L', 5, 30.0));
 console.log(storeHouse.addProduct('Shoes', '9', 8, 50.0));
 console.log(storeHouse.sendProduct('Shoes', '9', 8, 50.0));
 console.log(storeHouse.listProducts());
+
+//   assignBookToMember(memberName, bookTitle) {
+//     const memberInArr = this.members.find((el) => el.memberName === memberName);
+//     if (!memberInArr) {
+//       throw new Error(`Member ${memberName} not found.`);
+//     }
+//     const bookIdx = this.books.findIndex(
+//       (item) => item.bookTitle === bookTitle
+//     );
+//     if (bookIdx === -1) {
+//       throw new Error(`Book "${bookTitle}" not found.`);
+//     }
+//     this.books.splice(bookIdx, 1);
+//     return `Member ${memberName} has been assigned the book "${assignedBook}" by ${author}.`;
+//   }
