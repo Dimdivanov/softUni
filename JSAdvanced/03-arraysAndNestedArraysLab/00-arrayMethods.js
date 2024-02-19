@@ -1,3 +1,4 @@
+//code behind includes
 function includes(inputArr, element) {
   for (let item of inputArr) {
     if (item === element) {
@@ -7,7 +8,7 @@ function includes(inputArr, element) {
 
   return false;
 }
-
+//code behind indexOf
 function indexOf(inputArr, element) {
   for (let i = 0; i < inputArr.length; i++) {
     if (inputArr[i] === element) {
