@@ -26,24 +26,41 @@ console.log(calculate(2, 3));
 
 //Както наричаме функциите в обектите(методи) така и тук:
 //= Higher order function- take other functions as an ARGUMENT or RETURN a function as a result
-const sayHello2 = function () {
-  return function () {
-    console.log('HelloLOL!');
+//example 1: Function as argument
+function operateOnNumbers(a, b, operation) {
+  return operation(a, b);
+}
+function add(x, y) {
+  return x + y;
+}
+function multiply(x, y) {
+  return x * y;
+}
+console.log(operateOnNumbers(20, 30, add));
+console.log(operateOnNumbers(20, 30, multiply));
+
+//example 2: Function as result
+function multiplier(factor) {
+  return function (x) {
+    return x * factor;
   };
-};
-const myFunc = sayHello2();
-myFunc();
+}
+const double = multiplier(2);
+const triple = multiplier(3);
+console.log(double(5));
+console.log(triple(4));
+
 //= Predicates - any function that returns bool based evaluation of truth of an assertion
 //== often found in the form of callbacks
 //=== функция която ще върне true или false - filter или find
 
 //=Built-in higher order functions - map, filter, reduce;
-const hiherOrder = function () {
+const higherOrder = function () {
   return function () {
     console.log('This is higher Order func!');
   };
 };
-const order = hiherOrder();
+const order = higherOrder();
 order(); // Hello!
 
 //=Pure Functions
@@ -65,3 +82,30 @@ function add1(b) {
 console.log(add1(3)); //5
 a = 3; //changing the variable will change the outcome
 console.log(add1(3)); //6
+//IIFE
+(function () {
+  let name = 'Petercho';
+  console.log(name);
+})();
+
+//Partial application can be achieved with bind() or with closure
+//creating a new function by fixing some of the arguments of an existing function
+//създаваме нова фунцкия от друга фунцкия с фиксиран аргумент
+function add(a, b, c) {
+  return a + b + c;
+}
+const binded = add.bind(null, 5);
+console.log(binded(2, 3));
+
+//closure example
+function multiplyAgain(a, b, c) {
+  return a * b * c;
+}
+function partialMultiply(a) {
+  return function (b, c) {
+    return multiplyAgain(a, b, c);
+  };
+}
+const multiplyBy2 = partialMultiply(2);
+const result = multiplyBy2(2, 3);
+console.log(result);
