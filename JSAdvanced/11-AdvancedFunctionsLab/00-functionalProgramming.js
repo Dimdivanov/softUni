@@ -24,7 +24,6 @@ const calculate = function (a, b) {
 };
 console.log(calculate(2, 3));
 
-//Както наричаме функциите в обектите(методи) така и тук:
 //= Higher order function- take other functions as an ARGUMENT or RETURN a function as a result
 //example 1: Function as argument
 function operateOnNumbers(a, b, operation) {
@@ -50,10 +49,6 @@ const triple = multiplier(3);
 console.log(double(5));
 console.log(triple(4));
 
-//= Predicates - any function that returns bool based evaluation of truth of an assertion
-//== often found in the form of callbacks
-//=== функция която ще върне true или false - filter или find
-
 //=Built-in higher order functions - map, filter, reduce;
 const higherOrder = function () {
   return function () {
@@ -62,6 +57,10 @@ const higherOrder = function () {
 };
 const order = higherOrder();
 order(); // Hello!
+
+//= Predicates - any function that returns bool based evaluation of truth of an assertion
+//== often found in the form of callbacks
+//=== функция която ще върне true или false - filter или find
 
 //=Pure Functions
 //== pure functions are functions that always will return the same result with same parameters
@@ -82,14 +81,14 @@ function add1(b) {
 console.log(add1(3)); //5
 a = 3; //changing the variable will change the outcome
 console.log(add1(3)); //6
-//IIFE
+//IIFE - legacy
 (function () {
   let name = 'Petercho';
   console.log(name);
 })();
 
 //Partial application can be achieved with bind() or with closure
-//creating a new function by fixing some of the arguments of an existing function
+//creating a new function by fixating some of the arguments of an existing function
 //създаваме нова фунцкия от друга фунцкия с фиксиран аргумент
 function add(a, b, c) {
   return a + b + c;
