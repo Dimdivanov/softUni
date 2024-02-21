@@ -18,7 +18,7 @@ class Person {
   static printCount() {
     console.log(`${Person._counter} instances have been created`);
   }
-  //we can call another static method with this.method()
+  //we can call another static method with 'this.method()'
   static greet() {
     console.log('Say hello!');
     this.bot();
