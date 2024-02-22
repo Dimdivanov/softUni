@@ -86,8 +86,8 @@ console.log(add1(3)); //6
   let name = 'Petercho';
   console.log(name);
 })();
-
-//Partial application can be achieved with bind() or with closure
+//Function Decoration
+//=Partial application can be achieved with bind() or with closure
 //creating a new function by fixating some of the arguments of an existing function
 //създаваме нова фунцкия от друга фунцкия с фиксиран аргумент
 function add(a, b, c) {
