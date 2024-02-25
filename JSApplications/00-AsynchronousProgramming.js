@@ -2,11 +2,11 @@
 //sequantially from top to bottom, instead it allows certain operations
 //to be deffered and executed independently of the main program flow - when dealing with tasks that require some time to complete.
 
-//Key concepts and mechanisms used in asynchronous programming in JS:
+//Key concepts and mechanisms used in asynchronous programming:
 
 //CALLBACKS
 //= Callbacks are function that are passed as arguments by other functions
-//== which will be invoked after completion of particular task - used to define what to happen after task finishes
+//== which will be invoked after completion of particular task
 function fetchData(callback) {
   //asynchronous operation
   setTimeout(() => {
@@ -16,15 +16,35 @@ function fetchData(callback) {
 }
 fetchData((result) => console.log(result));
 
+console.log('=================');
 //PROMISES
 //= cleaner and more structured way to handle asynchronous operations
 //== promises represent value that may be available - now, in future or never
 //== it has 'resolve' and 'reject' functions that are used to indicate the success or failure of an async operation
+//Example1:
+
 //= States:
 //==Pending - operation is running still - unfinished)
 //==Fulfilled - operation finished(result available)
 //==Failed - operation failed(error)
 //= Promises use Promise class - new Promise(executor);
+console.log('Promise Example: Hello');
+const p = new Promise(executor);
+p.then(onSuccess).catch(onError);
+console.log('there!');
+function executor(resolve, reject) {
+  console.log('executing the executor');
+  setTimeout(resolve, 2000, 'Bye!'); // 3rd is data in reject function
+}
+function onSuccess(data) {
+  console.log(data);
+}
+function onError(error) {
+  console.log('Encountered error:', error);
+}
+console.log('=================');
+
+//
 
 //FETCH
 // method that allows making network requests
@@ -33,7 +53,8 @@ fetchData((result) => console.log(result));
 //= makes code more readable and maintainable
 //== the response of fetch() is a STREAM object
 //== the reading of the stream happens asynchronosly
-//==
+//== in the example bellow when json() method is called a PROMISE is returned ->
+//=== the response is checked before parsing the json
 let url = 'https://api.github.com/users/testnakov/repos';
 
 // Making a simple GET request using fetch
