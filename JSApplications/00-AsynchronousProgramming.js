@@ -21,8 +21,7 @@ fetchData((result) => console.log(result));
 //== promises represent value that may be available - now, in future or never
 //== it has 'resolve' and 'reject' functions that are used to indicate the success or failure of an async operation
 const myPromise = new Promise((resolve, reject) => {
-  const error = true;
-
+  const error = false;
   if (!error) {
     resolve(`Yes! Resolved the promise!`);
   } else {
@@ -34,8 +33,8 @@ myPromise
   .then((value) => {
     return value + 100;
   })
-  .then((newValue) => {
-    console.log(newValue);
+  .then((data) => {
+    console.log(data);
   })
   .catch((error) => {
     console.error(error); //No! Rejected the promise!
@@ -47,12 +46,14 @@ myPromise
 //==Failed - operation failed(error)
 //= Promises use Promise class - new Promise(executor);
 console.log('Promise Example: Hello');
+
 const p = new Promise(executor);
 p.then(onSuccess).catch(onError);
+
 console.log('there!');
 function executor(resolve, reject) {
   console.log('executing the executor');
-  setTimeout(resolve, 100, 'Bye!'); // 3rd is data in reject function
+  setTimeout(resolve, 100, 'Bye!'); // 3rd is data in resolve function
 }
 function onSuccess(data) {
   console.log(data);
@@ -67,7 +68,7 @@ console.log('=================');
 //= uses Promises
 //= enables simple and cleaner API
 //= makes code more readable and maintainable
-//== the response of fetch() is a STREAM object
+//== the response of fetch() is a readableSTREAM object
 //== the reading of the stream happens asynchronosly
 
 let url = 'https://api.github.com/users/testnakov/repos';
@@ -76,10 +77,10 @@ fetch(url)
   .then((response) => {
     //2. first then() checks if response is successful if not error
     // Check if the request was successful (status code 200-299)
+    // response.ok - ok is the method of the body of the readableStream
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
     // Parse the response as JSON
     return response.json();
   })
