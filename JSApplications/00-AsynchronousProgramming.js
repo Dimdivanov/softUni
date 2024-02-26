@@ -7,15 +7,10 @@
 //CALLBACKS
 //= Callbacks are function that are passed as arguments by other functions
 //== which will be invoked after completion of particular task
-function fetchData(callback) {
-  //asynchronous operation
-  setTimeout(() => {
-    const data = 'Callbacks best example is eventlisteners in the DOM';
-    callback(data);
-  }, 500);
+button.addEventListener('click', callbackFn);
+function callbackFn() {
+  console.log('best examples are evenListeners');
 }
-fetchData((result) => console.log(result));
-
 //PROMISES
 //= cleaner and more structured way to handle asynchronous operations
 //== promises represent value that may be available - now, in future or never
