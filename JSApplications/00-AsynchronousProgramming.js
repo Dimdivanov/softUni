@@ -10,18 +10,36 @@
 function fetchData(callback) {
   //asynchronous operation
   setTimeout(() => {
-    const data = 'Some fetched data';
+    const data = 'Callbacks best example is eventlisteners in the DOM';
     callback(data);
-  }, 1000);
+  }, 500);
 }
 fetchData((result) => console.log(result));
 
-console.log('=================');
 //PROMISES
 //= cleaner and more structured way to handle asynchronous operations
 //== promises represent value that may be available - now, in future or never
 //== it has 'resolve' and 'reject' functions that are used to indicate the success or failure of an async operation
-//Example1:
+const myPromise = new Promise((resolve, reject) => {
+  const error = true;
+
+  if (!error) {
+    resolve(`Yes! Resolved the promise!`);
+  } else {
+    reject(`No! Rejected the promise!`);
+  }
+});
+
+myPromise
+  .then((value) => {
+    return value + 100;
+  })
+  .then((newValue) => {
+    console.log(newValue);
+  })
+  .catch((error) => {
+    console.error(error); //No! Rejected the promise!
+  });
 
 //= States:
 //==Pending - operation is running still - unfinished)
@@ -34,7 +52,7 @@ p.then(onSuccess).catch(onError);
 console.log('there!');
 function executor(resolve, reject) {
   console.log('executing the executor');
-  setTimeout(resolve, 2000, 'Bye!'); // 3rd is data in reject function
+  setTimeout(resolve, 100, 'Bye!'); // 3rd is data in reject function
 }
 function onSuccess(data) {
   console.log(data);
@@ -44,8 +62,6 @@ function onError(error) {
 }
 console.log('=================');
 
-//
-
 //FETCH
 // method that allows making network requests
 //= uses Promises
@@ -53,13 +69,12 @@ console.log('=================');
 //= makes code more readable and maintainable
 //== the response of fetch() is a STREAM object
 //== the reading of the stream happens asynchronosly
-//== in the example bellow when json() method is called a PROMISE is returned ->
-//=== the response is checked before parsing the json
-let url = 'https://api.github.com/users/testnakov/repos';
 
-// Making a simple GET request using fetch
+let url = 'https://api.github.com/users/testnakov/repos';
+//1. fetch function used to make a GET request to the url
 fetch(url)
   .then((response) => {
+    //2. first then() checks if response is successful if not error
     // Check if the request was successful (status code 200-299)
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -69,14 +84,12 @@ fetch(url)
     return response.json();
   })
   .then((data) => {
+    //3. second then() parses the response as JSON.
     // Process the retrieved data
     console.log('Data:', data);
   })
   .catch((error) => {
+    //4. catch() handles any error that may occur during fetch
     // Handle any errors that occurred during the fetch
     console.error('Fetch error:', error);
   });
-//1. fetch function used to make a GET request to the url
-//2. first then() checks if response is successful if not error
-//3. second then() parses the response as JSON.
-//4. catch() handles any error that may occur during fetch
