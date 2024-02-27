@@ -91,7 +91,7 @@ fetch(url)
   });
 
 //Async functions and keyword 'await'
-//Example:
+//Example and Error Handling:
 async function logFetch(url) {
   try {
     const response = await fetch(url);
@@ -99,4 +99,33 @@ async function logFetch(url) {
   } catch (error) {
     console.log(error);
   }
+}
+
+//sequential execution - step by step manner of executing of code
+//the 1st await waits for the promise to fully resolve result1(execute(1, 1) and then proceeds to next one)
+function execute(x, sec) {
+  return new Promise((resolve) => {
+    console.log('Start: ' + x);
+    setTimeout(() => {
+      console.log('End: ' + x);
+      resolve(x);
+    }, sec * 1000);
+  });
+}
+//sequential execution
+async function serialFlow() {
+  let result1 = await execute(1, 1);
+  let result2 = await execute(2, 2);
+  let result3 = await execute(3, 3);
+  let finalResult = result1 + result2 + result3;
+  console.log(finalResult);
+}
+//concurrent execution
+
+async function parallelFlow() {
+  let result1 = execute(1, 1);
+  let result2 = execute(2, 2);
+  let result3 = execute(3, 3);
+  let finalResult = (await result1) + (await result2) + (await result3);
+  console.log(finalResult);
 }
