@@ -89,3 +89,14 @@ fetch(url)
     // Handle any errors that occurred during the fetch
     console.error('Fetch error:', error);
   });
+
+//Async functions and keyword 'await'
+//Example:
+async function logFetch(url) {
+  try {
+    const response = await fetch(url);
+    console.log(await response.text());
+  } catch (error) {
+    console.log(error);
+  }
+}
