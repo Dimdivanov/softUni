@@ -36,6 +36,7 @@ async function lockedProfile() {
     );
     clonedUsernameRef.value = entries[i].username;
     clonedUsernameRef.name = `user${i + 1}Username`;
+    clonedUsernameRef.setAttribute('value', entries[i].username);
 
     const userDivHide = clonedProfileCard.querySelector('.user1Username');
     userDivHide.setAttribute('class', `user${i + 1}Hiddenfields`); //edit here
@@ -46,12 +47,14 @@ async function lockedProfile() {
     );
     clonedEmailRef.value = entries[i].email;
     clonedEmailRef.name = `user${i + 1}Email`;
+    clonedEmailRef.setAttribute('value', entries[i].email);
 
     const clonedAgeRef = clonedProfileCard.querySelector(
       'input[name="user1Age"]'
     );
     clonedAgeRef.value = entries[i].age;
     clonedAgeRef.name = `user${i + 1}Age`;
+    clonedAgeRef.setAttribute('value', entries[i].age);
 
     main.appendChild(clonedProfileCard);
   }
