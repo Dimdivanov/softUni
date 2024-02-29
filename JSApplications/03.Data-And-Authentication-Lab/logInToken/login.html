@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label>
+        Email
+        <input type="text" name="username" />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" />
+      </label>
+
+      <input type="submit" value="Login" />
+      <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const formData = new FormData(form); //или event.target ако from не е наличен
+          const { email, password } = Object.fromEntries([
+            ...formData.entries(),
+          ]);
+
+          console.log(email, password);
+
+          const url = 'http://localhost:3030/users/login';
+          try {
+            const request = await fetch(url, {
+              method: 'post',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email, password }),
+            });
+            if (!request.ok) {
+              const error = request.json();
+              throw new Error(error.message);
+            }
+            const data = request.json();
+            console.log(data);
+          } catch (err) {
+            alert(err);
+          }
+        });
+      </script>
+    </form>
+  </body>
+</html>
