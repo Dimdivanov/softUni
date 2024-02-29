@@ -26,8 +26,11 @@ async function onSubmit(event) {
 //Example 2 FormData
 formElement.addEventListener('submit', (event) => {
   event.preventDefault();
-  const data = new FormData(formElement); //gives us iterable element- масив с всички стойности
+
+  const formData = new FormData(formElement); //gives us iterable element- масив с всички стойности
+
   const email = data.get('email'); // Read single value - ако знаем имената на полетата
   const entries = [...data.entries()]; // Get array of values
-  const { person, phone } = Object.fromEntries(data.entries());
+
+  const { person, phone } = Object.fromEntries(formData.entries());
 });
