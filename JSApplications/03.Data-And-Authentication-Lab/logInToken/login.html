@@ -15,39 +15,67 @@
         Password
         <input type="password" name="password" />
       </label>
-
       <input type="submit" value="Login" />
-      <script>
-        let token; //instead of this token variable we'll use localstorage or session storage(attached to the local host)
-        const form = document.querySelector('form');
-        form.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          const formData = new FormData(form); //или event.target ако from не е наличен
-          const { email, password } = Object.fromEntries([
-            ...formData.entries(),
-          ]);
+    </form>
+    <button id="authRequest">Make authorized request</button>
+    <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form); //или event.target ако from не е наличен
+        const { email, password } = Object.fromEntries([
+          //датаформ ни дава обект с етрита
+          ...formData.entries(),
+        ]);
 
-          console.log(email, password);
+        const url = 'http://localhost:3030/users/login';
+        try {
+          const request = await fetch(url, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+          });
+          if (!request.ok) {
+            const error = await request.json();
+            throw new Error(error.message);
+          }
+          const data = await request.json(); //userData accessToken и друга дата
+          //instead of token we'll use localstorage(saved until clear) or sessionstorage(saved until refresh);
+          localStorage.setItem('user', JSON.stringify(data));
+        } catch (err) {
+          alert(err);
+        }
+      });
+      document
+        .getElementById('authRequest')
+        .addEventListener('click', async () => {
+          const userData = JSON.parse(localStorage.getItem('user')); // ако не парснем ще получим null
 
-          const url = 'http://localhost:3030/users/login';
+          const url = 'http://localhost:3030/users/me';
           try {
-            const request = await fetch(url, {
-              method: 'post',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email, password }),
-            });
-            if (!request.ok) {
-              const error = await request.json();
-              throw new Error(error.message);
+            if (!userData) {
+              throw new Error('Please login!');
             }
-            const data = await request.json();
-
-            localStorage.setItem('user', JSON.stringify(data)); //use local
+            const req = await fetch(url, {
+              method: 'get',
+              headers: {
+                'X-Authorization': userData?.accessToken,
+              },
+            });
+            //dont forget if waiting try and catch and check if requirements.OK
+            if (!req.ok) {
+              const err = await req.json();
+              if (err.code === 403) {
+                localStorage.clear();
+              }
+              throw new Error(err.message);
+            }
+            const data = await req.json();
+            console.log(data);
           } catch (err) {
-            alert(err);
+            console.log(err.message);
           }
         });
-      </script>
-    </form>
+    </script>
   </body>
 </html>

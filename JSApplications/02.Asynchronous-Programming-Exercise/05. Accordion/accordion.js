@@ -1,3 +1,1 @@
-function solution() {
-    //TODO .....
-}
+function solution() {}
