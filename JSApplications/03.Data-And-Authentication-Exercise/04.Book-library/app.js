@@ -38,12 +38,9 @@ function createRow([key, value]) {
 form.addEventListener('submit', onSubmit);
 async function onSubmit(ev) {
   ev.preventDefault();
-  if (submitBtnRef.id == 'save') {
-    return;
-  }
   const formData = new FormData(form);
   const { author, title } = Object.fromEntries(formData.entries());
-  if (!author || !title) {
+  if (!author || !title || submitBtnRef.id == 'save') {
     return;
   }
   const request = await fetch(url, {
@@ -72,13 +69,10 @@ async function onEditClick(e) {
   submitBtnRef.addEventListener('click', onSaveClick);
 }
 async function onSaveClick(e) {
-  if (submitBtnRef.id == 'submit') {
-    return;
-  }
   const formData = new FormData(form);
   const { author, title } = Object.fromEntries(formData.entries());
 
-  if (!author || !title) {
+  if (!author || !title || submitBtnRef.id == 'submit') {
     return;
   }
 
