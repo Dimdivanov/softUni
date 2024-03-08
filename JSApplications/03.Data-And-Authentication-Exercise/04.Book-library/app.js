@@ -1,3 +1,5 @@
+window.addEventListener('load', start);
+
 const url = 'http://localhost:3030/jsonstore/collections/books';
 
 const loadBtnRef = document.getElementById('loadBooks');
@@ -6,9 +8,13 @@ const submitBtnRef = document.getElementById('submit');
 const titleRef = document.querySelector('input[name="title"]');
 const authorRef = document.querySelector('input[name="author"]');
 const tbodyRef = document.querySelector('tbody');
+
 let editUrl;
 
-loadBtnRef.addEventListener('click', loadAllBooks);
+function start() {
+  loadBtnRef.addEventListener('click', loadAllBooks);
+}
+
 async function loadAllBooks(ev) {
   ev.preventDefault();
   tbodyRef.innerHTML = '';
