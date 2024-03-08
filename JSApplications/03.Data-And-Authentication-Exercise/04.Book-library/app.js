@@ -44,39 +44,43 @@ async function onSubmit(ev) {
   const formData = new FormData(form);
   const { author, title } = Object.fromEntries(formData.entries());
   try {
-    await fetch(url, {
+    const request = await fetch(url, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ author, title }),
     });
-    if (!author || !title) {
+    if (!request.ok || !author || !title) {
+      throw new Error('missing info');
+    }
+    titleRef.value = '';
+    authorRef.value = '';
+  } catch (err) {
+    alert(err.message);
+  }
+}
+async function onEditClick(e) {
+  e.preventDefault();
+  const id = e.target.dataset.id;
+  editUrl = url + '/' + id;
+  try {
+    const request = await fetch(editUrl);
+    const data = await request.json();
+    const { author, title } = data;
+    titleRef.value = title;
+    authorRef.value = author;
+
+    const h3 = document.querySelector('form h3');
+    h3.textContent = 'Edit FORM';
+    submitBtnRef.removeAttribute('id');
+    submitBtnRef.setAttribute('id', 'save');
+    submitBtnRef.textContent = 'Save';
+    submitBtnRef.addEventListener('click', onSaveClick);
+    if (!request.ok || !author || !title) {
       throw new Error('missing info');
     }
   } catch (err) {
     alert(err.message);
   }
-  titleRef.value = '';
-  authorRef.value = '';
-}
-async function onEditClick(e) {
-  e.preventDefault();
-
-  const id = e.target.dataset.id;
-
-  editUrl = url + '/' + id;
-  const request = await fetch(editUrl);
-  const data = await request.json();
-  const { author, title } = data;
-
-  titleRef.value = title;
-  authorRef.value = author;
-
-  const h3 = document.querySelector('form h3');
-  h3.textContent = 'Edit FORM';
-  submitBtnRef.removeAttribute('id');
-  submitBtnRef.setAttribute('id', 'save');
-  submitBtnRef.textContent = 'Save';
-  submitBtnRef.addEventListener('click', onSaveClick);
 }
 async function onSaveClick(e) {
   e.preventDefault();
@@ -84,27 +88,25 @@ async function onSaveClick(e) {
   const { author, title } = Object.fromEntries(formData.entries());
 
   try {
-    await fetch(editUrl, {
+    const req = await fetch(editUrl, {
       method: `put`,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ author, title }),
     });
-    if (!author || !title) {
+    if (!req.ok || !author || !title) {
       throw new Error('missing info');
     }
+    submitBtnRef.removeAttribute('id');
+    submitBtnRef.setAttribute('id', 'submit');
+    submitBtnRef.textContent = 'Submit';
+
+    titleRef.value = '';
+    authorRef.value = '';
   } catch (err) {
     alert(err.message);
   }
-
-  submitBtnRef.removeAttribute('id');
-  submitBtnRef.setAttribute('id', 'submit');
-  submitBtnRef.textContent = 'Submit';
-
-  titleRef.value = '';
-  authorRef.value = '';
-  deleteBtnRef.disable = false;
 }
 async function onDeleteClick(e) {
   const id = e.target.dataset.id;
