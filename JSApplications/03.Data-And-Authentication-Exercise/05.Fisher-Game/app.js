@@ -24,7 +24,7 @@ async function onLogout() {
     },
   });
   localStorage.clear();
-  document.querySelector('#logout').style.disabled = 'none';
+  document.querySelector('#logout').style.disabled = 'true';
   document.querySelector('#addForm .add').disabled = 'true';
   document.querySelector('#guest').style.display = 'inline-block';
 }
