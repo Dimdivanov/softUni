@@ -23,10 +23,8 @@
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const formData = new FormData(form); //или event.target ако from не е наличен
-        const { email, password } = Object.fromEntries([
-          //датаформ ни дава обект с етрита
-          ...formData.entries(),
-        ]);
+        const { email, password } = Object.fromEntries(formData.entries());
+        debugger;
 
         const url = 'http://localhost:3030/users/login';
         try {
