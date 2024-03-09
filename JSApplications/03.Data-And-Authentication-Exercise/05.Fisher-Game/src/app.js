@@ -1,6 +1,4 @@
-console.log('TODO:// Implement Home functionality');
-
-/*//============================= app.js ===============================
+//============================= app.js ===============================
 const userData = JSON.parse(localStorage.getItem('userData'));
 
 if (userData) {
@@ -209,4 +207,3 @@ function createElement(type, attr, ...content) {
   }
   return element;
 }
- */

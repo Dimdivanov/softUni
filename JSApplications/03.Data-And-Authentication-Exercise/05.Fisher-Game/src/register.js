@@ -24,12 +24,12 @@ async function onSubmitReg(ev) {
       throw new Error(err.message);
     }
     const data = await request.json();
-    const userInfo = {
+    const userData = {
       email: data.email,
       id: data._id,
       token: data.accessToken,
     };
-    localStorage.setItem('user', JSON.stringify(userInfo));
+    localStorage.setItem('userData', JSON.stringify(userData));
     window.location = './index.html';
   } catch (err) {
     document.querySelector('form').reset();
