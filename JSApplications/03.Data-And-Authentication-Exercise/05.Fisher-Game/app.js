@@ -1,6 +1,6 @@
 //============================= app.js ===============================
 const userData = JSON.parse(localStorage.getItem('userData'));
-
+const logoutBtn = document;
 if (userData) {
   document.querySelector('.email span').textContent = userData.email;
   document.querySelector('#guest').style.display = 'none';
@@ -23,10 +23,11 @@ async function onLogout() {
       'X-Authorization': userData.token,
     },
   });
-  localStorage.clear();
-  document.querySelector('#logout').style.disabled = 'true';
+
+  document.querySelector('#logout').style.display = 'none';
   document.querySelector('#addForm .add').disabled = 'true';
   document.querySelector('#guest').style.display = 'inline-block';
+  localStorage.clear();
 }
 
 async function onSubmit(e) {
