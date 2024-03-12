@@ -2,6 +2,7 @@ import { html, render } from './node_modules/lit-html/lit-html.js';
 
 const form = document.querySelector('form').addEventListener('submit', onsubmit);
 const root = document.getElementById('root');
+
 function onsubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
