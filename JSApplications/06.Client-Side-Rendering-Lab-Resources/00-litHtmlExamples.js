@@ -1,8 +1,8 @@
-import { html, render } from './node_modules/lit-html/lit-html.js';
+import { html, render } from 'lit-html';
 //Example 1 by render() template
 let sayHello = (name) =>
   html`<h1>Hello ${name}</h1>
-    <div></div>`;
+    <div></div> `;
 render(sayHello('World'), document.body);
 
 // Example 2 by tagged template - TAG
