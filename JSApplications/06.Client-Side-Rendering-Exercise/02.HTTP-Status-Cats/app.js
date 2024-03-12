@@ -13,15 +13,15 @@ function createCatList(cats) {
   `;
 }
 
-function createCatCard(cats) {
+function createCatCard(data) {
   return html`
     <li>
-      <img src="./images/${cats.imageLocation}.jpg" width="250" height="250" alt="Card image cap" />
+      <img src="./images/${data.imageLocation}.jpg" width="250" height="250" alt="Card image cap" />
       <div class="info">
         <button @click=${toggleCatStatus} class="showBtn">Show status code</button>
-        <div class="status" style="display: none" id="100">
-          <h4>Status Code: ${cats.statusCode}</h4>
-          <p>${cats.statusMessage}</p>
+        <div class="status" style="display: none" id=${data.id}>
+          <h4>Status Code: ${data.statusCode}</h4>
+          <p>${data.statusMessage}</p>
         </div>
       </div>
     </li>
