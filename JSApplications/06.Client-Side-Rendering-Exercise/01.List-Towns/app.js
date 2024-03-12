@@ -7,6 +7,7 @@ function onsubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
   const townList = formData.get('towns').split(', ');
+
   renderer(createTemplate(townList));
 }
 
