@@ -1,10 +1,10 @@
 export function showView(sectionId, callback, event, param) {
-    event?.preventDefault();
+  event?.preventDefault();
 
-    document.querySelectorAll('section').forEach(s => s.style.display = 'none');
-    document.getElementById(sectionId).style.display = 'block';
+  document.querySelectorAll('section').forEach((s) => (s.style.display = 'none'));
+  document.getElementById(sectionId).style.display = 'block';
 
-    if (typeof callback == 'function') {
-        callback(param);
-    }
+  if (typeof callback == 'function') {
+    callback(param);
+  }
 }
