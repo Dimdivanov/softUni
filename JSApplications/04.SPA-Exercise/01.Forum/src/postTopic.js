@@ -1,15 +1,9 @@
-//what i learned: ако сложим евент лисънър на форм за да избегнем 2рия бутон
-//на него му слагаме отделно лисънър с клик
-//евент.таргет.ресет() занулява формуляра
-//
 start();
 function start() {
   const form = document.querySelector('form');
   form.addEventListener('submit', onPosting);
   document.querySelector('.cancel').addEventListener('click', onCancelClick);
-  const homeBtn = document
-    .querySelector('nav ul li a')
-    .addEventListener('click', homeClicked);
+  const homeBtn = document.querySelector('nav ul li a').addEventListener('click', homeClicked);
 }
 //create a post -- will be moved in another file -- export
 async function onPosting(event) {
