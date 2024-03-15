@@ -3,7 +3,7 @@ import { dataService } from '../service/dataService.js';
 
 const URL = 'http://localhost:3030/jsonstore/advanced/table';
 const root = document.querySelector('tbody');
-let isActive = false;
+
 solve();
 async function solve() {
   const request = await dataService.getAllOption(URL);
@@ -22,15 +22,15 @@ async function solve() {
     }
     for (let tr of tbody) {
       if (tr.textContent.includes(input)) {
-        isActive = true;
+        //stuck
       }
     }
   }
 }
 
-function createrCont(data, isActive) {
+function createrCont(data) {
   return html`
-    <tr class=${isActive ? 'select' : ''}>
+    <tr>
       <td>${data.firstName} ${data.lastName}</td>
       <td>${data.email}</td>
       <td>${data.course}</td>
