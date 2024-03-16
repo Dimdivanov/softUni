@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/style.css" />
-    <script src="./app.js" type="module"></script>
+    <script type="module" src="./app.js"></script>
   </head>
 
   <body>
@@ -33,23 +33,23 @@
               <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/create">Create</a>
+              <a class="nav-link" data-permission="user" href="/create">Create</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" data-permission="user" href="/logout">Logout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
+              <a class="nav-link" data-permission="guest" href="/login">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
+              <a class="nav-link" data-permission="guest" href="/register">Register</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <main id="main">
-      <div data-selection="section" class="container home wrapper my-md-5 pl-md-5">
+      <div data-section="section" data-view-name="home" class="container home wrapper my-md-5 pl-md-5">
         <div class="d-md-flex flex-md-equal">
           <div class="col-md-5">
             <img class="responsive" src="./images/01.svg" />
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <div data-selection="section" class="container home wrapper my-md-5 pl-md-5">
+      <div data-section="section" data-view-name="register" class="container home wrapper my-md-5 pl-md-5">
         <div class="row-form d-md-flex flex-mb-equal">
           <div class="col-md-4">
             <img class="responsive" src="./images/idea.png" alt="" />
@@ -119,7 +119,7 @@
         </div>
       </div>
 
-      <div data-selection="section" class="container home wrapper my-md-5 pl-md-5">
+      <div data-section="section" data-view-name="login" class="container home wrapper my-md-5 pl-md-5">
         <div class="row-form d-md-flex flex-mb-equal">
           <div class="col-md-4">
             <img class="responsive" src="./images/idea.png" alt="" />
@@ -160,18 +160,9 @@
         </div>
       </div>
 
-      <div data-selection="section" id="dashboard-holder">
-        <div class="card overflow-hidden current-card details" style="width: 20rem; height: 18rem">
-          <div class="card-body">
-            <p class="card-text">Dinner Recipe</p>
-          </div>
-          <img class="card-image" src="./images/dinner.jpg" alt="Card image cap" />
-          <a class="btn" href="">Details</a>
-        </div>
-        <h1>No ideas yet! Be the first one :)</h1>
-      </div>
+      <div data-section="section" data-view-name="dashboard" id="dashboard-holder"></div>
 
-      <div data-selection="section" class="container home some">
+      <div data-section="section" data-view-name="details" class="container home some">
         <img class="det-img" src="./images/dinner.jpg" />
         <div class="desc">
           <h2 class="display-5">Dinner Recipe</h2>
@@ -187,12 +178,12 @@
         </div>
       </div>
 
-      <div data-selection="section" class="container home wrapper my-md-5 pl-md-5">
+      <div data-section="section" data-view-name="create" class="container home wrapper my-md-5 pl-md-5">
         <div class="d-md-flex flex-mb-equal">
           <div class="col-md-6">
             <img class="responsive-ideas create" src="./images/creativity_painted_face.jpg" alt="" />
           </div>
-          <form class="form-idea col-md-5" action="#/create" method="post">
+          <form class="form-idea col-md-5" action="#create" method="post">
             <div class="text-center mb-4">
               <h1 class="h3 mb-3 font-weight-normal">Share Your Idea</h1>
             </div>
