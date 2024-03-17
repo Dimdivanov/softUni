@@ -1,6 +1,8 @@
 import { page } from '../node_modules/page/page.mjs';
 import { html, render } from '../node_modules/lit-html/lit-html.js';
-import { showDashboardView } from '../src/view/dashboardView.js';
+import { showDashboardView } from './view/dashboardView.js';
+
+console.log('works');
 //step 1 , step 2 requester
 const root = document.querySelector('div[data-id="root"]');
 const userNav = document.getElementById('user');
@@ -16,4 +18,4 @@ page('/login', () => console.error('login'));
 page('/register', () => console.error('register'));
 page('/logout', () => console.error('logout'));
 
-page();
+page.start();
