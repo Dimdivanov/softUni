@@ -56,6 +56,7 @@ const dashboardTemplate = () => html`
   </div>
 `;
 
-export function showDashboardView() {
+export function showDashboardView(ctx) {
+  debugger;
   render(dashboardTemplate(), root);
 }
