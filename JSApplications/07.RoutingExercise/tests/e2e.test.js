@@ -76,12 +76,7 @@ let page;
 describe('E2E tests', function () {
   // Setup
   this.timeout(DEBUG ? 120000 : timeout);
-  before(
-    async () =>
-      (browser = await chromium.launch(
-        DEBUG ? { headless: false, slowMo } : {}
-      ))
-  );
+  before(async () => (browser = await chromium.launch(DEBUG ? { headless: false, slowMo } : {})));
   after(async () => await browser.close());
   beforeEach(async () => {
     context = await browser.newContext();
@@ -110,10 +105,7 @@ describe('E2E tests', function () {
       await page.fill('[name="password"]', data.password);
       await page.fill('[name="rePass"]', data.password);
 
-      const [request] = await Promise.all([
-        onRequest(),
-        page.click('[type="submit"]'),
-      ]);
+      const [request] = await Promise.all([onRequest(), page.click('[type="submit"]')]);
 
       const postData = JSON.parse(request.postData());
 
@@ -135,10 +127,7 @@ describe('E2E tests', function () {
       await page.fill('[name="email"]', data.email);
       await page.fill('[name="password"]', data.password);
 
-      const [request] = await Promise.all([
-        onRequest(),
-        page.click('[type="submit"]'),
-      ]);
+      const [request] = await Promise.all([onRequest(), page.click('[type="submit"]')]);
 
       const postData = JSON.parse(request.postData());
       expect(postData.email).to.equal(data.email);
@@ -165,10 +154,7 @@ describe('E2E tests', function () {
 
       await page.waitForSelector('#logoutBtn');
 
-      const [request] = await Promise.all([
-        onRequest(),
-        page.click('nav >> text=Logout'),
-      ]);
+      const [request] = await Promise.all([onRequest(), page.click('nav >> text=Logout')]);
 
       const token = request.headers()['x-authorization'];
       expect(request.method()).to.equal('GET');
@@ -259,9 +245,7 @@ describe('E2E tests', function () {
       await page.goto(host);
       await page.waitForSelector('.card');
 
-      const titles = await page.$$eval(`.card p`, (t) =>
-        t.map((s) => s.textContent)
-      );
+      const titles = await page.$$eval(`.card p`, (t) => t.map((s) => s.textContent));
 
       expect(titles.length / 2).to.equal(mockData.catalog.length);
       expect(titles[0]).to.contains(data[0].description);
@@ -275,9 +259,7 @@ describe('E2E tests', function () {
       await page.waitForSelector('.container');
 
       await page.waitForSelector('.container');
-      await page.click(
-        `.card-body:has-text("${data.description}") >> text=Details`
-      );
+      await page.click(`.card-body:has-text("${data.description}") >> text=Details`);
 
       expect(await page.isVisible('text="Delete"')).to.be.false;
       expect(await page.isVisible('text="Edit"')).to.be.false;
@@ -318,9 +300,7 @@ describe('E2E tests', function () {
       const data = mockData.catalog[2];
 
       await page.waitForSelector('.container');
-      await page.click(
-        `.card-body:has-text("${data.description}") >> text=Details`
-      );
+      await page.click(`.card-body:has-text("${data.description}") >> text=Details`);
 
       expect(await page.isVisible('text="Delete"')).to.be.false;
       expect(await page.isVisible('text="Edit"')).to.be.false;
@@ -333,9 +313,7 @@ describe('E2E tests', function () {
       get(data);
 
       await page.waitForSelector('.container');
-      await page.click(
-        `.card-body:has-text("${data.description}") >> text=Details`
-      );
+      await page.click(`.card-body:has-text("${data.description}") >> text=Details`);
       await page.waitForSelector('.btn-info');
 
       await page.click('text=Edit');
@@ -370,9 +348,7 @@ describe('E2E tests', function () {
       await page.click('nav >> text=Dashboard');
 
       await page.waitForSelector('.container');
-      await page.click(
-        `.card-body:has-text("${data.description}") >> text=Details`
-      );
+      await page.click(`.card-body:has-text("${data.description}") >> text=Details`);
       await page.waitForSelector('.btn-info');
 
       await page.click('text=Edit');
@@ -400,9 +376,7 @@ describe('E2E tests', function () {
       await page.waitForSelector('.container');
 
       await page.waitForSelector('.container');
-      await page.click(
-        `.card-body:has-text("${data.description}") >> text=Details`
-      );
+      await page.click(`.card-body:has-text("${data.description}") >> text=Details`);
 
       page.on('dialog', (dialog) => dialog.accept());
 
@@ -437,9 +411,7 @@ describe('E2E tests', function () {
       await page.click('text=My Publication');
       await page.waitForSelector('.card');
 
-      const titles = await page.$$eval('.card p', (t) =>
-        t.map((s) => s.textContent)
-      );
+      const titles = await page.$$eval('.card p', (t) => t.map((s) => s.textContent));
       expect(titles.length / 2).to.equal(2);
     });
   });
@@ -465,11 +437,7 @@ async function setupContext(context) {
     get: mockData.catalog[2],
   });
 
-  await handleContext(
-    endpoints.profile('0001'),
-    { get: mockData.catalog.slice(0, 2) },
-    context
-  );
+  await handleContext(endpoints.profile('0001'), { get: mockData.catalog.slice(0, 2) }, context);
 
   await handleContext(endpoints.total('1001'), { get: 6 }, context);
   await handleContext(endpoints.total('1002'), { get: 4 }, context);
