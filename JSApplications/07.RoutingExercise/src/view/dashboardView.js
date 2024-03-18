@@ -1,7 +1,7 @@
-import { html, render } from '../../node_modules/lit-html/lit-html.js';
-const root = document.querySelector('div[data-id="root"]');
-
-const dashboardTemplate = () => html`
+import { html } from '../../node_modules/lit-html/lit-html.js';
+import { dataService } from '../service/dataService.js';
+//step 6 creating views
+const dashboardTemplate = (items) => html`
   <div class="container">
     <div class="row space-top">
       <div class="col-md-12">
@@ -9,54 +9,27 @@ const dashboardTemplate = () => html`
         <p>Select furniture from the catalog to view details.</p>
       </div>
     </div>
-    <div class="row space-top">
-      <div class="col-md-4">
-        <div class="card text-white bg-primary">
-          <div class="card-body">
-            <img src="./images/table.png" />
-            <p>Description here</p>
-            <footer>
-              <p>Price: <span>235 $</span></p>
-            </footer>
-            <div>
-              <a href="#" class="btn btn-info">Details</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card text-white bg-primary">
-          <div class="card-body">
-            <img src="./images/sofa.jpg" />
-            <p>Description here</p>
-            <footer>
-              <p>Price: <span>1200 $</span></p>
-            </footer>
-            <div>
-              <a href="#" class="btn btn-info">Details</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card text-white bg-primary">
-          <div class="card-body">
-            <img src="./images/chair.jpg" />
-            <p>Description here</p>
-            <footer>
-              <p>Price: <span>55 $</span></p>
-            </footer>
-            <div>
-              <a href="#" class="btn btn-info">Details</a>
-            </div>
-          </div>
+    <div class="row space-top">${items.map((item) => cardTemp(item))}</div>
+  </div>
+`;
+const cardTemp = (item) => html`
+  <div class="col-md-4">
+    <div class="card text-white bg-primary">
+      <div class="card-body">
+        <img src=${item.img} />
+        <p>${item.description}</p>
+        <footer>
+          <p>Price: <span>${item.price} $</span></p>
+        </footer>
+        <div>
+          <a href="/details/${item._id}" class="btn btn-info">Details</a>
         </div>
       </div>
     </div>
   </div>
 `;
 
-export function showDashboardView(ctx) {
-  debugger;
-  render(dashboardTemplate(), root);
+export async function showDashboardView(ctx) {
+  const data = await dataService.getAllFurniture();
+  ctx.render(dashboardTemplate(data));
 }
