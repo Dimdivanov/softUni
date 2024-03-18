@@ -4,6 +4,13 @@ import { userHelper } from '../src/utility/userHelper.js';
 import { showDashboardView } from './view/dashboardView.js';
 import { showRegisterView } from './view/registerView.js';
 import { showLoginView } from './view/loginView.js';
+import { showLogoutView } from './view/logoutView.js';
+import { showDetails } from './view/detailsView.js';
+import { showCreateView } from './view/createView.js';
+import { showMyFurnitureView } from './view/myFurnitureView.js';
+import { deleteItem } from './view/deleteView.js';
+import { showEditView } from './view/editView.js';
+
 //step 1 , step 2 requester
 const root = document.querySelector('div[data-id="root"]');
 const userNav = document.getElementById('user');
@@ -13,13 +20,14 @@ const guestNav = document.getElementById('guest');
 page(updateCTX);
 page('/', showDashboardView);
 page('/dashboard', showDashboardView);
-page('/create', () => console.error('create'));
-page('/details/:id', () => console.error('details'));
-page('/edit/:id', () => console.error('edit'));
-page('/myFurniture', () => console.error('myFurniture'));
+page('/create', showCreateView);
+page('/details/:id', showDetails);
+page('/delete/:id', deleteItem);
+page('/edit/:id', showEditView);
+page('/myFurniture', showMyFurnitureView);
 page('/login', showLoginView); //step11
 page('/register', showRegisterView);
-page('/logout', () => console.error('logout'));
+page('/logout', showLogoutView);
 
 page();
 //step 10 when logged in corrects the view
