@@ -6,9 +6,9 @@ import { showHomeView } from './src/views/homeView.js';
 import { showDashboardView } from './src/views/dashboardView.js';
 import { showDetailView } from './src/views/detailsView.js';
 import { showCreateView } from './src/views/createView.js';
-
+import { page } from '/node_modules/page/page.mjs';
 document.querySelectorAll('div[data-section="section"]').forEach((div) => div.remove());
-
+page();
 const main = document.getElementById('main');
 const nav = document.querySelector('nav');
 nav.addEventListener('click', onNavigate);
