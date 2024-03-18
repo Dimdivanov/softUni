@@ -94,7 +94,7 @@ let context = null;
 let id = null; //important step for onSubmit
 export async function showEditView(ctx) {
   context = ctx;
-  const id = context.params.id;
+  id = context.params.id;
   const item = await dataService.getFurnitureDetails(id);
   context.render(editTemp(item));
 }
@@ -133,11 +133,12 @@ async function onSubmit(e) {
     error.img = true;
     hasError = true;
   }
-
   const item = { make, model, year, description, price, img, material };
+
   if (hasError) {
     return context.render(editTemp(item, error));
   }
+
   await dataService.updateFurniture(id, item);
   context.goTo('/');
 }
