@@ -1,6 +1,6 @@
 import { getUser, removeUser } from '../utils/userUtils.js';
 
-const BASE_URL = 'http://localhost:3030/';
+const BASE_URL = 'http://localhost:3030';
 
 async function requester(method, endpoint, data) {
   const url = BASE_URL + endpoint;
@@ -11,10 +11,10 @@ async function requester(method, endpoint, data) {
   };
 
   if (userData) {
-    option.headers['x-authorization'] = userData.accessToken;
+    option.headers['X-Authorization'] = userData.accessToken;
   }
   if (data) {
-    option.headers['content-type'] = 'application/json';
+    option.headers['Content-Type'] = 'application/json';
     option.body = JSON.stringify(data);
   }
 

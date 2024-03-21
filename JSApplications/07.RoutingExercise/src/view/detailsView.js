@@ -3,7 +3,7 @@ import { dataService } from '../service/dataService.js';
 import { userHelper } from '../utility/userHelper.js';
 
 //step 12
-const detailsTemp = (item, isOwner) => html`
+const detailsTemp = (item, isOwner, isLogged) => html`
   <div class="row space-top">
     <div class="col-md-12">
       <h1>Furniture Details</h1>
@@ -24,7 +24,7 @@ const detailsTemp = (item, isOwner) => html`
       <p>Description: <span>${item.description}</span></p>
       <p>Price: <span>${item.price}</span></p>
       <p>Material: <span>${item.material}</span></p>
-      ${isOwner ? getButtons(item._id) : ''}
+      ${isOwner && isLogged ? getButtons(item._id) : ''}
     </div>
   </div>
 `;
@@ -42,5 +42,6 @@ export async function showDetails(ctx) {
   const itemId = ctx.params.id;
   const item = await dataService.getFurnitureDetails(itemId);
   const isOwner = userHelper.hasOwner(item._ownerId);
-  ctx.render(detailsTemp(item, isOwner));
+  const isLogged = userHelper.getUserId();
+  ctx.render(detailsTemp(item, isOwner, isLogged));
 }
