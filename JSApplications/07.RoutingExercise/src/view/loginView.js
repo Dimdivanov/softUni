@@ -36,7 +36,7 @@ async function onLogin(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
   const { email, password } = Object.fromEntries(formData);
-
+  
   if (!email || !password) {
     return alert('Error login');
   }

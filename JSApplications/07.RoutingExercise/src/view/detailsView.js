@@ -1,7 +1,7 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-
 import { dataService } from '../service/dataService.js';
 import { userHelper } from '../utility/userHelper.js';
+
 //step 12
 const detailsTemp = (item, isOwner) => html`
   <div class="row space-top">
