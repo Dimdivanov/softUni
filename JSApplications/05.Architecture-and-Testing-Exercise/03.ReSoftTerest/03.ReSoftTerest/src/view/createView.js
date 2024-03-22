@@ -52,14 +52,20 @@ export async function showCreateView(ctx) {
 
 async function onSubmit(e) {
   e.preventDefault();
+  const url = 'http://localhost:3030/data/ideas';
+
   const formData = new FormData(e.target);
-  let { title, description, imageURL } = Object.fromEntries(formData);
-  if (!title || !description || !imageURL) {
+  // let { title, description, imageURL } = Object.fromEntries(formData);
+  const title = formData.get('title');
+  const description = formData.get('description');
+  const img = formData.get('imageURL');
+
+  if (!title || !description || !img) {
     return;
   }
-  if (title.length < 6 || description.length < 10 || imageURL.lengt < 5) {
+  if (title.length < 6 || description.length < 10 || img.lengt < 5) {
     return;
   }
-  await dataService.createIdea({ title, description, imageURL });
+  await dataService.createIdea({ title, description, img });
   context.goTo('/dashboard');
 }
