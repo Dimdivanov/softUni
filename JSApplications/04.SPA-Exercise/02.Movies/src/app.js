@@ -1,55 +1,58 @@
-// [x] improve HTML structure
-// [x] create app.js module
-// [x] create util.js containing hide and display of view
-// [x] placeholders for all views
+import page from '../node_modules/page/page.mjs';
+import { render } from '../node_modules/lit-html/lit-html.js';
+import { userHelper } from './utility/userHelper.js';
+import { showLoginView } from './view/loginView.js';
+import { showRegisterView } from './view/registerView.js';
+import { showHomeView } from './view/homeView.js';
+import { showLogoutView } from './view/logoutView.js';
+import { showAddShowView } from './view/addShowView.js';
+import { showDetailsVeiw } from './view/showDetailsView.js';
+import { showEditView } from './view/showEditView.js';
 
-// implement views
-// - create request logic
-// - DOM manipulation logic
-// [x] catalog
-// [x] login
-// [ ] register
-// [ ] create
-// [ ] details
-// [ ] like
-// [ ] edit
-// [ ] delete
+const root = document.querySelector('main[data-id="root"]');
+const navigation = document.querySelectorAll('a[class="nav-link"]');
 
-import { homePage } from './home.js';
-import { loginPage } from './login.js';
-import { registerPage } from './register.js';
-import { createPage } from './create.js';
-import { updateNav } from './util.js';
+page(updateCTX);
+page('/', showHomeView);
+page('/home', showHomeView);
+page('/details/:id', showDetailsVeiw);
+page('/register', showRegisterView);
+page('/login', showLoginView);
+page('/logout', showLogoutView);
+page('/addShow', showAddShowView);
+page('/edit/:id', showEditView);
+updateNav();
+page();
 
-const routes = {
-  '/': homePage,
-  '/login': loginPage,
-  '/logout': logout,
-  '/register': registerPage,
-  '/create': createPage,
-};
+function renderer(temp) {
+  render(temp, root);
+}
 
-document.querySelector('nav').addEventListener('click', onNavigate);
-document.querySelector('#add-movie-button a').addEventListener('click', onNavigate);
+function updateCTX(ctx, next) {
+  ctx.render = renderer;
+  ctx.updateNav = updateNav;
+  ctx.goTo = goTo;
+  next();
+}
 
-function onNavigate(event) {
-  if (event.target.tagName == 'A' && event.target.href) {
-    event.preventDefault();
-
-    const url = new URL(event.target.href);
-    const view = routes[url.pathname];
-
-    if (typeof view == 'function') {
-      view();
-    }
+function updateNav() {
+  const user = userHelper.getUserData();
+  let welcomeMsg = document.getElementById('welcome-msg');
+  if (user) {
+    welcomeMsg.textContent = `Welcome, ${user.email}`;
+    navigation[0].style.display = 'inline-block';
+    navigation[1].style.display = 'inline-block';
+    navigation[2].style.display = 'none';
+    navigation[3].style.display = 'none';
+  } else {
+    welcomeMsg.textContent = `Welcome, email`;
+    navigation[3].style.display = 'inline-block';
+    navigation[2].style.display = 'inline-block';
+    navigation[1].style.display = 'none';
+    navigation[0].style.display = 'none';
   }
 }
 
-function logout() {
-  localStorage.removeItem('user');
-  updateNav();
+function goTo(path) {
+  page.redirect(path);
 }
-
-// Start application in catalog view
-updateNav();
-homePage();
