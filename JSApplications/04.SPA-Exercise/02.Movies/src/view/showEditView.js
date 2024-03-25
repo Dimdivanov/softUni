@@ -51,7 +51,7 @@ async function onSubmit(e) {
   if (!title || !description || !img) {
     return;
   }
-  const data = { title, description, img };
-  await dataService.updateShows(id, data);
+
+  await dataService.updateShows(id, { title, description, img });
   context.goTo(`/details/${id}`);
 }
