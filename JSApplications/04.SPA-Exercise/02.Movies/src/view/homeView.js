@@ -41,7 +41,7 @@ function generateMovies(showData, isLogged) {
         <a href="#"> </a>
       </div>
       <!--details button if logged in user -->
-      ${isLogged ? detailsForUsers(showData) : ''}
+      ${detailsForUsers(showData)}
     </li>
   `;
 }

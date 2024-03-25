@@ -8,6 +8,8 @@ import { showLogoutView } from './view/logoutView.js';
 import { showAddShowView } from './view/addShowView.js';
 import { showDetailsVeiw } from './view/showDetailsView.js';
 import { showEditView } from './view/showEditView.js';
+import { deleteShow } from './view/deleteView.js';
+import { like } from './view/liked.js';
 
 const root = document.querySelector('main[data-id="root"]');
 const navigation = document.querySelectorAll('a[class="nav-link"]');
@@ -21,6 +23,9 @@ page('/login', showLoginView);
 page('/logout', showLogoutView);
 page('/addShow', showAddShowView);
 page('/edit/:id', showEditView);
+page('/delete/:id', deleteShow);
+page('/liked/:id', like);
+
 updateNav();
 page();
 

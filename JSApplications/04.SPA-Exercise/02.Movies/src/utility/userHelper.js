@@ -14,6 +14,7 @@ function getUserToken() {
 }
 function getUserId() {
   const userData = getUserData();
+  
   return userData?._id;
 }
 function hasOwner(ownerId) {

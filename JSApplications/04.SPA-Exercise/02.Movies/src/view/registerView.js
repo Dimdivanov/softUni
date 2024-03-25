@@ -39,9 +39,10 @@ export async function showRegisterView(ctx) {
 async function onRegister(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
+
   const email = formData.get('email');
   const password = formData.get('password');
-  const rePass = formData.get('repeatpassword');
+  const rePass = formData.get('repeatPassword');
 
   if (!email || !password || password !== rePass) {
     alert('Error Register');

@@ -25,9 +25,6 @@ async function requester(method, url, data) {
     if (response.status === 204) {
       return response;
     }
-    if (response.status === 403) {
-      sessionStorage.removeItem('userData');
-    }
     return await response.json();
   } catch (error) {
     alert(error.message);

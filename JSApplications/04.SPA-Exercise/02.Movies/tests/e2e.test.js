@@ -1,7 +1,7 @@
 const { chromium } = require('playwright-chromium');
 const { expect } = require('chai');
 
-const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
+const host = 'http://127.0.0.1:5500/'; // Application host (NOT service host - that can be anything)
 
 const interval = 300;
 const DEBUG = false;
@@ -77,11 +77,9 @@ const endpoints = {
   edit: (id) => `/data/movies/${id}`,
   delete: (id) => `/data/movies/${id}`,
   details: (id) => `/data/movies/${id}`,
-  total: (likeId) =>
-    `/data/likes?where=movieId%3D%22${likeId}%22&distinct=_ownerId&count`,
+  total: (likeId) => `/data/likes?where=movieId%3D%22${likeId}%22&distinct=_ownerId&count`,
   unlike: (likeId) => `/data/likes/${likeId}`,
-  own: (likeId, userId) =>
-    `/data/likes?where=movieId%3D%22${likeId}%22%20and%20_ownerId%3D%22${userId}%22`,
+  own: (likeId, userId) => `/data/likes?where=movieId%3D%22${likeId}%22%20and%20_ownerId%3D%22${userId}%22`,
 };
 
 let browser;
@@ -91,12 +89,7 @@ let page;
 describe('E2E tests', function () {
   // Setup
   this.timeout(DEBUG ? 120000 : 7000);
-  before(
-    async () =>
-      (browser = await chromium.launch(
-        DEBUG ? { headless: false, slowMo } : {}
-      ))
-  );
+  before(async () => (browser = await chromium.launch(DEBUG ? { headless: false, slowMo } : {})));
   after(async () => await browser.close());
   beforeEach(async () => {
     context = await browser.newContext();
@@ -138,10 +131,7 @@ describe('E2E tests', function () {
       await page.waitForSelector('#register-form');
       await page.fill('#register-form >> [name="email"]', data.email);
       await page.fill('#register-form >> [name="password"]', data.password);
-      await page.fill(
-        '#register-form >> [name="repeatPassword"]',
-        data.password
-      );
+      await page.fill('#register-form >> [name="repeatPassword"]', data.password);
 
       const [request] = await Promise.all([
         onRequest(),
@@ -210,8 +200,7 @@ describe('E2E tests', function () {
 
       //Test for navigation
       expect(await page.isVisible('nav >> text=Movies')).to.be.true;
-      expect(await page.isVisible(`nav >> text=Welcome, ${data.email}`)).to.be
-        .true;
+      expect(await page.isVisible(`nav >> text=Welcome, ${data.email}`)).to.be.true;
       expect(await page.isVisible('nav >> text=Logout')).to.be.true;
 
       expect(await page.isVisible('nav >> text=Login')).to.be.false;
@@ -232,18 +221,14 @@ describe('E2E tests', function () {
       own(0);
       total(5);
 
-      await page.click("nav >> text=Movies");
+      await page.click('nav >> text=Movies');
       await page.waitForTimeout(interval);
 
-      await page.waitForSelector("#movie");
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.waitForSelector('#movie');
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
       await page.waitForTimeout(interval);
-      expect(await page.isVisible(`h1:has-text("Movie title: ${data.title}")`))
-        .to.be.true;
-      expect(await page.isVisible(`p:has-text("${data.description}")`)).to.be
-        .true;
+      expect(await page.isVisible(`h1:has-text("Movie title: ${data.title}")`)).to.be.true;
+      expect(await page.isVisible(`p:has-text("${data.description}")`)).to.be.true;
     });
 
     it('guest does NOT see edit/delete buttons', async () => {
@@ -262,9 +247,7 @@ describe('E2E tests', function () {
       await page.click('nav >> text=Movies');
 
       await page.waitForSelector('#movie');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
 
       expect(await page.isVisible('text="Delete"')).to.be.false;
       expect(await page.isVisible('text="Edit"')).to.be.false;
@@ -309,16 +292,10 @@ describe('E2E tests', function () {
 
       await page.waitForSelector('#add-movie-form');
       await page.fill('#add-movie-form >> [name="title"]', data.title);
-      await page.fill(
-        '#add-movie-form >> [name="description"]',
-        data.description
-      );
+      await page.fill('#add-movie-form >> [name="description"]', data.description);
       await page.fill('#add-movie-form >> [name="img"]', data.img);
 
-      const [request] = await Promise.all([
-        onRequest(),
-        page.click('form >> text=Submit'),
-      ]);
+      const [request] = await Promise.all([onRequest(), page.click('form >> text=Submit')]);
 
       const postData = JSON.parse(request.postData());
       expect(postData.title).to.equal(data.title);
@@ -337,9 +314,7 @@ describe('E2E tests', function () {
       own(0);
       total(5);
       await page.waitForSelector('#movie');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
 
       expect(await page.isVisible('text="Delete"')).to.be.false;
       expect(await page.isVisible('text="Edit"')).to.be.false;
@@ -357,9 +332,7 @@ describe('E2E tests', function () {
       own(0);
       total(5);
       await page.waitForSelector('#movie');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
 
       await page.waitForSelector('a');
 
@@ -381,16 +354,12 @@ describe('E2E tests', function () {
       total(5);
 
       await page.waitForSelector('#movie');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
 
       await page.click('text=Edit');
       await page.waitForSelector('#edit-movie form');
 
-      const inputs = await page.$$eval('#edit-movie input, textarea', (t) =>
-        t.map((i) => i.value)
-      );
+      const inputs = await page.$$eval('#edit-movie input, textarea', (t) => t.map((i) => i.value));
 
       expect(inputs[1]).to.equal(data.title);
       expect(inputs[2]).to.equal(data.description);
@@ -410,9 +379,7 @@ describe('E2E tests', function () {
       total(5);
 
       await page.waitForSelector('#movie');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
       await Promise.all([onResponse(), page.click('text="Delete"')]);
 
       expect(isHandled()).to.be.true;
@@ -433,9 +400,7 @@ describe('E2E tests', function () {
       await page.click('nav >> text=Movies');
 
       await page.waitForSelector('#movie');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
 
       expect(await page.isVisible('text="Like"')).to.be.false;
     });
@@ -461,13 +426,9 @@ describe('E2E tests', function () {
       await page.waitForSelector('nav');
 
       await page.click('nav >> text=Movies');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
       await page.waitForSelector('.enrolled-span');
-      const likes = await page.$$eval('.enrolled-span', (t) =>
-        t.map((s) => s.textContent)
-      );
+      const likes = await page.$$eval('.enrolled-span', (t) => t.map((s) => s.textContent));
       expect(await page.isVisible('.container >> text="Like"')).to.be.true;
       expect(likes[0]).to.contains('Liked 5');
     });
@@ -494,13 +455,9 @@ describe('E2E tests', function () {
       total(5);
 
       await page.click('nav >> text=Movies');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
       await page.waitForSelector('.container');
-      const likes = await page.$$eval('.container', (t) =>
-        t.map((s) => s.textContent)
-      );
+      const likes = await page.$$eval('.container', (t) => t.map((s) => s.textContent));
       expect(await page.isVisible('.btn >> text=Like')).to.be.false;
       expect(likes[0]).to.contains('Liked 5');
     });
@@ -533,28 +490,19 @@ describe('E2E tests', function () {
 
       await page.click('nav >> text=Movies');
       await page.waitForTimeout('#movie');
-      await page.click(
-        `#movie > div div ul li:has-text("${data.title}") >> text=Details`
-      );
+      await page.click(`#movie > div div ul li:has-text("${data.title}") >> text=Details`);
       await page.waitForSelector('.enrolled-span');
 
-      let likes = await page.$$eval('.enrolled-span', (t) =>
-        t.map((s) => s.textContent)
-      );
+      let likes = await page.$$eval('.enrolled-span', (t) => t.map((s) => s.textContent));
       expect(likes[0]).to.contains('Liked 5');
 
       own(1);
       total(6);
 
-      const [request] = await Promise.all([
-        onRequest(),
-        page.click('.container >> text="Like"'),
-      ]);
+      const [request] = await Promise.all([onRequest(), page.click('.container >> text="Like"')]);
 
       await page.waitForSelector('.enrolled-span');
-      likes = await page.$$eval('.enrolled-span', (t) =>
-        t.map((s) => s.textContent)
-      );
+      likes = await page.$$eval('.enrolled-span', (t) => t.map((s) => s.textContent));
       expect(likes[0]).to.contains('Liked 6');
     });
   });
@@ -580,11 +528,7 @@ async function setupContext(context) {
     get: mockData.catalog[2],
   });
 
-  await handleContext(
-    endpoints.profile('0001'),
-    { get: mockData.catalog.slice(0, 2) },
-    context
-  );
+  await handleContext(endpoints.profile('0001'), { get: mockData.catalog.slice(0, 2) }, context);
 
   await handleContext(endpoints.total('1001'), { get: 6 }, context);
   await handleContext(endpoints.total('1002'), { get: 4 }, context);

@@ -32,7 +32,6 @@ async function onCreate(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
   let { title, description, img } = Object.fromEntries(formData);
-  debugger;
   if (!title || !description || !img) {
     return;
   }

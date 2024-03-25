@@ -32,7 +32,7 @@ async function addLikes(movieId) {
   return await api.post(BASE_URL + endpoints.addLikes, movieId);
 }
 async function deleteLikes(id) {
-  return await api.del(BASE_URL + endpoints.tvShows + `/${id}`);
+  return await api.del(BASE_URL + endpoints.addLikes + `/${id}`);
 }
 
 async function getNumberOfLikes(movieId) {
