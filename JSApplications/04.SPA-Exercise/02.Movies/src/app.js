@@ -14,6 +14,7 @@ const root = document.querySelector('main[data-id="root"]');
 const navigation = document.querySelectorAll('a[class="nav-link"]');
 
 page(updateCTX);
+page('/index.html', '/home');
 page('/', showHomeView);
 page('/home', showHomeView);
 page('/details/:id', showDetailsVeiw);

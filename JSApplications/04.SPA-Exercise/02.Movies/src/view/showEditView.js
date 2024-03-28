@@ -47,6 +47,10 @@ async function onSubmit(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
   let { title, description, img } = Object.fromEntries(formData);
+  
+  title = title.trim();
+  description = description.trim();
+  img = img.trim();
 
   if (!title || !description || !img) {
     return;
