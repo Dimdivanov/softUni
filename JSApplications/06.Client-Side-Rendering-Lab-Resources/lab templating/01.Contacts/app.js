@@ -4,31 +4,31 @@ import { contacts } from './contacts.js';
 const root = document.getElementById('contacts');
 const htmlRend = (contacts) => html`${contacts.map((personInfo) => person(personInfo))}`;
 
-function person(contacts) {
+function person(info) {
   return html`
     <div class="contact card">
       <div>
         <i class="far fa-user-circle gravatar"></i>
       </div>
       <div class="info">
-        <h2>Name: ${contacts.name}</h2>
-        <button @click="${onClick}" class="detailsBtn">Details</button>
-        <div class="details" id=${contacts.id}></div>
+        <h2>Name: ${info.name}</h2>
+        <button @click="${showDetails}" class="detailsBtn">Details</button>
+        <div class="details" id="${info.id}" style="display: none;">
+          <p>Phone number: ${info.phoneNumber}</p>
+          <p>Email: ${info.email}</p>
+        </div>
       </div>
     </div>
   `;
 }
-
-function onClick(e) {
+function showDetails(e) {
   e.preventDefault();
-  const button = e.target;
-  const contact = button.nextElementSibling;
-  console.log(contact);
-  const detailsContent = html`
-    <p>Phone number: ${contacts.phoneNumber}</p>
-    <p>Email: ${contacts.email}</p>
-  `;
-  render(detailsContent, contact);
+  const div = e.target.nextElementSibling;
+  if (div.style.display == 'none') {
+    div.style.display = 'inline-block';
+  } else {
+    div.style.display = 'none';
+  }
 }
 
 render(htmlRend(contacts), root);
