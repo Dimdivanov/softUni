@@ -42,7 +42,7 @@ export async function showDetailsVeiw(ctx) {
 
   let likedTimes = await dataService.getNumberOfLikes(showId);
   let userLiked = await dataService.didUserLiked(showId, userId);
-  debugger;
+  
   async function onClick() {
     await dataService.sendLike(showId);
     showDetailsVeiw(ctx);
