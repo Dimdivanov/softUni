@@ -25,7 +25,7 @@ function showDetails(e) {
   e.preventDefault();
   const div = e.target.nextElementSibling;
   if (div.style.display == 'none') {
-    div.style.display = 'inline-block';
+    div.style.display = 'block';
   } else {
     div.style.display = 'none';
   }
