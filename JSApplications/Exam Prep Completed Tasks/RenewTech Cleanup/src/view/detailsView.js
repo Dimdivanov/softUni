@@ -2,7 +2,7 @@ import { html } from '../../node_modules/lit-html/lit-html.js';
 import { dataService } from '../service/dataService.js';
 import { userHelper } from '../utility/userHelper.js';
 
-const detailsViewTemp = (solution, isOwner, isLogged, likedTimes, userLiked, onClick) => html`
+const detailsViewTemp = (solution, isOwner, isLoggedIn, likedTimes, userLiked, onClick) => html`
   <section id="details">
     <div id="details-wrapper">
       <img id="details-img" src=${solution.imageUrl} alt="example1" />
@@ -19,7 +19,7 @@ const detailsViewTemp = (solution, isOwner, isLogged, likedTimes, userLiked, onC
         <!--Edit and Delete are only for creator-->
         <div id="action-buttons">
           ${isOwner ? buttonsDisplay(solution._id) : ''}
-          ${isOwner || !isLogged || userLiked
+          ${isOwner || !isLoggedIn || userLiked
             ? ''
             : html`
                 <!--Bonus - Only for logged-in users ( not authors )-->
@@ -40,19 +40,17 @@ function buttonsDisplay(id) {
 
 export async function showDetails(ctx) {
   const solutionId = ctx.params.id;
-
   const solution = await dataService.details(solutionId);
-
   const isOwner = userHelper.hasOwner(solution._ownerId);
   const userId = userHelper.getUserId();
-  const isLogged = !!userId;
+  const isLoggedIn = !!userId;
 
   let likedTimes = await dataService.allLikes(solutionId);
   let userLiked = await dataService.didUserLike(solutionId, userId);
-
+  debugger;
   async function onClick() {
     await dataService.likes(solutionId);
     showDetails(ctx);
   }
-  ctx.render(detailsViewTemp(solution, isOwner, isLogged, likedTimes, userLiked, onClick));
+  ctx.render(detailsViewTemp(solution, isOwner, isLoggedIn, likedTimes, userLiked, onClick));
 }

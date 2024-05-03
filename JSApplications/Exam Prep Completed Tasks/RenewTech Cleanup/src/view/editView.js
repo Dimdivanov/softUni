@@ -18,7 +18,7 @@ const editViewTemp = (sol) => html`
           cols="10"
         ></textarea>
         <textarea
-          .value="${sol.moreInfo}"
+          .value="${sol.learnMore}"
           id="more-info"
           name="more-info"
           placeholder="more Info"

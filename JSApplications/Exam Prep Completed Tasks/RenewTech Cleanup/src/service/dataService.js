@@ -35,7 +35,7 @@ async function allLikes(solutionId) {
   return await api.get(BASE_URL + endpoints.totalLikes(solutionId));
 }
 async function didUserLike(solutionId, userId) {
-  return await api.get(BASE_URL + endpoints.totalLikes(solutionId, userId));
+  return await api.get(BASE_URL + endpoints.numberLikes(solutionId, userId));
 }
 
 export const dataService = {
