@@ -1,4 +1,4 @@
-const calc = require('./calculator');
+const calc = require('./calculator-default-export');
 
 console.log(calc.sum(1, 2));
 console.log(calc.multiply(2, 3));
