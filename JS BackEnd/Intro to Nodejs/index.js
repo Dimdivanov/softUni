@@ -2,20 +2,61 @@ const http = require('http');
 const url = require('url');
 
 const siteCss = require('./resources/content/styles/site');
-const homeHtml = require('./resources/views/home/index');
+const { homeTemplate, catTemplate } = require('./resources/views/home/index');
 const addBreedHtml = require('./resources/views/addBreed');
 const addCatHtml = require('./resources/views/addCat');
-const editCatHtml = require('./resources/views/editCat');
+const { editCatHtml, editCatTemplate } = require('./resources/views/editCat');
 const newHomeHtml = require('./resources/views/catShelter');
 
 const port = 3000;
+const cats = [
+  {
+    id: 1,
+    name: 'Kircho',
+    breed: 'Orange Taby',
+    description: 'Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho.',
+    imageUrl: 'https://i.pinimg.com/736x/b0/d8/4f/b0d84f86386c80f2a8ed95df5a23673d.jpg',
+  },
+  {
+    id: 2,
+    name: 'Kirka',
+    breed: 'Siamese',
+    description: 'Look at this distinguished gentleman, look at the way he is sitting, myeaa',
+    imageUrl:
+      'https://preview.redd.it/polite-little-paws-v0-9nsssk2enxfb1.jpg?width=1080&crop=smart&auto=webp&s=7c9e0f7b1ea0a6bf847430999b4cc21e0dc443a8',
+  },
+  {
+    id: 3,
+    name: 'Prascho',
+    breed: 'Scottish Fold',
+    description: "This cat isn't born with two chins it's just FAT",
+    imageUrl: 'https://img.freepik.com/premium-photo/beautiful-gray-blue-adult-fat-scottish-fold-cat_280191-389.jpg',
+  },
+];
+const breeds = [];
 
 const server = http
   .createServer((req, res) => {
+    const { method, url } = req;
+    
     const path = url.parse(req.url).pathname;
+    const pathEnd = path.slice(-1);
 
     switch (path) {
       case '/':
+        const match = /{{\b([^{}]+)\b}}/g;
+
+        const catsHtml = cats
+          .map((cat) => {
+            return catTemplate.replace(match, (matchExact, group) => {
+              if (group === 'id') {
+                return cat[group];
+              }
+              return cat[group.trim()]; //cat[key] and replace it with the match
+            });
+          })
+          .join('');
+        const homeHtml = homeTemplate.replace('{{cats}}', catsHtml);
         res.writeHead(200, {
           'Content-Type': 'text/html',
         });
@@ -39,13 +80,14 @@ const server = http
         });
         res.write(addCatHtml);
         break;
-      case '/cats/edit-cat':
+      case '/cats/edit-cat/' + pathEnd:
+        const editHtml = editCatHtml.replace('{{form}}', editCatTemplate);
         res.writeHead(200, {
           'Content-Type': 'text/html',
         });
-        res.write(editCatHtml);
+        res.write(editHtml);
         break;
-      case '/cats/new-home':
+      case '/cats/delete-cat':
         res.writeHead(200, {
           'Content-Type': 'text/html',
         });
