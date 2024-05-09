@@ -33,7 +33,7 @@ exports.addCatHtml = `
             <input name="upload" type="file" id="image">
             <label for="group">Breed</label>
             <select name="breed" id="group">
-                {{breedOption}}
+                {{breedOpt}}
             </select>
             <button type="submit">Add Cat</button>
         </form>
@@ -44,6 +44,6 @@ exports.addCatHtml = `
 
 `;
 
-exports.breedOption = `
+exports.breedOpt = `
 <option value="Fluffy Cat">{{breed}}</option>
 `;
