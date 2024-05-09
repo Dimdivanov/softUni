@@ -10,12 +10,6 @@ function subtract(a, b) {
 
 //default export with Nodejs
 
-const calculator = {
-  sum,
-  multiply,
-  subtract,
-};
-
 exports.sum = sum;
 exports.multiply = multiply;
 exports.subtract = subtract;

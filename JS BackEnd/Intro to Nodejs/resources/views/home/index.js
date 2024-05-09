@@ -42,8 +42,8 @@ module.exports = `
               cute tho.
             </p>
             <ul class="buttons">
-              <li class="btn edit"><a href="">Change Info</a></li>
-              <li class="btn delete"><a href="">New Home</a></li>
+              <li class="btn edit"><a href="/cats/edit-cat">Change Info</a></li>
+              <li class="btn delete"><a href="/cats/new-home">New Home</a></li>
             </ul>
           </li>
           <li>
@@ -55,8 +55,8 @@ module.exports = `
               cute tho.
             </p>
             <ul class="buttons">
-              <li class="btn edit"><a href="">Change Info</a></li>
-              <li class="btn delete"><a href="">New Home</a></li>
+              <li class="btn edit"><a href="/cats/edit-cat">Change Info</a></li>
+              <li class="btn delete"><a href="/cats/new-home">New Home</a></li>
             </ul>
           </li>
           <li>
@@ -68,8 +68,8 @@ module.exports = `
               cute tho.
             </p>
             <ul class="buttons">
-              <li class="btn edit"><a href="">Change Info</a></li>
-              <li class="btn delete"><a href="">New Home</a></li>
+              <li class="btn edit"><a href="/cats/edit-cat">Change Info</a></li>
+              <li class="btn delete"><a href="/cats/new-home">New Home</a></li>
             </ul>
           </li>
           <li>
@@ -82,8 +82,8 @@ module.exports = `
               cute tho.
             </p>
             <ul class="buttons">
-              <li class="btn edit"><a href="">Change Info</a></li>
-              <li class="btn delete"><a href="">New Home</a></li>
+              <li class="btn edit"><a href="/cats/edit-cat">Change Info</a></li>
+              <li class="btn delete"><a href="/cats/new-home">New Home</a></li>
             </ul>
           </li>
           <li>
@@ -95,8 +95,8 @@ module.exports = `
               cute tho.
             </p>
             <ul class="buttons">
-              <li class="btn edit"><a href="">Change Info</a></li>
-              <li class="btn delete"><a href="">New Home</a></li>
+              <li class="btn edit"><a href="/cats/edit-cat">Change Info</a></li>
+              <li class="btn delete"><a href="/cats/new-home">New Home</a></li>
             </ul>
           </li>
         </ul>

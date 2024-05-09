@@ -6,6 +6,7 @@ const homeHtml = require('./resources/views/home/index');
 const addBreedHtml = require('./resources/views/addBreed');
 const addCatHtml = require('./resources/views/addCat');
 const editCatHtml = require('./resources/views/editCat');
+const newHomeHtml = require('./resources/views/catShelter');
 
 const port = 3000;
 
@@ -38,7 +39,18 @@ const server = http
         });
         res.write(addCatHtml);
         break;
-
+      case '/cats/edit-cat':
+        res.writeHead(200, {
+          'Content-Type': 'text/html',
+        });
+        res.write(editCatHtml);
+        break;
+      case '/cats/new-home':
+        res.writeHead(200, {
+          'Content-Type': 'text/html',
+        });
+        res.write(newHomeHtml);
+        break;
       default:
         res.writeHead(404);
         res.write('Page Not Found!');

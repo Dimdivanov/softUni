@@ -1,3 +1,4 @@
+module.exports = `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,3 +41,4 @@
 
 
 </html>
+`;
