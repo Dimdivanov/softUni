@@ -9,6 +9,11 @@ const subscribe = (eventName, eventListener) => {
     listeners[eventName] = [];
   }
   listeners[eventName].push(eventListener);
+  //unsub
+  return () => {
+    console.log('unsubed');
+    listeners[eventName] = listeners[eventName].filter((x) => x != eventListener);
+  };
 };
 
 const eventBus = {
@@ -17,5 +22,3 @@ const eventBus = {
 };
 
 module.exports = eventBus;
-
-
