@@ -45,5 +45,6 @@ exports.addCatHtml = `
 `;
 
 exports.breedOpt = `
-<option value="Fluffy Cat">{{breed}}</option>
+<option value="{{breed}}">{{breed}}</option>
 `;
+

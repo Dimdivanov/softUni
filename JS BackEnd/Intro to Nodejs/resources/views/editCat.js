@@ -46,3 +46,7 @@ exports.editCatTemplate = `
 <button>Edit Cat</button>
 </form>
 `;
+
+exports.breedDropMenu = `
+  <option value="{{breed}}">{{breed}}</option>
+`;
