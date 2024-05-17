@@ -2,9 +2,9 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 
-const { catShelterHtmlTemplate } = require('./resources/views/catShelter');
 const siteCss = require('./resources/content/styles/site');
 const addBreedHtml = require('./resources/views/addBreed');
+const newHomeHtml = require('./resources/views/catShelter');
 const { addCatHtml, breedOpt } = require('./resources/views/addCat');
 const { homeTemplate, catTemplate } = require('./resources/views/home/index');
 const { editCatHtml, editCatTemplate } = require('./resources/views/editCat');
@@ -78,7 +78,7 @@ function serveEditCatPage(req, res, pathEnd) {
 
 function serveDeleteCatPage(req, res) {
   res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.write(catShelterHtmlTemplate);
+  res.write(newHomeHtml);
 }
 
 function serveNotFoundPage(res) {

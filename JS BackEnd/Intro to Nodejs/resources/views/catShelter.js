@@ -1,4 +1,4 @@
-exports.catShelterHtmlTemplate = `
+module.exports = `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,4 +42,3 @@ exports.catShelterHtmlTemplate = `
 
 </html>
 `;
-
