@@ -5,7 +5,7 @@ async function fileReader(url, res) {
     let type;
     if (url.includes('.css')) {
       type = 'text/css';
-    } else if (url.includes('ico')) {
+    } else if (url.includes('.ico')) {
       type = 'image/x-icon';
     } else {
       type = 'text/html';

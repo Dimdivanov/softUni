@@ -5,6 +5,7 @@ const { fileReader } = require('./fileReader.js');
 
 const fileRoutes = {
   css: './content/styles/',
+  icon: './content/images/',
   views: './views/',
 };
 
@@ -17,6 +18,9 @@ http
         break;
       case '/styles/site.css':
         fileReader(fileRoutes.css + 'site.css', res);
+        break;
+      case '/images/pawprint.ico':
+        fileReader(fileRoutes.icon + 'pawprint.ico', res);
         break;
       case '/cats/add-breed':
         fileReader(fileRoutes.views + 'addBreed.html', res);
