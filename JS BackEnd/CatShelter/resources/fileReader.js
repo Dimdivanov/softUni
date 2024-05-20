@@ -3,14 +3,14 @@ const fs = require('fs').promises;
 async function fileReader(url, res) {
   try {
     let type;
-    if (url.includes('.css')) {
+    if (url.endsWith('.css')) {
       type = 'text/css';
-    } else if (url.includes('.ico')) {
-      type = 'image/x-icon';
+    } else if (url.endsWith('.ico')) {
+      type = 'image/svg+xml';
     } else {
       type = 'text/html';
     }
-    const data = await fs.readFile(url, 'utf8');
+    const data = await fs.readFile(url);
     res.writeHead(200, {
       'Content-Type': type,
     });

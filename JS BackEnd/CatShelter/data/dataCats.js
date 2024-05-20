@@ -23,6 +23,4 @@ const cats = [
   },
 ];
 
-
-module.exports = cats;
-
+module.exports = { cats };
