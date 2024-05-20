@@ -1,5 +1,3 @@
-const cats = require('../data/dataCats.json');
-
 function catFragment(cats) {
   return `
     <li>
@@ -34,7 +32,15 @@ function catInfoFragment(cats) {
       </form>
     `;
 }
+
+function breedsDropDownMenu(breed) {
+  return `
+    <option value="Fluffy Cat">${breed}</option>
+    `;
+}
+
 module.exports = {
   catFragment,
   catInfoFragment,
+  breedsDropDownMenu,
 };

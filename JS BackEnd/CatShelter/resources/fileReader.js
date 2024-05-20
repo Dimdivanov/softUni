@@ -1,6 +1,7 @@
 const fs = require('fs').promises;
 const fr = require('../resources/fragmentsGenerator');
 const cats = require('../data/dataCats.json');
+const breed = require('../data/dataBreeds.json');
 
 async function fileReader(url, res, content, catId) {
   try {
@@ -24,6 +25,8 @@ async function fileReader(url, res, content, catId) {
       data = data.replace(content, cat.map(fr.catInfoFragment));
     } else if (content === '{{catContent}}') {
       data = data.replace(content, cats.map(fr.catFragment).join('\n'));
+    } else if (content === '{{breedMenu}}') {
+      data = data.replace(content, breed.map(fr.breedsDropDownMenu));
     }
     res.write(data);
     res.end();

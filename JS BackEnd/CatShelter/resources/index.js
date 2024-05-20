@@ -29,7 +29,8 @@ http
         fileReader(fileRoutes.views + 'addBreed.html', res);
         break;
       case '/cats/add-cat':
-        fileReader(fileRoutes.views + 'addCat.html', res);
+        content = '{{breedMenu}}';
+        fileReader(fileRoutes.views + 'addCat.html', res, content);
         break;
       case '/edit/cat/' + catId:
         content = '{{catInfoContent}}';
