@@ -1,6 +1,8 @@
 const fs = require('fs').promises;
+const fr = require('../resources/fragmentsGenerator');
+const cats = require('../data/dataCats.json');
 
-async function fileReader(url, res) {
+async function fileReader(url, res, content, catId) {
   try {
     let type;
     if (url.endsWith('.css')) {
@@ -10,10 +12,19 @@ async function fileReader(url, res) {
     } else {
       type = 'text/html';
     }
-    const data = await fs.readFile(url);
+    let data = await fs.readFile(url, 'utf-8');
     res.writeHead(200, {
       'Content-Type': type,
     });
+
+    if (content === '{{catInfoContent}}') {
+      catId = Number(catId);
+      const cat = cats.filter((cat) => cat.id === catId);
+      console.log(cat);
+      data = data.replace(content, cat.map(fr.catInfoFragment));
+    } else if (content === '{{catContent}}') {
+      data = data.replace(content, cats.map(fr.catFragment).join('\n'));
+    }
     res.write(data);
     res.end();
   } catch (err) {

@@ -12,9 +12,12 @@ const fileRoutes = {
 http
   .createServer((req, res) => {
     const path = url.parse(req.url).pathname;
+    const catId = path.slice(-1);
+    let content;
     switch (path) {
       case '/':
-        fileReader(fileRoutes.views + 'home.html', res);
+        content = '{{catContent}}';
+        fileReader(fileRoutes.views + 'home.html', res, content);
         break;
       case '/styles/site.css':
         fileReader(fileRoutes.css + 'site.css', res);
@@ -28,12 +31,9 @@ http
       case '/cats/add-cat':
         fileReader(fileRoutes.views + 'addCat.html', res);
         break;
-      case '/edit/cat':
-        fileReader(fileRoutes.views + 'editCat.html', res);
-        break;
-      case '/delete/cat':
-        res.write('This will delete cat');
-        res.end();
+      case '/edit/cat/' + catId:
+        content = '{{catInfoContent}}';
+        fileReader(fileRoutes.views + 'editCat.html', res, content, catId);
         break;
       default:
         res.writeHead(404, { 'Content-Type': 'text/plain' });
