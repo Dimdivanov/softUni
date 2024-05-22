@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url');
+const formidable = require('formidable');
 
 const { fileReader } = require('./fileReader.js');
 
@@ -11,9 +12,11 @@ const fileRoutes = {
 
 http
   .createServer((req, res) => {
-    const path = url.parse(req.url).pathname;
-    const catId = path.slice(-1);
+    const parsedUrl = url.parse(req.url);
+    const path = parsedUrl.pathname;
+    const catId = path.split('/').pop();
     let content;
+
     switch (path) {
       case '/':
         content = '{{catContent}}';
@@ -33,8 +36,23 @@ http
         fileReader(fileRoutes.views + 'addCat.html', res, content);
         break;
       case '/edit/cat/' + catId:
-        content = '{{catInfoContent}}';
-        fileReader(fileRoutes.views + 'editCat.html', res, content, catId);
+        if (req.method === 'POST') {
+          const form = new formidable.IncomingForm();
+          form.parse(req, (err, fields, files) => {
+            const editedCat = {};
+            console.log('Fields:', fields);
+            (editedCat['name'] = fields.name), console.log(editedCat);
+            res.writeHead(302, { Location: '/edit/cat/' + catId });
+            res.end();
+          });
+        } else {
+          content = '{{catInfoContent}}';
+          fileReader(fileRoutes.views + 'editCat.html', res, content, catId);
+        }
+        break;
+      case '/delete/cat/' + catId:
+        content = '{{shelteroni}}';
+        fileReader(fileRoutes.views + 'catShelter.html', res, content, catId);
         break;
       default:
         res.writeHead(404, { 'Content-Type': 'text/plain' });
