@@ -16,7 +16,7 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'));
 
 //Parsing data (post requests)
-const bodyParser = express.urlencoded({ extended: false });
+const bodyParser = express.urlencoded({ extended: true });
 app.use(bodyParser);
 //Top menu controllers
 app.get('/', (req, res) => {
@@ -36,9 +36,11 @@ app.get('/cats/add-cat', (req, res) => {
 app.get('/change-info/:id', (req, res) => {
   const catId = Number(req.params.id);
   const cat = dataJson.find((cat) => cat.id === catId);
-  res.render('editCat', { cat, breed:dataBreedJson });
+  res.render('editCat', { cat, breed: dataBreedJson });
 });
-
+app.post('/change-info/:id', (req, res) => {
+  console.log(req.body);
+});
 app.get('/new-home', (req, res) => {
   res.render('editCat');
 });
