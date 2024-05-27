@@ -2,9 +2,9 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const app = express();
 
-const addBreed = require('./addBreedUtil');
-const dataJson = require('./data/dataCats.json');
-const dataBreedJson = require('./data/dataBreeds.json');
+const addBreed = require('../src/addBreedUtil');
+const dataJson = require('../src/data/dataCats.json');
+const dataBreedJson = require('../src/data/dataBreeds.json');
 
 const port = 3000;
 

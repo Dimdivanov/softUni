@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
-const dataBreedJson = require('./data/dataBreeds.json');
+const dataBreedJson = require('../src/data/dataBreeds.json');
 
 async function addBreed(breed, res) {
   if (!breed) {
