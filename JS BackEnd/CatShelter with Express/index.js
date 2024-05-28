@@ -2,9 +2,9 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const app = express();
 
-const addBreed = require('../src/addBreedUtil');
-const dataJson = require('../src/data/dataCats.json');
-const dataBreedJson = require('../src/data/dataBreeds.json');
+const addBreed = require('./addBreedUtil');
+const dataJson = require('./data/dataCats.json');
+const dataBreedJson = require('./data/dataBreeds.json');
 
 const port = 3000;
 
@@ -16,7 +16,7 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'));
 
 //Parsing data (post requests)
-const bodyParser = express.urlencoded({ extended: true });
+const bodyParser = express.urlencoded({ extended: false });
 app.use(bodyParser);
 //Top menu controllers
 app.get('/', (req, res) => {
