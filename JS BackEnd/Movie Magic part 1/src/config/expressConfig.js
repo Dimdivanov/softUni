@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
 
-function expressConfig(app) {
-  //Express Config -- path had to be changed
+function expressConfigurator(app) {
   app.use(express.static(path.resolve(__dirname, '../public')));
+  app.use(express.urlencoded({ extended: false }));
 }
 
-module.exports = expressConfig;
+module.exports = expressConfigurator;
