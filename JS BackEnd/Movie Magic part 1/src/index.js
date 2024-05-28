@@ -1,5 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -9,8 +10,8 @@ app.engine('hbs', handlebars.engine({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', 'src/views');
 
-//Loading css and other files
-app.use(express.static('public'));
+//Express Config
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 //Routes
 app.get('/', (req, res) => {
