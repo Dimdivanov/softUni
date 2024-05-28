@@ -6,14 +6,10 @@ router.get('/', (req, res) => {
 router.get('/about', (req, res) => {
   res.render('about');
 });
-router.get('/create', (req, res) => {
-  res.render('create');
-});
+//move these too
 router.get('/search', (req, res) => {
   res.render('search');
 });
-router.get('/details/:id', (req, res) => {
-  res.render('about');
-});
+
 
 module.exports = router;
