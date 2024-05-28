@@ -1,8 +1,17 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+const handlebars = require('express-handlebars');
 
-app.use('/', (req, res) => {
+const app = express();
+const PORT = 3000;
+
+//Handlebars config
+app.engine('hbs', handlebars.engine({ extname: 'hbs'}))
+app.set('view engine', 'hbs');
+
+//Routes
+app.get('/', (req, res) => {
   res.send('hello');
 });
-app.listen(port, console.log('App is running on 3000...'));
+
+
+app.listen(PORT, console.log(`App is running on ${PORT}...`));
