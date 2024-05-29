@@ -6,32 +6,33 @@
 
       <section id='details-page'>
 
-        <div class='main_card'>
-          <div class='card_left'>
-            <div class='card_datails'>
+        {{#with movie}}
+          <div class='main_card'>
+            <div class='card_left'>
+              <div class='card_datails'>
+                <h1>{{title}}</h1>
+                <div class='card-movie'>
+                  <div class='first-info'>
+                    <p class='card-genre'>Genre: {{genre}}</p>
+                    <p class='card-director'>Directror: {{director}}</p>
+                  </div>
+                  <div class='second-info'>
+                    <p class='card-year'>Year: {{year}}</p>
+                    <p class='card-ranking'>Rating:
+                      {{rating}}<span id='stars'> &#x2605; &#x2605; &#x2605; &#x2605;</span></p>
+                  </div>
 
-              <h1>{{movie.title}}</h1>
-              <div class='card-movie'>
-                <div class='first-info'>
-                  <p class='card-genre'>Genre: {{movie.genre}}</p>
-                  <p class='card-director'>Directror: {{movie.director}}</p>
-                </div>
-                <div class='second-info'>
-                  <p class='card-year'>Year: {{movie.year}}</p>
-                  <p class='card-ranking'>Rating:
-                    {{movie.rating}}<span id='stars'> &#x2605; &#x2605; &#x2605; &#x2605;</span></p>
                 </div>
 
+                <p class='disc'>Description: {{description}}</p>
               </div>
-
-              <p class='disc'>Description: {{movie.description}}</p>
             </div>
-          </div>
-          <div class='card_right'>
-            <img src={{movie.imageUrl}} alt='image' />
-          </div>
-        </div>
+            <div class='card_right'>
+              <img src={{imageUrl}} alt='image' />
+            </div>
 
+          </div>
+        {{/with}}
       </section>
 
     </main>
