@@ -7,7 +7,7 @@ exports.create = (movieData) => {
   return dataMovies;
 };
 
-exports.find = (movieId) => {
+exports.findOne = (movieId) => {
   const movie = dataMovies.find((movie) => movie.id === movieId);
   return movie;
 }
