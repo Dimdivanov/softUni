@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const dataMovies = require('../config/database.json');
 
 router.get('/', (req, res) => {
-  res.render('home');
+  res.render('home', { movies: dataMovies });
 });
 router.get('/about', (req, res) => {
   res.render('about');
@@ -10,6 +11,5 @@ router.get('/about', (req, res) => {
 router.get('/search', (req, res) => {
   res.render('search');
 });
-
 
 module.exports = router;
