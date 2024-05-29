@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const dataMovies = require('../config/database.json');
+const movieManager = require('../managers/movieManager');
 
 router.get('/', (req, res) => {
-  res.render('home', { movies: dataMovies });
+  const movies = movieManager.getAll();
+  res.render('home', { movies });
 });
 router.get('/about', (req, res) => {
   res.render('about');

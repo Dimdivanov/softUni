@@ -2,6 +2,7 @@ const express = require('express');
 
 const expressConfigurator = require('./config/expressConfig');
 const handlebarsConfigurator = require('./config/handlebarsConfig');
+
 const homeController = require('./controllers/homeController');
 const movieController = require('./controllers/movieController');
 
