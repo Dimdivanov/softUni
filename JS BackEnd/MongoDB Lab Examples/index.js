@@ -7,15 +7,20 @@ async function connectDb() {
   const cats = await Cat.find();
   // cats.forEach((cat) => cat.greet());
 
-  //creating a new data in the database / save
-  const newCat = new Cat({
-    name: 'Alex',
-    age: 20,
-    breed: 'Orange Taby',
-  });
-  await newCat.save();
+  //==creating a new data in the database / save
+  // const newCat = new Cat({
+  //   name: 'Alex',
+  //   age: 20,
+  //   breed: 'Orange Taby',
+  // });
+  // await newCat.save();
   //saveign ^
 
+  //== adding tricks in the array
+  cats[0].tricks.push('Back flip');
+  cats[1].tricks.push('Front flip');
+  console.log(cats);
+  // cats[0].save();
   cats.forEach((cat) => console.log(cat.infoCat));
 }
 
