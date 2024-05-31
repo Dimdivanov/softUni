@@ -1,18 +1,14 @@
 const dataMovies = require('../config/database.json');
 
 exports.getAll = (search, genre, year) => {
-  let filteredMovies = dataMovies.slice();
-
-  if (search) {
-    filteredMovies = filteredMovies.filter((movie) => movie.title.includes(search));
-  }
-  if (genre) {
-    filteredMovies = filteredMovies.filter((movie) => movie.genre.includes(genre));
-  }
-  if (year) {
-    filteredMovies = filteredMovies.filter((movie) => movie.year === parseInt(year));
-  }
-  return filteredMovies;
+  return dataMovies
+    .slice()
+    .filter(
+      (movie) =>
+        (!search || movie.title.includes(search)) &&
+        (!genre || movie.genre.includes(genre)) &&
+        (!year || movie.year === parseInt(year))
+    );
 };
 
 exports.create = (movieData) => {
