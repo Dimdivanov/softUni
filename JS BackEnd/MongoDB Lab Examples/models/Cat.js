@@ -6,6 +6,7 @@ const catSchema = new mongoose.Schema({
   breed: String,
 });
 //can attach methods to the schema
+// catSchema.method('gree', function()) - is also viable
 catSchema.methods.greet = function () {
   console.log(`Hello I\'m ${this.name}`);
 };
