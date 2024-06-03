@@ -12,7 +12,7 @@ async function connectDb() {
 
     //CRUD
     //Create
-    await Cat.create({
+    const justAnotherCat = await Cat.create({
       name: 'Hurikan',
       age: 1,
       breed: 'Siamese',
@@ -44,6 +44,15 @@ async function connectDb() {
     //   await cat.save(); // Wait for each save operation to complete
     // }
 
+    //Read (extract data)
+    //Cat.find({})
+    //Cat.findOne({condition}, {options})
+    //Cat.findbyId(id, {opts})
+
+    //Update (modify data)
+    //Cat.findByIdAndUpdate(id, {$set: {name: alabala}})
+    //Cat.updateOne({filter}, {$set: {name: alabala2}})
+    //Cat.updateMany({filter}, {$set: {name: alabala2}})
     cats.forEach((cat) => console.log(cat.infoCat));
 
     await mongoose.disconnect();
