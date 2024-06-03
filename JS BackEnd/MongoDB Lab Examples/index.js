@@ -55,6 +55,10 @@ async function connectDb() {
     //Cat.updateMany({filter}, {$set: {name: alabala2}})
     cats.forEach((cat) => console.log(cat.infoCat));
 
+    //Delete (remove data)
+    //Cat.findByIdAndDelete(id)
+    //Cat.deleteOne
+    //Cat.deleteMany
     await mongoose.disconnect();
   } catch (error) {
     console.error('Error connecting to the database:', error);
