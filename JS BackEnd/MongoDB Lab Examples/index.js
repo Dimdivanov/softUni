@@ -10,19 +10,32 @@ async function connectDb() {
     const cats = await Cat.find();
     // cats.forEach((cat) => cat.greet());
 
-    //==creating a new data in the database / save
-    const newCat = new Cat({
-      name: 'Hahoo',
+    //CRUD
+    //Create
+    await Cat.create({
+      name: 'Hurikan',
       age: 1,
-      breed: 'Taby',
-      tricks: ['zoomies', 'side flip'],
+      breed: 'Siamese',
+      tricks: ['Back flip', 'side flip'],
       address: {
-        city: 'Dobrich',
-        street: '51',
-        houseNumber: '51',
+        city: 'Varna',
+        street: '1000',
+        houseNumber: '52',
       },
     });
-    await newCat.save();
+    //==creating a new data in the database / save
+    // const newCat = new Cat({
+    //   name: 'Hahoo',
+    //   age: 1,
+    //   breed: 'Taby',
+    //   tricks: ['zoomies', 'side flip'],
+    //   address: {
+    //     city: 'Dobrich',
+    //     street: '51',
+    //     houseNumber: '51',
+    //   },
+    // });
+    // await newCat.save();
     //savign ^
 
     //== adding tricks in the array

@@ -10,9 +10,16 @@ const addressSchema = new mongoose.Schema({
 });
 const catSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  age: Number,
+  age: { type: Number, min: 0, max: 20 },
   breed: String,
-  tricks: [String],
+  tricks: {
+    type: [String],
+    //validating strings
+    enum: {
+      values: ['zoomies', 'Back flip', 'New Trick', 'side flip'],
+      message: 'not valid trick',
+    }
+  },
   address: {
     type: addressSchema,
   },
@@ -27,10 +34,10 @@ catSchema.virtual('infoCat').get(function () {
   return `My name is ${this.name} and I'm ${this.breed} and I can do ${this.tricks}`;
 });
 //validating the age property - can use build in validators like min/max
-//instead of value you put object with { type: Number, min: 0, max: 20}
-catSchema.path('age').validate(function (value) {
-  return value.age > 0 && value.age < 20;
-}, 'Age should be more than 0 and less than 20 y/o!');
+//instead of value you put object with { type: Number, min: 0, max: 20} like catSchema 
+// catSchema.path('age').validate(function (value) {
+//   return value.age >= 0 && value.age <= 20;
+// }, 'Age should be more than 0 and less than 20 y/o!');
 //create model
 const Cat = mongoose.model('Cat', catSchema);
 
