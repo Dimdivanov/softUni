@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 // we can add an array or {}
 //правим един единствен schema накрая с цялото инфо обекта масиви и т.н.
+//care new class declaration 
 const addressSchema = new mongoose.Schema({
   city: String,
   street: String,
@@ -14,7 +15,6 @@ const catSchema = new mongoose.Schema({
   tricks: [String],
   address: {
     type: addressSchema,
-    required: true,
   },
 });
 //can attach methods to the schema
