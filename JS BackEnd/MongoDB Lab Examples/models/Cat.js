@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // we can add an array or {}
 //правим един единствен schema накрая с цялото инфо обекта масиви и т.н.
-//care new class declaration 
+//care new class declaration
 const addressSchema = new mongoose.Schema({
   city: String,
   street: String,
@@ -26,7 +26,11 @@ catSchema.methods.greet = function () {
 catSchema.virtual('infoCat').get(function () {
   return `My name is ${this.name} and I'm ${this.breed} and I can do ${this.tricks}`;
 });
-
+//validating the age property - can use build in validators like min/max
+//instead of value you put object with { type: Number, min: 0, max: 20}
+catSchema.path('age').validate(function (value) {
+  return value.age > 0 && value.age < 20;
+}, 'Age should be more than 0 and less than 20 y/o!');
 //create model
 const Cat = mongoose.model('Cat', catSchema);
 
