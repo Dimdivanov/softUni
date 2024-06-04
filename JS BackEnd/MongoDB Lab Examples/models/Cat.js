@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-// we can add an array or {}
-//правим един единствен schema накрая с цялото инфо обекта масиви и т.н.
-//care new class declaration
 const addressSchema = new mongoose.Schema({
   city: String,
   street: String,
@@ -10,33 +7,31 @@ const addressSchema = new mongoose.Schema({
 });
 const catSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  age: { type: Number, min: 0, max: 20 },
+  age: { type: Number, min: 0, max: 20 }, //validating numbers
   breed: String,
   tricks: {
-    type: [String],
-    //validating strings
+    type: [String], //validating strings
     enum: {
       values: ['zoomies', 'Back flip', 'New Trick', 'side flip'],
       message: 'not valid trick',
-    }
+    },
   },
   address: {
     type: addressSchema,
   },
 });
-//can attach methods to the schema
-// catSchema.method('gree', function()) - is also viable
+//Model method
+//== catSchema.method('gree', function())
 catSchema.methods.greet = function () {
   console.log(`Hello I\'m ${this.name}`);
 };
-//creating a getter / setter which will not be displayed in the db
+//Model Virtual Property and creating a getter / setter which will not be displayed in the db
 catSchema.virtual('infoCat').get(function () {
   return `My name is ${this.name} and I'm ${this.breed} and I can do ${this.tricks}`;
 });
+//creating static methods
 
-//validating the age property - can use build in validators like min/max
-//instead of value you put object with { type: Number, min: 0, max: 20} like catSchema 
-
+//Property Validation
 // catSchema.path('age').validate(function (value) {
 //   return value.age >= 0 && value.age <= 20;
 // }, 'Age should be more than 0 and less than 20 y/o!');

@@ -8,7 +8,6 @@ async function connectDb() {
 
     // cat.find has all kinds of methods
     const cats = await Cat.find();
-    // cats.forEach((cat) => cat.greet());
 
     //CRUD
     //Create
@@ -39,14 +38,8 @@ async function connectDb() {
     await newCat.save();
     */
 
-    //== adding tricks in the array
-    // for (const cat of cats) {
-    //   cat.tricks.push('New Trick');
-    //   await cat.save(); // Wait for each save operation to complete
-    // }
-
     //Read (extract data)
-    //Cat.find({}) 
+    //Cat.find({})
     //Cat.findOne({condition}, {options})
     //Cat.findbyId(id, {opts})
 
@@ -55,12 +48,12 @@ async function connectDb() {
     //Cat.updateOne({filter}, {$set: {name: alabala2}})
     //Cat.updateMany({filter}, {$set: {name: alabala2}})
 
-    cats.forEach((cat) => console.log(cat.infoCat));
-
     //Delete (remove data)
     //Cat.findByIdAndDelete(id)
     //Cat.deleteOne
     //Cat.deleteMany
+
+    cats.forEach((cat) => console.log(cat.infoCat));
 
     await mongoose.disconnect();
   } catch (error) {
