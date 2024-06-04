@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const ObjectIdType = mongoose.Types.ObjectId;
 
 const movieSchema = new mongoose.Schema({
   title: {
@@ -43,11 +42,6 @@ const movieSchema = new mongoose.Schema({
       message: (props) => `${props.value} is not a valid URL!`,
     },
   },
-  // a collection of objId's and ref to Cast Model
-  //   cast: {
-  //     type: ObjectIdType,
-  //     ref: 'Cast',
-  //   },
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
