@@ -38,7 +38,6 @@ async function connectDb() {
     });
     await newCat.save();
     */
-    //savign ^
 
     //== adding tricks in the array
     // for (const cat of cats) {
@@ -55,12 +54,14 @@ async function connectDb() {
     //Cat.findByIdAndUpdate(id, {$set: {name: alabala}})
     //Cat.updateOne({filter}, {$set: {name: alabala2}})
     //Cat.updateMany({filter}, {$set: {name: alabala2}})
+
     cats.forEach((cat) => console.log(cat.infoCat));
 
     //Delete (remove data)
     //Cat.findByIdAndDelete(id)
     //Cat.deleteOne
     //Cat.deleteMany
+
     await mongoose.disconnect();
   } catch (error) {
     console.error('Error connecting to the database:', error);
