@@ -24,31 +24,20 @@ async function connectDb() {
       },
     });
     //Create 2nd variant
-
     /*
-    
-    const newAnotherCat = new Cat({
-      etc.
-      etc.
+    const newCat = new Cat({
+      name: 'Hahoo',
+      age: 1,
+      breed: 'Taby',
+      tricks: ['zoomies', 'side flip'],
+      address: {
+        city: 'Dobrich',
+        street: '51',
+        houseNumber: '51',
+      },
     });
-
-    await newAnotherCat.save();
-
+    await newCat.save();
     */
-
-    //==creating a new data in the database / save
-    // const newCat = new Cat({
-    //   name: 'Hahoo',
-    //   age: 1,
-    //   breed: 'Taby',
-    //   tricks: ['zoomies', 'side flip'],
-    //   address: {
-    //     city: 'Dobrich',
-    //     street: '51',
-    //     houseNumber: '51',
-    //   },
-    // });
-    // await newCat.save();
     //savign ^
 
     //== adding tricks in the array
@@ -58,7 +47,7 @@ async function connectDb() {
     // }
 
     //Read (extract data)
-    //Cat.find({})
+    //Cat.find({}) 
     //Cat.findOne({condition}, {options})
     //Cat.findbyId(id, {opts})
 
