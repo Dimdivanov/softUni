@@ -54,7 +54,19 @@ async function connectDb() {
     //Cat.deleteMany
 
     cats.forEach((cat) => console.log(cat.infoCat));
-
+    //mongoose Queries
+    /*
+    For equality / non-equality
+    Cat.findOne({'lastName':'Mishi'});
+    Cat.find({}).where('age').gt(7).lt(14);
+    Cat.find({}).where('age').equals('1');
+    For selection
+    Cat.findOne({'lastName':'Kirka'}).select('name age');
+    Sorting
+    Cat.find({}).sor({age: 1});
+    Limit & skip
+    Cat.find({}).sort({age:1}).skip(1).limit(6);
+    */
     await mongoose.disconnect();
   } catch (error) {
     console.error('Error connecting to the database:', error);
