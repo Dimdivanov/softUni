@@ -44,10 +44,10 @@ const movieSchema = new mongoose.Schema({
     },
   },
   // a collection of objId's and ref to Cast Model
-  cast: {
-    type: ObjectIdType,
-    ref: 'Cast',
-  },
+  //   cast: {
+  //     type: ObjectIdType,
+  //     ref: 'Cast',
+  //   },
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
