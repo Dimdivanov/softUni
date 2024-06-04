@@ -23,6 +23,19 @@ async function connectDb() {
         houseNumber: '52',
       },
     });
+    //Create 2nd variant
+
+    /*
+    
+    const newAnotherCat = new Cat({
+      etc.
+      etc.
+    });
+
+    await newAnotherCat.save();
+
+    */
+
     //==creating a new data in the database / save
     // const newCat = new Cat({
     //   name: 'Hahoo',
