@@ -40,6 +40,7 @@ catSchema.virtual('infoCat').get(function () {
 // catSchema.path('age').validate(function (value) {
 //   return value.age >= 0 && value.age <= 20;
 // }, 'Age should be more than 0 and less than 20 y/o!');
+
 //create model
 const Cat = mongoose.model('Cat', catSchema);
 
