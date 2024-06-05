@@ -5,10 +5,10 @@
         <h1>All Movies</h1>
         <div class='band'>
           <!-- If there are posts for creature in the database display each of them -->
-          {{#each movies}}
+          {{#each foundMovies}}
             <div class='flip flip-vertical'>
               <div class='front'>
-                <img src={{imageUrl}} alt={{title}} />
+                <img src={{image}} alt={{title}} />
               </div>
               <div class='back'>
                 <h1>{{title}}</h1>

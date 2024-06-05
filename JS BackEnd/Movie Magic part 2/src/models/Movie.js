@@ -13,11 +13,11 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  year: {
+  date: {
     type: Number,
     required: true,
-    min: [1800, 'Cannot be before {VALUE}'],
-    max: [2024, 'Cannot be after {VALUE}'],
+    min: [1878, 'Cannot be before {VALUE}'],
+    max: [2025, 'Cannot be after {VALUE}'],
   },
   rating: {
     type: Number,
@@ -29,18 +29,16 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: 1,
-    maxLength: 500,
+    maxLength: 1000,
   },
-  imageUrl: {
+  image: {
     type: String,
     required: true,
-    validate: {
-      validator: function (v) {
-        // Regular expression to match HTTP and HTTPS URLs
-        return /^(http|https):\/\/[^ "]+$/.test(v);
-      },
-      message: (props) => `${props.value} is not a valid URL!`,
-    },
+    match: /^https?/,
+  },
+  cast: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'Cast',
   },
 });
 

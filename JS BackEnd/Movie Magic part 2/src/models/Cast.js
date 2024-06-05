@@ -1,10 +1,6 @@
-const {
-  Schema,
-  model,
-  Schema: { Types },
-} = require('mongoose');
+const mongoose = require('mongoose');
 
-const castSchema = new Schema({
+const castSchema = new mongoose.Schema({
   name: { type: String, required: true },
   age: {
     type: Number,
@@ -20,23 +16,17 @@ const castSchema = new Schema({
     type: String,
     required: true,
   },
-  castImg: {
+  imageUrl: {
     type: String,
     required: true,
-    validate: {
-      validator: function (v) {
-        // Regular expression to match HTTP and HTTPS URLs
-        return /^(http|https):\/\/[^ "]+$/.test(v);
-      },
-      message: (props) => `${props.value} is not a valid URL!`,
-    },
+    match: /^https?/,
   },
   movie: {
-    type: Types.ObjectId,
+    type: [mongoose.Schema.Types.ObjectId],
     ref: 'Movie',
   },
 });
 
-const Cast = model('Article', castSchema);
+const Cast = mongoose.model('Cast', castSchema);
 
 module.exports = { Cast };

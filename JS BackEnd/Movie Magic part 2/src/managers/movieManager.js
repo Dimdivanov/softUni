@@ -1,22 +1,16 @@
-const dataMovies = require('../config/database.json');
+const Movie = require('../models/Movie');
 
-exports.getAll = (search, genre, year) => {
-  return dataMovies
-    .slice()
-    .filter(
-      (movie) =>
-        (!search || movie.title.includes(search)) &&
-        (!genre || movie.genre.includes(genre)) &&
-        (!year || movie.year === parseInt(year))
-    );
+exports.getAll = async () => {
+  const movies = await Movie.find({}).lean();
+  return movies;
 };
 
-exports.create = (movieData) => {
-  dataMovies.push(movieData);
-  return dataMovies;
+exports.create = async (movieData) => {
+  const result = await Movie.create(movieData);
+  return result;
 };
 
 exports.findOne = (movieId) => {
-  const movie = dataMovies.find((movie) => movie.id === movieId);
+  const movie = Movie.find(movieId);
   return movie;
 };
