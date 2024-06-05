@@ -19,7 +19,7 @@ const castSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
     required: true,
-    match: /^https?/,
+    match: /^https?:\/\//,
   },
   movie: {
     type: [mongoose.Schema.Types.ObjectId],

@@ -2,8 +2,7 @@ const router = require('express').Router();
 const movieManager = require('../managers/movieManager');
 
 router.get('/', async (req, res) => {
-  const foundMovies = await movieManager.getAll();
-  
+  const foundMovies = await movieManager.getAll().lean();
   res.render('home', { foundMovies });
 });
 router.get('/about', (req, res) => {

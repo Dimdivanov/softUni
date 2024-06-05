@@ -16,8 +16,9 @@ router.post('/create', async (req, res) => {
   }
 });
 
-router.get('/:movieId/details', (req, res) => {
-  const movie = movieManager.findOne(req.params.movieId);
+router.get('/:movieId/details', async (req, res) => {
+  const movieId = req.params.movieId;
+  const movie = await movieManager.findOne(movieId).lean();
   if (movie) {
     res.render('details', { movie });
   } else {
