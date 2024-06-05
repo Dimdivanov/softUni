@@ -5,7 +5,7 @@ const castSchema = new mongoose.Schema({
   age: {
     type: Number,
     required: true,
-    min: 1,
+    min: 14,
     max: 120,
   },
   born: {
@@ -16,7 +16,7 @@ const castSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  imageUrl: {
+  castImage: {
     type: String,
     required: true,
     match: /^https?:\/\//,
@@ -29,4 +29,4 @@ const castSchema = new mongoose.Schema({
 
 const Cast = mongoose.model('Cast', castSchema);
 
-module.exports = { Cast };
+module.exports = Cast;
