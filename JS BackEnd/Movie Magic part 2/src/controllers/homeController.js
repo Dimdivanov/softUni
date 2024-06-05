@@ -11,9 +11,7 @@ router.get('/about', (req, res) => {
 router.get('/404', (req, res) => {
   res.render('404');
 });
-//move these too
 router.get('/search', (req, res) => {
-  // const foundMovies = movieManager.getAll();
   res.render('search');
 });
 

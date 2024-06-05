@@ -6,6 +6,7 @@ const handlebarsConfigurator = require('./config/handlebarsConfig');
 
 const homeController = require('./controllers/homeController');
 const movieController = require('./controllers/movieController');
+const castController = require('./controllers/castController');
 
 const PORT = 3000;
 
@@ -18,6 +19,7 @@ async function start() {
   handlebarsConfigurator(app);
   //router
   app.use(homeController);
+  app.use('/cast', castController);
   app.use('/movies', movieController);
   app.use('/movies/:movieId', movieController);
   app.get('*', (req, res) => {
