@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const movieManager = require('../managers/movieManager');
+const castManager = require('../managers/castManager');
 
 router.get('/create', (req, res) => {
   res.render('create');
@@ -17,8 +18,7 @@ router.post('/create', async (req, res) => {
 });
 
 router.get('/:movieId/details', async (req, res) => {
-  const movieId = req.params.movieId;
-  const movie = await movieManager.findOne(movieId).lean();
+  const movie = await movieManager.findOne(req.params.movieId).lean();
   if (movie) {
     res.render('details', { movie });
   } else {
@@ -26,4 +26,10 @@ router.get('/:movieId/details', async (req, res) => {
   }
 });
 
+router.get('/:movieId/attach', async (req, res) => {
+  const movie = await movieManager.findOne(req.params.movieId).lean();
+  const casts = await castManager.getAll().lean();
+
+  res.render('movie/attach', { ...movie, casts });
+});
 module.exports = router;
