@@ -9,5 +9,5 @@ router.post('/create', async (req, res) => {
   await castManager.create(castData);
   res.redirect('/');
 });
-
+//get details of cast findOne
 module.exports = router;

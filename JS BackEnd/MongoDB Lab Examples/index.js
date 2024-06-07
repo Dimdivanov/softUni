@@ -3,7 +3,7 @@ const Cat = require('./models/Cat');
 
 async function connectDb() {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/db');
+    await mongoose.connect('mongodb://127.0.0.1:27017');
     console.log('Db connected successfully');
 
     // cat.find has all kinds of methods
