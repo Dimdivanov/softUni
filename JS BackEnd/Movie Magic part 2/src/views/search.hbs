@@ -1,46 +1,15 @@
-<body>
+<section id="search">
+    <h1>Search</h1>
+    <form action="/search" method="GET" class="form">
+        <input type="text" class="search" name="title" value="{{title}}" placeholder="Title...">
+        <input type="text" name="genre" class="genre" value="{{genre}}" placeholder="Genre...">
+        <input type="number" name="year" class="year" value="{{year}}" placeholder="Year...">
+        <input type="submit" value="search">
+    </form>
+</section>
 
-  <div id='box'>
-
-    <main>
-
-      <section id='search'>
-        <h1>Search</h1>
-        <form action='/search' method='GET' class='form'>
-          <input type='text' class='search' name='search' placeholder='Title...' />
-          <input type='text' name='genre' class='genre' placeholder='Genre...' />
-          <input type='number' name='year' class='year' placeholder='Year...' />
-          <input type='submit' value='search' />
-        </form>
-      </section>
-
-      <section id='catalog'>
-        <div class='band'>
-          <!-- If there are posts for movie in the database display each of them -->
-          {{#each foundMovies}}
-          <div class='flip flip-vertical'>
-            <div class='front'>
-              <img src={{imageUrl}} alt='image' />
-            </div>
-            <div class='back'>
-              <h1>{{title}}</h1>
-              <h2>Genre: {{genre}}</h2>
-              <p>Description: {{description}}
-              </p>
-              <a href='/movies/{{id}}/details' class='details'>Details</a>
-            </div>
-          </div>
-          {{else}}
-          <!-- If there are no posts matched display: -->
-          <div class="no-posts">
-              <p class="no-offer">There are no movies matched...</p>
-          </div>
-        </div>
-        {{/each}}
-      </section>
-
-    </main>
-
-  </div>
-
-</body>
+<section id="catalog">
+    <div class="band">
+        {{> catalog }}
+    </div>
+</section>

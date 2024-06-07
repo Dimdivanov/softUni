@@ -13,7 +13,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  year: {
     type: Number,
     required: true,
     min: [1878, 'Cannot be before {VALUE}'],
@@ -31,7 +31,7 @@ const movieSchema = new mongoose.Schema({
     minLength: 1,
     maxLength: 1000,
   },
-  image: {
+  imageUrl: {
     type: String,
     required: true,
     match: /^https?:\/\//,

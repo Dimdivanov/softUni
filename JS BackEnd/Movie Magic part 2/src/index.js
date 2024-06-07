@@ -25,7 +25,7 @@ async function start() {
   app.get('*', (req, res) => {
     res.redirect('/404');
   });
-  
+
   app.listen(PORT, console.log(`App is running on ${PORT}...`));
 }
 

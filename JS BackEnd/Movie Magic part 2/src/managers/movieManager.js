@@ -4,16 +4,23 @@ exports.getAll = () => Movie.find();
 exports.create = (movieData) => Movie.create(movieData);
 exports.findOne = (movieId) => Movie.findById(movieId);
 
-exports.search = async (title, genre, year) => {
-  let result = await Movie.find().lean();
+exports.search = (title, genre, year) => {
+  let query = {};
+
   if (title) {
-    result = result.filter((movie) => movie.title.toLowerCase().includes(title.toLowerCase()));
+    query.title = { $regex: new RegExp(title, 'i') };
   }
+
   if (genre) {
-    result = result.filter((movie) => movie.genre.toLowerCase() === genre.toLowerCase());
+    query.genre = { $regex: new RegExp(genre, 'i') };
   }
+
   if (year) {
-    result = result.filter((movie) => movie.year === year);
+    const parsedYear = parseInt(year, 10);
+    if (!isNaN(parsedYear)) {
+      query.year = parsedYear;
+    }
   }
-  return result;
+  console.log(query);
+  return Movie.find(query);
 };
