@@ -28,7 +28,6 @@ router.get('/:movieId/details', async (req, res) => {
 
 router.get('/:movieId/attach', async (req, res) => {
   const movie = await movieManager.findOne(req.params.movieId).lean();
-
   const casts = await castManager.getAll().lean();
 
   res.render('movie/attach', { ...movie, casts });
