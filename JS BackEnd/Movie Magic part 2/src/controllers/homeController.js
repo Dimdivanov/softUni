@@ -11,7 +11,7 @@ router.get('/about', (req, res) => {
 router.get('/search', async (req, res) => {
   try {
     const { title, genre, year } = req.query;
-    const foundMovies = await movieManager.search(title.trim(), genre.trim(), year.trim()).lean();
+    const foundMovies = await movieManager.search(title, genre, year).lean();
     res.render('search', { foundMovies });
   } catch (error) {
     console.error('Error searching movies:', error);

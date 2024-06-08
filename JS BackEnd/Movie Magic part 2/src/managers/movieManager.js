@@ -6,7 +6,6 @@ exports.findOne = (movieId) => Movie.findById(movieId);
 
 exports.search = (title, genre, year) => {
   let query = {};
-
   if (title) {
     query.title = { $regex: new RegExp(title, 'i') };
   }
@@ -21,6 +20,5 @@ exports.search = (title, genre, year) => {
       query.year = parsedYear;
     }
   }
-  console.log(query);
   return Movie.find(query);
 };

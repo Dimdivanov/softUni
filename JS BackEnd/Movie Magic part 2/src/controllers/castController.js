@@ -10,4 +10,5 @@ router.post('/create', async (req, res) => {
   res.redirect('/');
 });
 //get details of cast findOne
+//attach all casts to movies
 module.exports = router;
