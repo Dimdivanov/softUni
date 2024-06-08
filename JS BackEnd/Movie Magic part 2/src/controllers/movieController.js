@@ -29,13 +29,14 @@ router.get('/:movieId/details', async (req, res) => {
 router.get('/:movieId/attach', async (req, res) => {
   const movie = await movieManager.findOne(req.params.movieId).lean();
   const casts = await castManager.getAll().lean();
-
   res.render('movie/attach', { ...movie, casts });
 });
 router.post('/:movieId/attach', async (req, res) => {
   const castId = await castManager.findOne(req.body.cast);
   const movieId = req.params.movieId;
+  await castManager.popCast(movieId, castId);
   await movieManager.updateOne(movieId, castId);
+
   res.redirect(`/movies/${movieId}/attach`);
 });
 module.exports = router;
