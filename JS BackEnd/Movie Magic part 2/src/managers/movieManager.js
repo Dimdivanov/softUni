@@ -3,6 +3,9 @@ const Movie = require('../models/Movie');
 exports.getAll = () => Movie.find();
 exports.create = (movieData) => Movie.create(movieData);
 exports.findOne = (movieId) => Movie.findById(movieId);
+exports.updateOne = (movieId, castId) => {
+  return Movie.findByIdAndUpdate(movieId, { $addToSet: { cast: castId } });
+};
 
 exports.search = (title, genre, year) => {
   let query = {};

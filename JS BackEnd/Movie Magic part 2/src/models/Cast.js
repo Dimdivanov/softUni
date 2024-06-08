@@ -21,10 +21,10 @@ const castSchema = new mongoose.Schema({
     required: true,
     match: /^https?:\/\//,
   },
-  movie: {
-    type: [mongoose.Schema.Types.ObjectId],
+  movie: [{
+    type: mongoose.Types.ObjectId,
     ref: 'Movie',
-  },
+  }],
 });
 
 const Cast = mongoose.model('Cast', castSchema);

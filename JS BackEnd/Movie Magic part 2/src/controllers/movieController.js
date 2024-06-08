@@ -32,4 +32,10 @@ router.get('/:movieId/attach', async (req, res) => {
 
   res.render('movie/attach', { ...movie, casts });
 });
+router.post('/:movieId/attach', async (req, res) => {
+  const castId = await castManager.findOne(req.body.cast);
+  const movieId = req.params.movieId;
+  await movieManager.updateOne(movieId, castId);
+  res.redirect(`/movies/${movieId}/attach`);
+});
 module.exports = router;
