@@ -19,7 +19,9 @@ router.post('/create', async (req, res) => {
 
 router.get('/:movieId/details', async (req, res) => {
   const movie = await movieManager.findOne(req.params.movieId).lean();
-  if (movie) {
+  const cast = await castManager.findOne(req.params.castId).lean();
+  if (movie || cast) {
+    console.log(cast);
     res.render('details', { movie });
   } else {
     res.status(404).render('404');
@@ -36,7 +38,6 @@ router.post('/:movieId/attach', async (req, res) => {
   const movieId = req.params.movieId;
   await castManager.popCast(movieId, castId);
   await movieManager.updateOne(movieId, castId);
-
   res.redirect(`/movies/${movieId}/attach`);
 });
 module.exports = router;
