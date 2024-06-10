@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost:27017/movie-magic';
+const CONNECTIONSTRING = 'mongodb://localhost:27017/movie-magic';
 
 async function configDataBase() {
-  await mongoose.connect(connectionString);
+  await mongoose.connect(CONNECTIONSTRING);
   console.log('Database connected!');
 }
 
