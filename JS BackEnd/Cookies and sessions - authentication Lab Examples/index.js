@@ -1,48 +1,97 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
-
-const PORT = 3000;
+const jsonwebtoken = require('jsonwebtoken');
 
 const app = express();
-//using cookies
-app.use(cookieParser());
-//encoding all posts
+
+const secret = 'aklsjdlasjkdlakjsdjklasdjlasjdl';
+
+const db = {};
+
 app.use(express.urlencoded({ extended: false }));
-//disable x-powered-by to not display in browser
-app.disable('x-powered-by');
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
-  const user = req.cookies['user'];
-  if (!user) {
-    res.send('Please Login');
-  } else {
-    res.send(`Hello ${user}`);
+  const token = req.cookies['auth'];
+
+  if (!token) {
+    return res.send('Please login');
+  }
+
+  try {
+    const decodedToken = jsonwebtoken.verify(token, secret);
+    console.log(decodedToken);
+
+    res.send(`Welcome ${decodedToken['username']}`);
+  } catch (error) {
+    res.status(403).send('Unauthorized');
   }
 });
 
 app.get('/login', (req, res) => {
   res.send(`
-    <h2>Login Form</h2>
     <form action="/login" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        
-        <button type="submit">Login</button>
+        <label>Username</label>
+        <input type="text" name="username" />
+        <label>Password</label>
+        <input type="password" name="password" />
+        <input type="submit" value="login">
     </form>
     `);
 });
+
 app.post('/login', async (req, res) => {
-  const salt = await bcrypt.genSalt(10);
-  const saltedHash = await bcrypt.hash(req.body.password, salt);
-  console.log(salt);
-  console.log(saltedHash);
-  bcrypt.compare(req.body.password, saltedHash, (err, res) => {
-    console.log(res);
-  });
-  res.cookie('user', saltedHash);
+  const hash = db[req.body.username];
+
+  if (!hash) {
+    return res.status(401).end();
+  }
+
+  // CHeck if password is valid
+  const isValid = await bcrypt.compare(req.body.password, hash);
+
+  if (!isValid) {
+    return res.status(401).send('Unauthorized');
+  }
+
+  // Generate token
+  const payload = {
+    username: req.body.username,
+  };
+
+  // USE Synchronous sign, not recommended!
+  const token = jsonwebtoken.sign(payload, secret, { expiresIn: '2h' });
+
+  res.cookie('auth', token, { httpOnly: true });
+
+  res.send('Logged in successfully');
+});
+
+app.get('/register', (req, res) => {
+  res.send(`
+    <form action="/register" method="post">
+        <label>Username</label>
+        <input type="text" name="username" />
+        <label>Password</label>
+        <input type="password" name="password" />
+        <input type="submit" value="login">
+    </form>
+    `);
+});
+
+app.post('/register', async (req, res) => {
+  // const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(req.body.password, 12);
+  console.log(hash);
+  db[req.body.username] = hash;
+
+  res.redirect('/login');
+});
+
+app.get('/logout', (req, res) => {
+  res.clearCookie('user');
   res.end();
 });
-app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
+
+app.listen(3000, () => console.log('Server is listening on http://localhost:3000...'));
