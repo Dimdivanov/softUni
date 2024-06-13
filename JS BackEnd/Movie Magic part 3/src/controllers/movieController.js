@@ -40,7 +40,15 @@ router.post('/:movieId/attach', async (req, res) => {
   res.redirect(`/movies/${movieId}/attach`);
 });
 
-router.get('/:movieId/edit', (req, res) => {
-  res.render('movie/edit');
+router.get('/:movieId/edit', async (req, res) => {
+  const movie = await movieManager.findOne(req.params.movieId).lean();
+  res.render('movie/edit', { movie });
+});
+
+router.post('/:movieId/edit', async (req, res) => {
+  const movie = req.body;
+  const movieId = req.params.movieId;
+  await movieManager.editMovie(movieId, movie);
+  res.redirect(`/movies/${movieId}/details`);
 });
 module.exports = router;

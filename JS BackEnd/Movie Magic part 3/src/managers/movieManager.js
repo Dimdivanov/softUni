@@ -4,9 +4,11 @@ exports.getAll = () => Movie.find();
 exports.create = (movieData) => Movie.create(movieData);
 exports.findOne = (movieId) => Movie.findById(movieId).populate('cast');
 exports.updateOne = (movieId, castId) => {
-  
   return Movie.findByIdAndUpdate(movieId, { $addToSet: { cast: castId } });
 };
+exports.editMovie = (movieId, movie) => {
+  return Movie.findByIdAndUpdate(movieId, movie);
+}
 //populate the movies with cast data.
 exports.search = (title, genre, year) => {
   let query = {};
