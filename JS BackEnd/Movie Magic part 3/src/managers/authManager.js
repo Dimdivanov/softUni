@@ -1,9 +1,9 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
-//jwt mini lib 
+const { SECRET } = require('../config/config');
+//jwt mini lib
 const jwt = require('../lib/jwt');
 
-const SECRET = 'dasdas123sgdfsdfgsdfgsdfgsdfgsdfgsdxvvcx';
 // TO DO check if user exists
 exports.register = (userData) => User.create(userData);
 
@@ -26,6 +26,6 @@ exports.login = async (email, password) => {
   };
 
   // return token
-  const token = await jwt.sign(payload, SECRET, { expiresIn: '2h' });
+  const token = await jwt.sign(payload, SECRET, { expiresIn: '3h' });
   return token;
 };
