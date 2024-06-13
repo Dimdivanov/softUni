@@ -16,6 +16,8 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  await authManager.login(email, password);
+  const token = await authManager.login(email, password);
+  console.log(token);
+  res.redirect('/')
 });
 module.exports = router;
