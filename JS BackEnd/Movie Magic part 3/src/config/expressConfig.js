@@ -5,7 +5,7 @@ const { auth } = require('../middleware/authMiddleware');
 
 function expressConfigurator(app) {
   app.use(express.static(path.resolve(__dirname, '../public')));
-  app.use(express.urlencoded({ extended: true }));
+  app.use(express.urlencoded({ extended: false }));
   app.use(cookieParser());
   app.use(auth);
 
