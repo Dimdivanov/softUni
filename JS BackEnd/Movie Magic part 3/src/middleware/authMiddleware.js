@@ -11,6 +11,8 @@ exports.auth = async (req, res, next) => {
     const decodedToken = await jwt.verify(token, SECRET);
     // req.user = id , email
     req.user = decodedToken;
+    //authenticate user to every page to display menu
+    res.locals.isAuthenticated = true;
     next();
   } catch (error) {
     //display error here
@@ -21,7 +23,7 @@ exports.auth = async (req, res, next) => {
 
 exports.isAuth = (req, res, next) => {
   if (!req.user) {
-    res.redirect('/auth/login');
+    return res.redirect('/auth/login');
   }
   next();
 };

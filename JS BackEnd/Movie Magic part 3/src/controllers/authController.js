@@ -7,7 +7,7 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
   const userData = req.body;
   await authManager.register(userData);
-  res.redirect('auth/login');
+  res.redirect('/auth/login');
 });
 
 router.get('/login', (req, res) => {
@@ -20,4 +20,10 @@ router.post('/login', async (req, res) => {
   res.cookie('auth', token);
   res.redirect('/');
 });
+
+router.get('/logout', (req, res) => {
+  res.clearCookie('auth');
+  res.redirect('/');
+});
+
 module.exports = router;

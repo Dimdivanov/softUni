@@ -1,33 +1,27 @@
-<body>
-  <div id='box'>
-    <main>
-      <section id='catalog'>
-        <h1>All Movies</h1>
-        <div class='band'>
-          <!-- If there are posts for created in the database display each of them -->
-          {{#each foundMovies}}
-            <div class='flip flip-vertical'>
-              <div class='front'>
-                <img src={{imageUrl}} alt={{title}} />
-              </div>
-              <div class='back'>
-                <h1>{{title}}</h1>
-                <h2>Genre: {{genre}}</h2>
-                <p>Description:
-                  {{description}}
-                </p>
-                <a href='/movies/{{_id}}/details' class='details'>Details</a>
-                <a href='/movies/{{_id}}/attach' class='details'>Attach</a>
-              </div>
-            </div>
-            <!-- If there are still no posts in the database display: -->
-          {{else}}
-            <div class='no-posts'>
-              <p class='no-offer'>There are no posts yet...</p>
-            </div>
-          {{/each}}
+<section id='catalog'>
+  <h1>All Movies</h1>
+  <div class='band'>
+    <!-- If there are posts for created in the database display each of them -->
+    {{#each foundMovies}}
+      <div class='flip flip-vertical'>
+        <div class='front'>
+          <img src={{imageUrl}} alt={{title}} />
         </div>
-      </section>
-    </main>
+        <div class='back'>
+          <h1>{{title}}</h1>
+          <h2>Genre: {{genre}}</h2>
+          <p>Description:
+            {{description}}
+          </p>
+          <a href='/movies/{{_id}}/details' class='details'>Details</a>
+          <a href='/movies/{{_id}}/attach' class='details'>Attach</a>
+        </div>
+      </div>
+      <!-- If there are still no posts in the database display: -->
+    {{else}}
+      <div class='no-posts'>
+        <p class='no-offer'>There are no posts yet...</p>
+      </div>
+    {{/each}}
   </div>
-</body>
+</section>
