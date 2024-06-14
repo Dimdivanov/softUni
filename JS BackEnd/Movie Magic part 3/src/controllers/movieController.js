@@ -25,7 +25,7 @@ router.post('/create', isAuth, async (req, res) => {
 router.get('/:movieId/details', async (req, res) => {
   const movie = await movieManager.findOne(req.params.movieId).lean();
   const cast = await castManager.findOne(req.params.castId).lean();
-  const isOwner = movie.owner == req.user?._id;
+  const isOwner = movie.owner && movie.owner == req.user?._id;
 
   res.render('details', { movie, isOwner });
 });
@@ -51,6 +51,12 @@ router.get('/:movieId/edit', isAuth, async (req, res) => {
   res.render('movie/edit', { movie });
 });
 
+router.get('/:movieId/delete', isAuth, async (req, res) => {
+  const movieId = req.params.movieId;
+  await movieManager.del(movieId);
+  res.redirect('/');
+});
+
 router.post('/:movieId/edit', isAuth, async (req, res) => {
   const movie = req.body;
   const movieId = req.params.movieId;
@@ -58,4 +64,5 @@ router.post('/:movieId/edit', isAuth, async (req, res) => {
   await movieManager.editMovie(movieId, movie);
   res.redirect(`/movies/${movieId}/details`);
 });
+
 module.exports = router;

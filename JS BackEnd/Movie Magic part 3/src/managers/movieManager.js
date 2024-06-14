@@ -8,7 +8,10 @@ exports.updateOne = (movieId, castId) => {
 };
 exports.editMovie = (movieId, movie) => {
   return Movie.findByIdAndUpdate(movieId, movie);
-}
+};
+exports.del = (movieId) => {
+  return Movie.findByIdAndDelete(movieId);
+};
 //populate the movies with cast data.
 exports.search = (title, genre, year) => {
   let query = {};
