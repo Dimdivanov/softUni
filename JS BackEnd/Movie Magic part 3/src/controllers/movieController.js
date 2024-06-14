@@ -1,13 +1,18 @@
 const router = require('express').Router();
 const movieManager = require('../managers/movieManager');
 const castManager = require('../managers/castManager');
+const { isAuth } = require('../middleware/authMiddleware');
 
-router.get('/create', (req, res) => {
+router.get('/create', isAuth, (req, res) => {
   res.render('create');
 });
 
-router.post('/create', async (req, res) => {
-  const newMovie = req.body;
+router.post('/create', isAuth, async (req, res) => {
+  const newMovie = {
+    ...req.body,
+    owner: req.user._id,
+  };
+
   try {
     await movieManager.create(newMovie);
     res.redirect('/');
@@ -27,12 +32,12 @@ router.get('/:movieId/details', async (req, res) => {
   }
 });
 
-router.get('/:movieId/attach', async (req, res) => {
+router.get('/:movieId/attach', isAuth, async (req, res) => {
   const movie = await movieManager.findOne(req.params.movieId).lean();
   const casts = await castManager.getAll().lean();
   res.render('movie/attach', { ...movie, casts });
 });
-router.post('/:movieId/attach', async (req, res) => {
+router.post('/:movieId/attach', isAuth, async (req, res) => {
   const castId = await castManager.findOne(req.body.cast);
   const movieId = req.params.movieId;
   await castManager.popCast(movieId, castId);
@@ -40,7 +45,7 @@ router.post('/:movieId/attach', async (req, res) => {
   res.redirect(`/movies/${movieId}/attach`);
 });
 
-router.get('/:movieId/edit', async (req, res) => {
+router.get('/:movieId/edit', isAuth, async (req, res) => {
   if (!req.user) {
     return res.redirect('/auth/login');
   }
@@ -48,7 +53,7 @@ router.get('/:movieId/edit', async (req, res) => {
   res.render('movie/edit', { movie });
 });
 
-router.post('/:movieId/edit', async (req, res) => {
+router.post('/:movieId/edit', isAuth, async (req, res) => {
   const movie = req.body;
   const movieId = req.params.movieId;
   await movieManager.editMovie(movieId, movie);

@@ -14,7 +14,14 @@ exports.auth = async (req, res, next) => {
     next();
   } catch (error) {
     //display error here
-    res.clearCookie();
+    res.clearCookie('auth');
     res.redirect('/auth/login');
   }
+};
+
+exports.isAuth = (req, res, next) => {
+  if (!req.user) {
+    res.redirect('/auth/login');
+  }
+  next();
 };
