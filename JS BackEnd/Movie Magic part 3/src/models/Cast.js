@@ -1,16 +1,21 @@
 const mongoose = require('mongoose');
 
 const castSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: {
+    type: String,
+    required: true,
+    match: [/[a-zA-Z0-9\s]+/],
+  },
   age: {
     type: Number,
     required: true,
-    min: 14,
-    max: 120,
+    min: [1, 'Age should be more than {VALUE} years old'],
+    max: [120, 'Age should be less than {VALUE} years old'],
   },
   born: {
     type: String,
     required: true,
+    match: [/[a-zA-Z0-9\s]+/],
   },
   nameInMovie: {
     type: String,
