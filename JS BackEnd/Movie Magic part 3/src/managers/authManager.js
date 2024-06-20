@@ -1,12 +1,13 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const { SECRET } = require('../config/config');
-//jwt mini lib
 const jwt = require('../lib/jwt');
 
-// TO DO check if user exists
-exports.register = (userData) => {
-  const user = User.findOne({ email: userData.email });
+exports.register = async (userData) => {
+  const user = await User.findOne({ email: userData.email });
+  if (userData.password !== userData.rePassword){
+    throw new Error('Invalid input.');
+  }
   if (user) {
     throw new Error('Email already exists');
   }
@@ -22,6 +23,7 @@ exports.login = async (email, password) => {
   }
   // Check if password is valid
   const isValid = await bcrypt.compare(password, user.password);
+  
   if (!isValid) {
     throw new Error('Invalid username or password.');
   }

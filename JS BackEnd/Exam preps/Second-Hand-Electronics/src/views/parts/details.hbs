@@ -1,0 +1,36 @@
+<section id='detailsPage'>
+  <div id='detailsInfo'>
+    <h1>Name: {{name}}</h1>
+    <div class='info'><img src='{{image}}' /></div>
+
+    <div class='info'>
+      <h3>Type: {{type}}</h3>
+      <h3>Year of Production: {{production}}</h3>
+      <h3>Years of Exploitation: {{exploitation}}</h3>
+      <h3>Damages: {{damages}}</h3>
+      <h3>Description: {{description}}</h3>
+      <h2>Price: ${{price}}</h2>
+    </div>
+
+    <!-- If there is a user logged in -->
+    {{#if isAuthenticated}}
+      <div class='buttons'>
+        <!-- If user is not the owner -->
+        {{#unless isOwner}}
+          <!-- Show buy button only if not already bought -->
+          {{#unless isBuying}}
+            <a href='/parts/{{_id}}/buy' class='buy-btn'>Buy</a>
+          {{else}}
+            <!-- Show thank you message if already bought -->
+            <p><span class='buy'>Thank You For Your Purchase</span></p>
+          {{/unless}}
+        {{else}}
+          <!-- If user is owner -->
+          <a href='/parts/{{_id}}/edit' class='edit-btn'>Edit</a>
+          <a href='/parts/{{_id}}/delete' class='delete-btn'>Delete</a>
+        {{/unless}}
+      </div>
+    {{/if}}
+
+  </div>
+</section>

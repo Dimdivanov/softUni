@@ -1,17 +1,20 @@
 const router = require('express').Router();
+const { Error } = require('mongoose');
 const authManager = require('../managers/authManager');
+const { getErrorMessage } = require('../util/errorUtil');
 
-router.get('/register', (req, res) => {
-  res.render('auth/register');
-});
 router.post('/register', async (req, res) => {
   const userData = req.body;
   try {
     await authManager.register(userData);
     res.redirect('/auth/login');
   } catch (err) {
-    res.render('auth/register', { error: err.message });
+    console.log(err.message);
+    res.render('auth/register', { error: getErrorMessage(err) });
   }
+});
+router.get('/register', (req, res) => {
+  res.render('auth/register');
 });
 
 router.get('/login', (req, res) => {
