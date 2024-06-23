@@ -20,7 +20,7 @@ const partSchema = new mongoose.Schema(
     image: {
       type: String,
       required: true,
-      validate: /^https?:\/\//i,
+      validate: /^https?:\/\//i, //email validator
     },
     description: {
       type: String,

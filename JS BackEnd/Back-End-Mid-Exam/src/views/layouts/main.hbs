@@ -1,0 +1,38 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Home Cooking Recipes</title>
+    <link rel='stylesheet' href='/styles.css' />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href='/'>Home</a></li>
+          <li><a href='/recipe/catalog'>Recipes</a></li>
+          <li><a href='/search'>Search</a></li>
+          {{#if isAuthenticated}}
+            <li><a href='/recipe/create'>Add Recipe</a></li>
+            <li><a href='/auth/logout'>Logout</a></li>
+          {{else}}
+            <li><a href='/auth/login'>Login</a></li>
+            <li><a href='/auth/register'>Register</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- In case of error, you should display div with class "error-container" -->
+      <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+      {{> error}}
+      {{{body}}}
+    </main>
+    <footer>
+      <p>&copy; 2024 Home Cooking Recipes. All rights reserved.</p>
+    </footer>
+  </body>
+
+</html>

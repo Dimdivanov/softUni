@@ -6,7 +6,6 @@ exports.create = async (userId, partData) => {
     owner: userId,
     ...partData,
   });
-  console.log(createdPart);
   await User.findByIdAndUpdate(userId, { $addToSet: { createdParts: createdPart._id } });
   return createdPart;
 };
