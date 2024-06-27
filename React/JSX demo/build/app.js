@@ -24,3 +24,10 @@ var reactElementHeader = React.createElement(
 ); //children example
 //render
 rootReactEl.render(reactElementHeader);
+
+//used commands 
+/* 
+Step 1: Run npm init -y (if it fails, here’s a fix)
+Step 2: Run npm install babel-cli@6 babel-preset-react-app@3
+Step 3: npx babel --watch src --out-dir . --presets react-app/prod
+*/
