@@ -7,6 +7,7 @@ const reactElementHeader = (
   <header>
     <h1>Hello from JSX REACT</h1>
     <h2>JSX is awesome les go</h2>
+    <p>lorem bla bla text</p>
   </header>
 ); //children example
 //render
