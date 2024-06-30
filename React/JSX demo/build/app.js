@@ -22,10 +22,24 @@ var reactElementHeader = React.createElement(
     'lorem bla bla text'
   )
 ); //children example
-//render
-rootReactEl.render(reactElementHeader);
 
-//used commands 
+//Creating componen without jsx
+
+function Main(props) {
+  return React.createElement('main', {}, React.createElement('h3', {}, props.title), React.createElement('ul', {}, React.createElement('li', {}, 'The Matrix'), React.createElement('li', {}, 'Man of steel')));
+}
+//Adding the main function which creates elements with children
+var siteContent = React.createElement('div', {}, reactElementHeader, React.createElement(Main, { title: 'Best movies' }));
+var newContent = React.createElement(
+  'div',
+  null,
+  reactElementHeader,
+  React.createElement(Main, { title: 'Best ALABALA' })
+);
+//render
+rootReactEl.render(newContent);
+
+//used commands
 /* 
 Step 1: Run npm init -y (if it fails, here’s a fix)
 Step 2: Run npm install babel-cli@6 babel-preset-react-app@3
