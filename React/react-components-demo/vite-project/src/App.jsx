@@ -1,5 +1,6 @@
 import Player from './components/Player';
-
+import Timer from './components/Timer';
+import Counter from './components/Counter';
 import './App.css';
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
     <>
       <h1>Parent Component</h1>
       <Player user={user} title="Users in-game" />
+      <Timer />
+      <Counter />
     </>
   );
 }
