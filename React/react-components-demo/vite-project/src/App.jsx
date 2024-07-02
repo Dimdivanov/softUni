@@ -1,5 +1,5 @@
 import Player from './components/Player';
-import BookList from './components/BookList';
+
 import './App.css';
 
 function App() {
@@ -13,7 +13,6 @@ function App() {
     <>
       <h1>Parent Component</h1>
       <Player user={user} title="Users in-game" />
-      
     </>
   );
 }
