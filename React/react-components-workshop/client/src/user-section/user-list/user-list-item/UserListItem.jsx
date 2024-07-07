@@ -1,10 +1,11 @@
-export default function UserListItem({ user }) {
+export default function UserListItem({ user, onDetails }) {
     function dateCalc(inputDateStr) {
         const inputDate = new Date(inputDateStr);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const date = inputDate.toLocaleDateString('en-US', options);
         return date;
     }
+
     return (
         <>
             <tr>
@@ -55,7 +56,11 @@ export default function UserListItem({ user }) {
                             ></path>
                         </svg>
                     </button>
-                    <button className="btn info-btn" title="Info">
+                    <button
+                        className="btn info-btn"
+                        title="Info"
+                        onClick={() => onDetails(user._id)}
+                    >
                         <svg
                             aria-hidden="true"
                             focusable="false"
