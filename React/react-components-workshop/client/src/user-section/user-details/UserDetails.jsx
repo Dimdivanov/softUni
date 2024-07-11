@@ -1,4 +1,10 @@
 export default function UserDetails({ user, onClose }) {
+    function dateCalc(inputDateStr) {
+        const inputDate = new Date(inputDateStr);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const date = inputDate.toLocaleDateString('en-US', options);
+        return date;
+    }
     return (
         <>
             <div className="overlay">
@@ -55,10 +61,12 @@ export default function UserDetails({ user, onClose }) {
                                     </strong>
                                 </p>
                                 <p>
-                                    Created on: <strong>{user.createdAt}</strong>
+                                    Created on:{' '}
+                                    <strong>{dateCalc(user.createdAt)}</strong>
                                 </p>
                                 <p>
-                                    Modified on: <strong>{user.updatedAt}</strong>
+                                    Modified on:{' '}
+                                    <strong>{dateCalc(user.updatedAt)}</strong>
                                 </p>
                             </div>
                         </div>

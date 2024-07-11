@@ -4,6 +4,7 @@ import Pagination from './pagination/Pagination';
 import UserList from './user-list/UserList';
 import UserAdd from './user-list/user-add/UserAdd';
 import UserDetails from './user-details/UserDetails';
+import UserDelete from './user-delete/UserDelete';
 
 const baseUrl = 'http://localhost:3030/jsonstore';
 
@@ -11,6 +12,8 @@ export default function UserSection() {
     const [users, setUsers] = useState([]);
     const [showAddUser, setShowAddUser] = useState(false);
     const [showUserDetails, setShowUserDetails] = useState(null);
+
+    const [showUserDeleteById, setShowUserDeleteById] = useState(null);
 
     useEffect(() => {
         (async function getUsers() {
@@ -62,7 +65,20 @@ export default function UserSection() {
     const handleClickCloseDetails = () => {
         setShowUserDetails(false);
     };
+    //show delete
+    const handleClickDelete = (userId) => {
+        setShowUserDeleteById(userId);
+    };
 
+    const userDeleteHandler = async (userId) => {
+        await fetch(`${baseUrl}/users/${userId}`, {
+            method: 'DELETE',
+        });
+
+        setUsers((oldUsers) => oldUsers.filter((user) => user._id !== userId));
+
+        setShowUserDeleteById(null);
+    };
     return (
         <>
             <section className="card users-container">
@@ -73,7 +89,21 @@ export default function UserSection() {
                         onClose={handleClickCloseDetails}
                     />
                 )}
-                <UserList users={users} onDetails={handleClickShowDetails} />
+                <UserList
+                    users={users}
+                    onDetails={handleClickShowDetails}
+                    onDeleteClick={handleClickDelete}
+                />
+                {showUserDeleteById && (
+                    <UserDelete
+                        onClose={() => {
+                            setShowUserDeleteById(null);
+                        }}
+                        onUserDelete={() => {
+                            userDeleteHandler(showUserDeleteById);
+                        }}
+                    />
+                )}
                 {showAddUser && (
                     <UserAdd
                         onClose={handlerClickCloseAddUser}

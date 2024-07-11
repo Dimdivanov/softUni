@@ -1,4 +1,4 @@
-export default function UserListItem({ user, onDetails }) {
+export default function UserListItem({ user, onDetails, onDeleteClick }) {
     function dateCalc(inputDateStr) {
         const inputDate = new Date(inputDateStr);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -39,7 +39,11 @@ export default function UserListItem({ user, onDetails }) {
                             ></path>
                         </svg>
                     </button>
-                    <button className="btn delete-btn" title="Delete">
+                    <button
+                        className="btn delete-btn"
+                        title="Delete"
+                        onClick={() => onDeleteClick(user._id)}
+                    >
                         <svg
                             aria-hidden="true"
                             focusable="false"

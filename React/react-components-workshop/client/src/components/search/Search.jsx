@@ -1,4 +1,15 @@
+import { useState } from 'react';
+
 export default function Search() {
+    const [filteredData, setFilteredData] = useState([]);
+    const [wordEntered, setWordEntered] = useState('');
+
+
+    const handleFilter = (e) => {
+        // e.preventDefault()
+    }
+
+
     return (
         <>
             <form className="search-form">
@@ -25,11 +36,13 @@ export default function Search() {
                         type="text"
                         placeholder="Please, select the search criteria"
                         name="search"
+                        value={wordEntered}
+                        onChange={handleFilter}
                     />
                     {/* Show the clear button only if input field length !== 0 */}
-                    <button className="btn close-btn">
+                    {/* <button className="btn close-btn">
                         <i className="fa-solid fa-xmark" />
-                    </button>
+                    </button> */}
                     <button className="btn" title="Please, select the search criteria">
                         <i className="fa-solid fa-magnifying-glass" />
                     </button>
