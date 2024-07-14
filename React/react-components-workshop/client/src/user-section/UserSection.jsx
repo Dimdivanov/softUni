@@ -14,6 +14,7 @@ export default function UserSection() {
     const [showUserDetails, setShowUserDetails] = useState(null);
 
     const [showUserDeleteById, setShowUserDeleteById] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         (async function getUsers() {
@@ -25,6 +26,8 @@ export default function UserSection() {
                 setUsers(users);
             } catch (error) {
                 console.log(error.message);
+            } finally {
+                setIsLoading(false);
             }
         })();
     }, []);
@@ -38,25 +41,6 @@ export default function UserSection() {
         setShowAddUser(false);
     };
 
-    const handlerClickAddUserSave = async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.currentTarget);
-        const userData = {
-            ...Object.fromEntries(formData),
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-        };
-
-        const response = await fetch(`${baseUrl}/users`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData),
-        });
-        const createdUser = await response.json();
-        setUsers((oldUsers) => [...oldUsers, createdUser]);
-        setShowAddUser(false);
-    };
     //show details
     const handleClickShowDetails = (userId) => {
         setShowUserDetails(userId);
@@ -71,13 +55,19 @@ export default function UserSection() {
     };
 
     const userDeleteHandler = async (userId) => {
-        await fetch(`${baseUrl}/users/${userId}`, {
-            method: 'DELETE',
-        });
+        try {
+            await fetch(`${baseUrl}/users/${userId}`, {
+                method: 'DELETE',
+            });
 
-        setUsers((oldUsers) => oldUsers.filter((user) => user._id !== userId));
+            setUsers((oldUsers) => oldUsers.filter((user) => user._id !== userId));
 
-        setShowUserDeleteById(null);
+            setShowUserDeleteById(null);
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            setIsLoading(false);
+        }
     };
     return (
         <>
@@ -93,6 +83,7 @@ export default function UserSection() {
                     users={users}
                     onDetails={handleClickShowDetails}
                     onDeleteClick={handleClickDelete}
+                    isLoading={isLoading}
                 />
                 {showUserDeleteById && (
                     <UserDelete
@@ -107,7 +98,6 @@ export default function UserSection() {
                 {showAddUser && (
                     <UserAdd
                         onClose={handlerClickCloseAddUser}
-                        onSave={handlerClickAddUserSave}
                     />
                 )}
                 <button className="btn-add btn" onClick={handlerClickAddUser}>

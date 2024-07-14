@@ -1,8 +1,10 @@
 import UserListItem from './user-list-item/UserListItem';
+import Spinner from '../../components/spinner/Spinner';
 
-export default function UserList({ users, onDetails, onDeleteClick }) {
+export default function UserList({ users, onDetails, onDeleteClick, isLoading }) {
     return (
         <>
+            {isLoading && <Spinner />}
             <div className="table-wrapper">
                 <table className="table">
                     <thead>

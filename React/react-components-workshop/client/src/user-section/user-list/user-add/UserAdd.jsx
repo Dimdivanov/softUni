@@ -1,4 +1,56 @@
-export default function UserAdd({ onClose, onSave }) {
+import { useState, useEffect } from 'react';
+const baseUrl = 'http://localhost:3030/jsonstore';
+
+export default function UserAdd({ onClose }) {
+    const [users, setUsers] = useState([]);
+    const [formValues, setFormValues] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        imageUrl: '',
+        country: '',
+        city: '',
+        street: '',
+        streetNumber: '',
+    });
+
+    useEffect(() => {
+        (async function getUsers() {
+            try {
+                const response = await fetch(`${baseUrl}/users`);
+                const result = await response.json();
+                const users = Object.values(result);
+
+                setUsers(users);
+            } catch (error) {
+                console.log(error.message);
+            }
+        })();
+    }, []);
+
+    const changeHandler = (e) => {
+        setFormValues((oldState) => ({
+            ...oldState,
+            [e.target.name]: e.target.value,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+        }));
+    };
+    //adding user with form - post
+
+    const handlerClickAddUserSave = async (e) => {
+        e.preventDefault();
+
+        const response = await fetch(`${baseUrl}/users`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(users),
+        });
+        const createdUser = await response.json();
+        setUsers((oldUsers) => [...oldUsers, createdUser]);
+    };
+
     return (
         <>
             <div className="overlay">
@@ -25,7 +77,7 @@ export default function UserAdd({ onClose, onSave }) {
                                 </svg>
                             </button>
                         </header>
-                        <form onSubmit={onSave}>
+                        <form onSubmit={handlerClickAddUserSave}>
                             <div className="form-row">
                                 <div className="form-group">
                                     <label htmlFor="firstName">First name</label>
@@ -37,6 +89,8 @@ export default function UserAdd({ onClose, onSave }) {
                                             id="firstName"
                                             name="firstName"
                                             type="text"
+                                            value={formValues.firstName}
+                                            onChange={changeHandler}
                                         />
                                     </div>
                                 </div>
@@ -50,6 +104,8 @@ export default function UserAdd({ onClose, onSave }) {
                                             id="lastName"
                                             name="lastName"
                                             type="text"
+                                            value={formValues.lastName}
+                                            onChange={changeHandler}
                                         />
                                     </div>
                                 </div>
@@ -61,7 +117,13 @@ export default function UserAdd({ onClose, onSave }) {
                                         <span>
                                             <i className="fa-solid fa-envelope" />
                                         </span>
-                                        <input id="email" name="email" type="text" />
+                                        <input
+                                            id="email"
+                                            name="email"
+                                            type="text"
+                                            value={formValues.email}
+                                            onChange={changeHandler}
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -74,6 +136,8 @@ export default function UserAdd({ onClose, onSave }) {
                                             id="phoneNumber"
                                             name="phoneNumber"
                                             type="text"
+                                            value={formValues.phoneNumber}
+                                            onChange={changeHandler}
                                         />
                                     </div>
                                 </div>
@@ -84,7 +148,13 @@ export default function UserAdd({ onClose, onSave }) {
                                     <span>
                                         <i className="fa-solid fa-image" />
                                     </span>
-                                    <input id="imageUrl" name="imageUrl" type="text" />
+                                    <input
+                                        id="imageUrl"
+                                        name="imageUrl"
+                                        type="text"
+                                        value={formValues.imageUrl}
+                                        onChange={changeHandler}
+                                    />
                                 </div>
                             </div>
                             <div className="form-row">
@@ -94,7 +164,13 @@ export default function UserAdd({ onClose, onSave }) {
                                         <span>
                                             <i className="fa-solid fa-map" />
                                         </span>
-                                        <input id="country" name="country" type="text" />
+                                        <input
+                                            id="country"
+                                            name="country"
+                                            type="text"
+                                            value={formValues.country}
+                                            onChange={changeHandler}
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -103,7 +179,13 @@ export default function UserAdd({ onClose, onSave }) {
                                         <span>
                                             <i className="fa-solid fa-city" />
                                         </span>
-                                        <input id="city" name="city" type="text" />
+                                        <input
+                                            id="city"
+                                            name="city"
+                                            type="text"
+                                            value={formValues.city}
+                                            onChange={changeHandler}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +196,13 @@ export default function UserAdd({ onClose, onSave }) {
                                         <span>
                                             <i className="fa-solid fa-map" />
                                         </span>
-                                        <input id="street" name="street" type="text" />
+                                        <input
+                                            id="street"
+                                            name="street"
+                                            type="text"
+                                            value={formValues.street}
+                                            onChange={changeHandler}
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -127,6 +215,8 @@ export default function UserAdd({ onClose, onSave }) {
                                             id="streetNumber"
                                             name="streetNumber"
                                             type="text"
+                                            value={formValues.streetNumber}
+                                            onChange={changeHandler}
                                         />
                                     </div>
                                 </div>
