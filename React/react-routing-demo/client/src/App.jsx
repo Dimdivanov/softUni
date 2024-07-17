@@ -1,6 +1,8 @@
 import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/login/Login';
+import Register from './components/register/Register';
+
 import './index.css';
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
                 <Header />
                 <Home />
                 <Login />
+                <Register />
             </div>
         </>
     );
