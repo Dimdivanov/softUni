@@ -5,7 +5,7 @@ export default function Create() {
                 <form id="create">
                     <div className="container">
                         <h1>Create Game</h1>
-                        <label for="leg-title">Legendary title:</label>
+                        <label htmlfor="leg-title">Legendary title:</label>
                         <input
                             type="text"
                             id="title"
@@ -13,7 +13,7 @@ export default function Create() {
                             placeholder="Enter game title..."
                         />
 
-                        <label for="category">Category:</label>
+                        <label htmlfor="category">Category:</label>
                         <input
                             type="text"
                             id="category"
@@ -21,7 +21,7 @@ export default function Create() {
                             placeholder="Enter game category..."
                         />
 
-                        <label for="levels">MaxLevel:</label>
+                        <label htmlfor="levels">MaxLevel:</label>
                         <input
                             type="number"
                             id="maxLevel"
@@ -30,7 +30,7 @@ export default function Create() {
                             placeholder="1"
                         />
 
-                        <label for="game-img">Image:</label>
+                        <label htmlfor="game-img">Image:</label>
                         <input
                             type="text"
                             id="imageUrl"
@@ -38,7 +38,7 @@ export default function Create() {
                             placeholder="Upload a photo..."
                         />
 
-                        <label for="summary">Summary:</label>
+                        <label htmlfor="summary">Summary:</label>
                         <textarea name="summary" id="summary"></textarea>
                         <input className="btn submit" type="submit" value="Create Game" />
                     </div>
