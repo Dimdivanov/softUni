@@ -1,4 +1,15 @@
+import { useEffect } from 'react';
+import * as request from '../../api/requester';
+
 export default function Catalog() {
+    useEffect(() => {
+        (async () => {
+            const gamesResult = await request.get(
+                'http://localhost:3030/jsonstore/games'
+            );
+            console.log(gamesResult);
+        })();
+    }, []);
     return (
         <>
             <section id="catalog-page">
