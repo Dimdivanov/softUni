@@ -125,8 +125,6 @@ function App() {
             console.log('Submitted');
         },
     });
-
-    console.log(errors);
     
     return (
         <>
