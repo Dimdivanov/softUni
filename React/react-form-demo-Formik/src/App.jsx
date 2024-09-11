@@ -115,7 +115,7 @@ import './App.css';
 import { basicSchema } from './schemas/index';
 
 function App() {
-    const { values, errors, handleChange, handleSubmit } = useFormik({
+    const { values, errors, touched, handleChange, handleSubmit } = useFormik({
         initialValues: {
             email: '',
             password: '',
@@ -127,7 +127,7 @@ function App() {
     });
 
     console.log(errors);
-
+    
     return (
         <>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -158,7 +158,9 @@ function App() {
                                     autoComplete="email"
                                     value={values.email}
                                     onChange={handleChange}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className={`${
+                                        errors.email && touched.email ? 'bg-red-100' : ''
+                                    } block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
                                 />
                             </div>
                         </div>
@@ -187,7 +189,9 @@ function App() {
                                     autoComplete="password"
                                     value={values.password}
                                     onChange={handleChange}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className={`${
+                                        errors.password ? 'bg-red-100' : ''
+                                    } block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
                                 />
                             </div>
                         </div>
