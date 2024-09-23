@@ -1,0 +1,29 @@
+body {
+    border: 2px solid green;
+    margin: 0px;
+    padding: 20px 0;
+}
+
+.blue-main {
+    border: 2px solid blue;
+    margin: 20px 100px;
+    padding: 20px;
+}
+
+.blue-main > header,
+.blue-main > main,
+.blue-main > footer {
+    border: 2px solid black;
+    text-align: center;
+}
+
+.blue-main > header,
+.blue-main > main {
+    margin-bottom: 20px;
+}
+
+.blue-main h1 {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px;
+}
