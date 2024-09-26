@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+}
+body {
+    font-family: 'CustomFont', Arial, Helvetica, sans-serif;
+}
+a {
+    background-color: #ebebeb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
+    height: 70px;
+    width: 70px;
+}
+a i {
+    font-size: 32px;
+    margin: 19px 20px;
+    height: 30px;
+    width: 30px;
+    color: black;
+}
