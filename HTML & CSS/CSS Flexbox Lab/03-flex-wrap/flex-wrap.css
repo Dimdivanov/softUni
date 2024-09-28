@@ -1,6 +1,4 @@
-.nowrap,
-.wrap,
-.wrap-reverse {
+.flex-container {
     display: flex;
     border: 1px solid blue;
     width: 15%;

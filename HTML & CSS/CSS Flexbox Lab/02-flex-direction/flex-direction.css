@@ -1,7 +1,4 @@
-.row,
-.row-reverse,
-.column,
-.column-reverse {
+.flex-container {
     display: flex;
     border: 1px solid blue;
     width: 30%;
