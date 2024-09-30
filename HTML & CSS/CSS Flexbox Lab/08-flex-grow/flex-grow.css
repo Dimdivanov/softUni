@@ -1,0 +1,23 @@
+.flex-container {
+    width: 400px;
+    padding: 1em;
+    border: 2px solid blue;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container .flex-item {
+    background: #eee;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.grow-one {
+    flex-grow: 1;
+}
+.grow-second {
+    flex-grow: 2;
+}
+.grow-proportional {
+    flex-grow: 3;
+}
