@@ -1,0 +1,36 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 18px/1.5 Lato, sans-serif;
+    padding: 2em;
+    background-color: white;
+}
+
+.container {
+    padding: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    border: 2px solid #e6e3e3;
+    border-radius: 5px;
+    background: #ebeaea;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.container div {
+    padding: 5px 10px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    background: white;
+    font-weight: 600;
+}
+
+.container div p {
+    color: #f1721d;
+}
