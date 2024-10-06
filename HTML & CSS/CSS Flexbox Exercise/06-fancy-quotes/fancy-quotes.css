@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 2em;
+    font: 18px/1.5 'Lato', sans-serif;
+    background-color: #eee;
+}
+
+i {
+    font-size: 60px;
+}
+.author {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+.text {
+    color: gray;
+}
+.content-item {
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 40px;
+    border-radius: 3px;
+}
