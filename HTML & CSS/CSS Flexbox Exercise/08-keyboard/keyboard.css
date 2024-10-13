@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 2em;
+    font: 18px/1.5 'Lato', sans-serif;
+    font-weight: 500;
+}
+
+.keyboard-container {
+    padding: 20px;
+    margin: 50px auto;
+    border-radius: 20px;
+    max-width: 1100px;
+    border: 1px solid gray;
+    background-color: #dddddd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.line-one,
+.line-two,
+.line-three,
+.line-four,
+.line-five,
+.line-six {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.line-one div,
+.line-two div,
+.line-three div,
+.line-four div,
+.line-five div,
+.line-six div {
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #eeeeee;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.line-six .space {
+    flex: 1 0 40%;
+}
+
+.enter-btn {
+    position: relative;
+}
+.enter-btn::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 40px;
+    background-color: #eeeeee;
+    bottom: -30px;
+    left: 73%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
