@@ -57,3 +57,12 @@ footer:before {
     background: #eee;
     margin: 30px auto;
 }
+
+@media (min-width: 610px) and (max-width: 1200px) {
+    .columns {
+        padding: 10px 15px;
+    }
+    .columns article {
+        flex: 0 0 100%;
+    }
+}
