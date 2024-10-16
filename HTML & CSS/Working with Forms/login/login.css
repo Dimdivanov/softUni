@@ -31,6 +31,20 @@ input {
     height: 40px;
     width: auto;
     border-radius: 5px;
+    outline: none;
+    padding-left: 5px;
+}
+input:focus {
+    border-color: orange;
+}
+input:user-valid {
+    border-color: green;
+}
+input:user-invalid {
+    border-color: red;
+}
+input[type='submit'] {
+    border-color: none;
 }
 .required {
     font-weight: 600;
