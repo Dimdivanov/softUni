@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 14px/1.5 'Lato', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none !important;
+    color: white;
+}
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat';
+}
+
+header {
+    background-color: black;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+header > img {
+    width: 100px;
+    height: 50px;
+}
+header nav ul {
+    color: white;
+    list-style-type: none;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    gap: 50px;
+    padding: 10px 25px 0 0;
+}
+
+.hero-section .green {
+    width: 100%;
+    height: 300px;
+    background-color: #42b351;
+    position: absolute;
+    z-index: 1;
+}
+.hero-section img {
+    width: 850px;
+    position: absolute;
+    top: 100px;
+    z-index: 2;
+}
+.hero-section .plans {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 3;
+    gap: 30px 250px;
+}
+.hero-section h1 {
+    color: white;
+    font-size: 2em;
+    flex: 1 0 100%;
+    text-align: center;
+    margin-top: 55px;
+}
+
+.plans .student-plan,
+.plans .family-plan {
+    max-width: 25%;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    overflow: hidden;
+}
+article {
+    padding: 20px 50px;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+article h2 {
+    flex-grow: 1;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #484458;
+}
+article ul li {
+    padding-bottom: 10px;
+    color: #484458;
+    font-weight: 500;
+}
+article .btn {
+    font-weight: 600;
+    background-color: #42b351;
+    border-radius: 25px;
+    padding: 7px 35px;
+    margin: auto;
+}
+
+.student-plan .plan-bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2em;
+    background-color: black;
+    height: 50px;
+}
+.plan-bottom .splitter {
+    content: '';
+    display: block;
+    width: 1px;
+    background-color: gray;
+    height: 60%;
+}
+.family-plan .plan-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1.2em;
+    background-color: black;
+    height: 50px;
+}
+
+.info-section {
+    margin: 210px;
+    display: flex;
+}
+.info-section .dog-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    gap: 20px;
+}
+.dog-content h3 {
+    font-weight: 800;
+}
+.dog-content p {
+    width: 710px;
+}
+.dog-img-container > img {
+    width: 350px;
+}
+.premium {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.premium h2 {
+    font-size: 3em;
+}
+.premium .premium-content {
+    border-radius: 5px;
+    width: 60%;
+    margin-bottom: 100px;
+}
+.premium-content .offers {
+    border-radius: 5px;
+    overflow: hidden;
+}
+.premium-content .offers div {
+    padding: 10px;
+    display: flex;
+    gap: 120px;
+}
+.offers div > p {
+    flex-basis: 70%;
+    font-weight: 600;
+}
+.offers > div:nth-of-type(odd) {
+    background-color: #c6c5c5;
+}
+.offers > div:nth-of-type(even) {
+    background-color: #86d499;
+}
+footer {
+    background-color: #191515;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
