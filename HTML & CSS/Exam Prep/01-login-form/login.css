@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 14px/1.5 'Kode Mono', sans-serif;
+    background-color: #c1bdba;
+    color: white;
+}
+
+.container {
+    background-color: #242f36;
+    margin: 20px auto;
+    padding: 40px 20px;
+    width: 30%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.action-btn {
+    display: flex;
+    text-align: center;
+}
+.sign-btn {
+    height: 40px;
+    width: 50%;
+    background-color: #1ab188;
+    align-content: center;
+}
+.login-btn {
+    height: 40px;
+    width: 50%;
+    background-color: #3f4b50;
+    align-content: center;
+}
+form {
+    display: flex;
+    gap: 10px;
+}
+
+form h1 {
+    padding: 25px;
+    text-align: center;
+}
+.field {
+    position: relative;
+}
+.field label {
+    display: block;
+    position: absolute;
+    padding: 0.2em 0.3em;
+    top: 0;
+    left: 0;
+}
+.field input {
+    display: block;
+    padding: 0.2em 0.3em;
+    width: 100%;
+    border: 1px solid gray;
+    background: transparent;
+}
+.field input:required ~ label::after {
+    display: inline-block;
+    content: '*';
+    color: #1ab188;
+    padding-left: 0.2em;
+}
+
+.flex {
+    display: flex;
+    gap: 10px;
+}
+.flex .field {
+    flex: 0 0 calc(50% - 5px);
+}

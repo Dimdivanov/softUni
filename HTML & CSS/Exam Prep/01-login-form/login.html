@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="login.css" />
+        <title>SingUp Form</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="action-btn">
+                <div class="sign-btn">Sign Up</div>
+                <div class="login-btn">Log In</div>
+            </div>
+            <form action="#">
+                <h1>Sign Up for free</h1>
+                <div class="flex">
+                    <div class="field">
+                        <input type="text" name="first-name" id="first-name" required />
+                        <label for="first-name">First Name</label>
+                    </div>
+                    <div class="field">
+                        <input type="text" name="last-name" id="last-name" required />
+                        <label for="last-name">Last Name</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <input type="email" name="email" id="email" required />
+                    <label for="email" required>Email Address</label>
+                </div>
+                <div class="field">
+                    <input type="password" name="password" id="password" required />
+                    <label for="password">Set a Password</label>
+                </div>
+                <input type="submit" value="Get Started" />
+            </form>
+        </div>
+    </body>
+</html>
