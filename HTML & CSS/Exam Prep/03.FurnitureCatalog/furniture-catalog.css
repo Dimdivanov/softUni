@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i|PT+Serif:400,400i,700,700i&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 14px/1.5 'PT Sans', sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.hero-section {
+    background-image: url('./images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-section header {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+}
+
+.hero-section header a > img {
+    width: 100px;
+    height: 100px;
+}
+
+.hero-section nav {
+    display: flex;
+    align-items: center;
+}
+
+.hero-section nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.hero-section nav ul li {
+    font-size: 1.6em;
+    font-weight: 800;
+}
+
+.hero-section .hero-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.hero-section .hero-action h1 {
+    text-align: center;
+    font-size: 3em;
+    padding-bottom: 20px;
+}
+
+.hero-section .hero-action p {
+    text-align: center;
+    font-weight: 800;
+}
+
+.hero-section .hero-action button {
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-weight: 800;
+    width: 120px;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.hero-section .hero-action a {
+    color: #7c7d7e;
+}
+
+/* CATALOG SECTION */
+.catalog-section {
+    padding: 50px 120px;
+    background-color: #65a5b9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.catalog-section > h3 {
+    flex: 1 0 100%;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.catalog-section > p {
+    flex: 1 0 100%;
+    font-weight: 500;
+    font-size: 1.2em;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.catalog-section .catalog-articles {
+    display: flex;
+    gap: 200px;
+    justify-content: center;
+}
+
+.left-article,
+.right-article {
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.left-article::after,
+.right-article::after {
+    display: block;
+    content: '';
+    width: 20px;
+}
+.left-article img,
+.right-article img {
+    width: 350px;
+}
+
+.left-article h3,
+.right-article h3 {
+    width: 60%;
+    text-align: center;
+}
+
+.left-article p,
+.right-article p {
+    width: 60%;
+}
+
+.right-article article,
+.left-article article {
+    background-color: white;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 50px 20px;
+}
+
+/* FURNITURE-TYPES SECTION */
+.furniture-types {
+    padding: 50px 100px;
+}
+
+.furnitures {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+}
+
+.furnitures article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.furnitures article p,
+.furnitures article h3 {
+    text-align: center;
+    color: #57585b;
+    width: 80%;
+}
+
+.furniture-types img {
+    width: 150px;
+    height: 150px;
+}
+
+/* Catalog-TYPES SECTION */
+.catalog > h3 {
+    flex: 1 0 100%;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.catalog > p {
+    flex: 1 0 100%;
+    font-weight: 500;
+    font-size: 1.2em;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.catalog .images {
+    display: flex;
+    gap: 100px;
+}
+
+.catalog img {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 300px;
+    height: 200px;
+}
+
+/* ABOUT SECTION */
+.about-us {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 520px;
+}
+.about-us h3,
+.about-us p {
+    color: #57585b;
+}
+.about-us .content {
+    padding-top: 30px;
+}
+/* FOOTER */
+footer {
+    text-align: center;
+    background-color: #2a2f36;
+    color: white;
+    padding: 20px;
+}
