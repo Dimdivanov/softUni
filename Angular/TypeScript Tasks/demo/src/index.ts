@@ -1,3 +1,4 @@
+//tsc index.ts && node index.js
 //Basic Types
 let id: number = 5;
 let company: string = 'My company name';
@@ -43,16 +44,30 @@ const userType: UserType = {
     id: 1,
     name: 'John',
 };
+
 //interface
 interface User {
     //describing the object using interface
     name: string;
     id: number;
 }
+
 const user: User = {
     //the js object to be shaped as the interface
     name: 'Hayes',
     id: 0,
 };
 
-//tsc index.ts && node index.js
+//Type Assertion
+let cid: any = 1;
+let customerId = <number>cid; //so we give type to the cid
+let customerId2 = cid as number; // or like this
+
+//functions
+function addNum(x: number, y: number): number {
+    return x + y;
+}
+//or func without return - we are using VOID (void is return type that doesn't return a value);
+function log(message: string | number): void {
+    console.log(message);
+}
