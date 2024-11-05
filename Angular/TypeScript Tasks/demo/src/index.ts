@@ -71,3 +71,17 @@ function addNum(x: number, y: number): number {
 function log(message: string | number): void {
     console.log(message);
 }
+
+//Objects and interfaces
+// we can use "?" optional if key is not included
+interface UserInterface {
+    readonly id: number;
+    name: string;
+    age?: number;
+}
+const user1: UserInterface = {
+    id: 1,
+    name: 'Peter',
+};
+
+//if property id is "readonly" you cannot assign user1.id = 5;
