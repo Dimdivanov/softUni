@@ -7,9 +7,9 @@ let x: any = 'Hello';
 
 let ids: number[] = [1, 2, 3, 4];
 let array: any[] = [1, true, 'hey'];
-//Tuple
-let person: [number, string, boolean] = [1, 'Mitaka', true];
+//TUPLES
 //Tuple Array
+let person: [number, string, boolean] = [1, 'Mitaka', true];
 let employee: [number, string][];
 employee = [
     [1, 'Mitaka'],
@@ -19,7 +19,7 @@ employee = [
 //Unions
 let age: string | number = 22;
 age = '22';
-//Enum - enumerated types
+//Enum - enumerated types - gives keys specific value type
 enum Directions1 {
     Up = 1,
     Down,
@@ -124,7 +124,11 @@ class Employee extends Person {
 const emp = new Employee('Ivan', 32, 'Lead Dev');
 console.log(emp.position);
 
-//EXAMPLE 
+//GENERICS - for building reusable components
+
+
+
+//EXAMPLES & TESTING
 interface Catturin {
     name: string;
     age: number;
