@@ -91,7 +91,6 @@ function log(message: string | number): void {
 }
 
 //CLASSES
-//public, private, protected
 //implementing interface to class
 interface PersonInterface {
     name: string;
@@ -99,6 +98,7 @@ interface PersonInterface {
     register(): string;
 }
 class Person implements PersonInterface {
+    //public, private, protected
     public name: string;
     id: number;
     constructor(name: string, id: number) {
@@ -111,6 +111,7 @@ class Person implements PersonInterface {
 }
 const person1 = new Person('Brad', 3);
 
+//SUBCLASSES
 //extending the Person Class
 class Employee extends Person {
     position: string;
@@ -120,5 +121,40 @@ class Employee extends Person {
     }
 }
 
-const emp = new Employee('Ivan', 32, 'Lead Dev')
+const emp = new Employee('Ivan', 32, 'Lead Dev');
 console.log(emp.position);
+
+//EXAMPLE 
+interface Catturin {
+    name: string;
+    age: number;
+    catMeow(): string;
+}
+
+class Cat implements Catturin {
+    name: string;
+    age: number;
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+
+    catMeow(): string {
+        return `${this.name} meows for attention`;
+    }
+}
+const cat1 = new Cat('Meowricio', 20);
+
+class Mashka extends Cat {
+    breed: string;
+    constructor(name: string, age: number, breed: string) {
+        super(name, age);
+        this.breed = breed;
+    }
+    farts(): string {
+        return `${this.breed} farts a lot`;
+    }
+}
+
+const breedMashka = new Mashka('Mashka', 30, 'farty');
+console.log(breedMashka);
