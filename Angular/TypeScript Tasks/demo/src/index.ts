@@ -33,7 +33,7 @@ enum Directions2 {
     Left = 'Left',
     Right = 'Right',
 }
-console.log(Directions2.Up);
+console.log(Directions2.Up); //it will display 'Up'
 //Objects
 //type
 type UserType = {
@@ -46,13 +46,13 @@ const userType: UserType = {
 };
 
 //interface
-interface User {
+interface UserInterfacer {
     //describing the object using interface
     name: string;
     id: number;
 }
 
-const user: User = {
+const user: UserInterfacer = {
     //the js object to be shaped as the interface
     name: 'Hayes',
     id: 0,
@@ -63,6 +63,24 @@ let cid: any = 1;
 let customerId = <number>cid; //so we give type to the cid
 let customerId2 = cid as number; // or like this
 
+//OBJECTS and interfaces
+// we can use "?" optional if key is not included
+interface UserInterface {
+    readonly id: number; //readonly
+    name: string;
+    age?: number;
+}
+const user1: UserInterface = {
+    id: 1,
+    name: 'Peter',
+};
+//if property id is "readonly" you cannot assign user1.id = 5;
+
+//FUNCTIONS interface
+interface MathFunc {
+    (x: number, y: number): number;
+}
+const addNum1: MathFunc = (x: number, y: number): number => x + y;
 //functions
 function addNum(x: number, y: number): number {
     return x + y;
@@ -72,16 +90,35 @@ function log(message: string | number): void {
     console.log(message);
 }
 
-//Objects and interfaces
-// we can use "?" optional if key is not included
-interface UserInterface {
-    readonly id: number;
+//CLASSES
+//public, private, protected
+//implementing interface to class
+interface PersonInterface {
     name: string;
-    age?: number;
+    id: number;
+    register(): string;
 }
-const user1: UserInterface = {
-    id: 1,
-    name: 'Peter',
-};
+class Person implements PersonInterface {
+    public name: string;
+    id: number;
+    constructor(name: string, id: number) {
+        this.name = name;
+        this.id = id;
+    }
+    register(): string {
+        return `${this.name} is now registered`;
+    }
+}
+const person1 = new Person('Brad', 3);
 
-//if property id is "readonly" you cannot assign user1.id = 5;
+//extending the Person Class
+class Employee extends Person {
+    position: string;
+    constructor(name: string, id: number, position: string) {
+        super(name, id);
+        this.position = position;
+    }
+}
+
+const emp = new Employee('Ivan', 32, 'Lead Dev')
+console.log(emp.position);
