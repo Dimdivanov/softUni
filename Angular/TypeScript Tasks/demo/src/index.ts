@@ -4,8 +4,13 @@ let id: number = 5;
 let company: string = 'My company name';
 let isPublished: boolean = true;
 let x: any = 'Hello';
-
+//Arrays
+//for single arrays
 let ids: number[] = [1, 2, 3, 4];
+let array1: Array<number> = [1, 2, 3];
+//for multiple types in array
+let array2: (number | string) [];
+//for any - not recommended
 let array: any[] = [1, true, 'hey'];
 //TUPLES
 //Tuple Array
@@ -125,8 +130,6 @@ const emp = new Employee('Ivan', 32, 'Lead Dev');
 console.log(emp.position);
 
 //GENERICS - for building reusable components
-
-
 
 //EXAMPLES & TESTING
 interface Catturin {
