@@ -1,15 +1,15 @@
 //tsc index.ts && node index.js
-//Basic Types
+//BASIC TYPES
 let id: number = 5;
 let company: string = 'My company name';
 let isPublished: boolean = true;
 let x: any = 'Hello';
-//Arrays
+//ARRAYS
 //for single arrays
 let ids: number[] = [1, 2, 3, 4];
 let array1: Array<number> = [1, 2, 3];
 //for multiple types in array
-let array2: (number | string) [];
+let array2: (number | string)[];
 //for any - not recommended
 let array: any[] = [1, true, 'hey'];
 //TUPLES
@@ -21,10 +21,12 @@ employee = [
     [2, 'Pesho'],
     [3, 'Gosho'],
 ];
-//Unions
+//Union
 let age: string | number = 22;
+//LITERAL types useful with combo with UNION types
+let ageGroup: 'young' | 'old'; //can use literal type so it should match the exact string
 age = '22';
-//Enum - enumerated types - gives keys specific value type - exists only in TS
+//Enum - to assign labels - exists only in TS
 enum Directions1 {
     Up = 1,
     Down,
@@ -39,8 +41,10 @@ enum Directions2 {
     Right = 'Right',
 }
 console.log(Directions2.Up); //it will display 'Up'
-//Objects
-//type
+//Objects - type and interface
+//TYPE ALLIASE
+type Combinable = number | string;
+type Description = 'works' | 'doesnt Work';
 type UserType = {
     id: number;
     name: string;
@@ -131,37 +135,46 @@ console.log(emp.position);
 
 //GENERICS - for building reusable components
 
+function getArray<T>(items: T[]): T[] {
+    return new Array().concat(items);
+}
+
+let numArray = getArray<number>([1, 2, 3, 4]);
+let strArray = getArray<string>(['Mitaka', 'John', 'Nikolet']);
+
+strArray.push('hello');
+
 //EXAMPLES & TESTING
-interface Catturin {
-    name: string;
-    age: number;
-    catMeow(): string;
-}
+// interface Catturin {
+//     name: string;
+//     age: number;
+//     catMeow(): string;
+// }
 
-class Cat implements Catturin {
-    name: string;
-    age: number;
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-    }
+// class Cat implements Catturin {
+//     name: string;
+//     age: number;
+//     constructor(name: string, age: number) {
+//         this.name = name;
+//         this.age = age;
+//     }
 
-    catMeow(): string {
-        return `${this.name} meows for attention`;
-    }
-}
-const cat1 = new Cat('Meowricio', 20);
+//     catMeow(): string {
+//         return `${this.name} meows for attention`;
+//     }
+// }
+// const cat1 = new Cat('Meowricio', 20);
 
-class Mashka extends Cat {
-    breed: string;
-    constructor(name: string, age: number, breed: string) {
-        super(name, age);
-        this.breed = breed;
-    }
-    farts(): string {
-        return `${this.breed} farts a lot`;
-    }
-}
+// class Mashka extends Cat {
+//     breed: string;
+//     constructor(name: string, age: number, breed: string) {
+//         super(name, age);
+//         this.breed = breed;
+//     }
+//     farts(): string {
+//         return `${this.breed} farts a lot`;
+//     }
+// }
 
-const breedMashka = new Mashka('Mashka', 30, 'farty');
-console.log(breedMashka);
+// const breedMashka = new Mashka('Mashka', 30, 'farty');
+// console.log(breedMashka);
