@@ -13,7 +13,7 @@ let array2: (number | string) [];
 //for any - not recommended
 let array: any[] = [1, true, 'hey'];
 //TUPLES
-//Tuple Array
+//Tuple Array - fixed length and type array
 let person: [number, string, boolean] = [1, 'Mitaka', true];
 let employee: [number, string][];
 employee = [
@@ -24,7 +24,7 @@ employee = [
 //Unions
 let age: string | number = 22;
 age = '22';
-//Enum - enumerated types - gives keys specific value type
+//Enum - enumerated types - gives keys specific value type - exists only in TS
 enum Directions1 {
     Up = 1,
     Down,
