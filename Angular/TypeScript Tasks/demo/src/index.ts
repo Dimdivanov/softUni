@@ -7,6 +7,7 @@ let x: any = 'Hello';
 //ARRAYS
 //for single arrays
 let ids: number[] = [1, 2, 3, 4];
+let idss: string[] = ['1', '2', '3', '4'];
 let array1: Array<number> = [1, 2, 3];
 //for multiple types in array
 let array2: (number | string)[];
