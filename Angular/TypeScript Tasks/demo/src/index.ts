@@ -95,6 +95,10 @@ const addNum1: MathFunc = (x: number, y: number): number => x + y;
 function addNum(x: number, y: number): number {
     return x + y;
 }
+//functions expecting an array with objects - just an example
+// function addNumObj(x: number, y: number): {x:number, y:number}[] {
+// }
+
 //or func without return - we are using VOID (void is return type that doesn't return a value);
 function log(message: string | number): void {
     console.log(message);
