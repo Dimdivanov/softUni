@@ -1,4 +1,4 @@
-//tsc index.ts && node index.js
+//tsc index.ts (to transpile the js file) && node index.js (then to run the js) - use playground instead
 //BASIC TYPES
 let id: number = 5;
 let company: string = 'My company name';
@@ -44,8 +44,8 @@ enum Directions2 {
 console.log(Directions2.Up); //it will display 'Up'
 //Objects - type and interface
 //TYPE ALLIASE
-type Combinable = number | string;
-type Description = 'works' | 'doesnt Work';
+type Combinable = number | string; //union like type
+type Description = 'works' | 'doesnt Work'; //type literals 
 type UserType = {
     id: number;
     name: string;
@@ -144,38 +144,3 @@ let numArray = getArray<number>([1, 2, 3, 4]);
 let strArray = getArray<string>(['Mitaka', 'John', 'Nikolet']);
 
 strArray.push('hello');
-
-//EXAMPLES & TESTING
-// interface Catturin {
-//     name: string;
-//     age: number;
-//     catMeow(): string;
-// }
-
-// class Cat implements Catturin {
-//     name: string;
-//     age: number;
-//     constructor(name: string, age: number) {
-//         this.name = name;
-//         this.age = age;
-//     }
-
-//     catMeow(): string {
-//         return `${this.name} meows for attention`;
-//     }
-// }
-// const cat1 = new Cat('Meowricio', 20);
-
-// class Mashka extends Cat {
-//     breed: string;
-//     constructor(name: string, age: number, breed: string) {
-//         super(name, age);
-//         this.breed = breed;
-//     }
-//     farts(): string {
-//         return `${this.breed} farts a lot`;
-//     }
-// }
-
-// const breedMashka = new Mashka('Mashka', 30, 'farty');
-// console.log(breedMashka);
