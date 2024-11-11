@@ -1,1 +1,18 @@
-<p>new-component-test works!</p>
+<div class="main">
+  <div class="todo-container">
+    <div class="todo-header">
+      <h1>To-Do List</h1>
+    </div>
+    <div class="todo-input">
+      <input type="text" #taskInput placeholder="Add a new task" />
+      <button (click)="onClickAdd(taskInput); taskInput.value = ''">Add</button>
+    </div>
+    <ul class="todo-list">
+      @for (item of localTasks; track $index){
+      <li>{{ item.id }} - {{ item.toDo }} - {{ item.complete }}</li>
+      } @empty {
+      <li>No tasks available</li>
+      }
+    </ul>
+  </div>
+</div>
