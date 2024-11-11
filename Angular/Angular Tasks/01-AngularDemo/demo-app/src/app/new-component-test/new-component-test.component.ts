@@ -9,8 +9,18 @@ import { toDoList } from '../data/myData';
   styleUrl: './new-component-test.component.css',
 })
 export class NewComponentTestComponent {
-  localTasks = toDoList;
-  onClickAdd(taskInput: HTMLInputElement) {
-    console.log(taskInput);
+  localTasks: { toDo: string; complete: boolean }[] = toDoList;
+  isComplete = false;
+  completedTask = false;
+
+  onComplete(toDo: string) {}
+  onDelete(toDo: string) {
+    this.localTasks = this.localTasks.filter((task) => task.toDo !== toDo);
+  }
+  onClickAdd(taskInput: string) {
+    this.localTasks.push({
+      toDo: taskInput,
+      complete: false,
+    });
   }
 }

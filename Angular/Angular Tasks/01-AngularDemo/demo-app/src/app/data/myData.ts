@@ -1,6 +1,6 @@
-export const toDoList = [
-  { id: 1, toDo: 'Walk', complete: false },
-  { id: 2, toDo: 'Gym', complete: false },
-  { id: 3, toDo: 'Study', complete: false },
-  { id: 4, toDo: 'Eat', complete: false },
+export let toDoList = [
+  { toDo: 'Walk', complete: false },
+  { toDo: 'Gym', complete: false },
+  { toDo: 'Study', complete: false },
+  { toDo: 'Eat', complete: false },
 ];
