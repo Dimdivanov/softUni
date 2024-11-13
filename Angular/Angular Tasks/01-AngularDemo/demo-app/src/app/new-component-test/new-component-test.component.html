@@ -1,7 +1,13 @@
 <div class="main">
   <div class="todo-container">
+    <img [attr.src]="logo" alt="logo.png" class="logo" />
     <div class="todo-header">
       <h1>To-Do List</h1>
+      <app-child-component-test
+        [title]="title"
+        (messageEvent)="receiveMessage($event)"
+      />
+      Message:{{ message }}
     </div>
     <div class="todo-input">
       <input type="text" #taskInput placeholder="Add a new task" />
@@ -12,19 +18,17 @@
     <ul class="todo-list">
       @for (item of localTasks; track $index){
       <li class="todo-item">
-        <div
-          [style.completed]="
-            completedTask ? 'text-decoration: line-through' : ''
-          "
-        >
+        <div [class]="item.complete ? 'completed-red' : 'completed-green'">
           {{ item.toDo }}
         </div>
-        <button (click)="onDelete(item.toDo)">Delete</button>
-        <button (click)="onComplete(item.toDo)" class="done">Done</button>
+        <div>
+          <button (click)="onDelete(item.toDo)">Delete</button>
+          <button (click)="onDone(item.toDo)" class="done">Done</button>
+        </div>
       </li>
-      } @if(localTasks.length == 0){
+      @if(localTasks.length === 0){
       <li>No tasks available</li>
-      }
+      } }
     </ul>
   </div>
 </div>
