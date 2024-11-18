@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './core/header/header.component';
@@ -14,12 +13,4 @@ import { MainComponent } from './main/main.component';
 })
 export class AppComponent {
   title = 'post-blog';
-
-  constructor(public http: HttpClient) {}
-
-  ngOnInit() {
-    this.http
-      .get('http://localhost:3000/api/posts')
-      .subscribe();
-  }
 }
