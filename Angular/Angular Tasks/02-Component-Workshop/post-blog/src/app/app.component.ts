@@ -19,9 +19,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.http
-      .get(
-        'https://angular-component-workshop-default-rtdb.europe-west1.firebasedatabase.app/.json'
-      )
-      .subscribe((x) => console.log(x));
+      .get('http://localhost:3000/api/posts')
+      .subscribe();
   }
 }
