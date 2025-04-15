@@ -1,0 +1,9 @@
+<div>
+  <ul>
+    @for(user of dataUsers; track $index){
+    <li [routerLink]="['/user', 'details', user.id]">
+      {{ user.id }} - {{ user.name }} - {{ user.phone }}
+    </li>
+    }
+  </ul>
+</div>
